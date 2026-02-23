@@ -1,362 +1,987 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <meta name="description" content="Portfolio of Constant Abrar - UI/UX Designer & Frontend Developer specialized in modern, user-centered web experiences.">
-    <meta name="keywords" content="Constant Abrar, Abrar Khan, UI/UX Designer, Frontend Developer, Web Design, HTML, CSS, JavaScript, Odisha, India">
-    <meta name="author" content="Abrar Khan">
-    
-    <title>Constant Abrar | UI/UX Designer & Developer</title>
+    <link rel="icon" type="image/png" href="https://gi28.in/assets/Abrarr.png">
+    <!-- Primary Meta -->
+<title>Constant Abrar | Frontend Developer in Odisha | Supabase & Web Apps</title>
+<meta name="description" content="Constant Abrar is a high-performance Frontend Developer from Odisha, India. Expert in HTML, CSS, JavaScript, React, Supabase & Web3Forms. Ultra-fast business websites & digital solutions.">
+<meta name="keywords" content="Frontend Developer Odisha, Web Developer Kendrapara, React Developer India, Supabase Developer, Portfolio Website Developer, Web3Forms Integration">
+<meta name="author" content="Constant Abrar">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://constabrar.in/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Mobile Optimization -->
+<meta name="theme-color" content="#030303">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Open Graph (Facebook / LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Constant Abrar | Premium Frontend Developer">
+<meta property="og:description" content="High-performance web applications, Supabase integration & ultra-fast digital architecture.">
+<meta property="og:url" content="https://constabrar.in/">
+<meta property="og:image" content="https://gi28.in/assets/Abrarr.png">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Constant Abrar | Frontend Developer">
+<meta name="twitter:description" content="Architecting insanely fast digital experiences.">
+<meta name="twitter:image" content="https://gi28.in/assets/Abrarr.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-    <link rel="stylesheet" href="style.css">
+        :root {
+            --bg-dark: #030303;
+            --bg-card: rgba(15, 15, 15, 0.6);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-main: #f8f8f8;
+            --text-muted: #9ca3af;
+            --accent-glow: rgba(255, 255, 255, 0.15);
+            --neon-white: #ffffff;
+            --glass-highlight: rgba(255, 255, 255, 0.05);
+        }
 
-    <link rel="icon" type="image/png" href="Abrarr.png">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            opacity: 0; /* Hidden until loader finishes */
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* --- Loader Animation --- */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-size: 3rem;
+            color: var(--neon-white);
+            font-weight: 700;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-bracket {
+            display: inline-block;
+            transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1);
+        }
+
+        .loader-slash {
+            margin: 0 5px;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        /* The open state for < / > */
+        #loader.open .left { transform: translateX(-30px); }
+        #loader.open .right { transform: translateX(30px); }
+        #loader.open .slash { opacity: 0; }
+
+        /* --- SVG Utility --- */
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(3, 3, 3, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+            padding: 1.2rem 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--neon-white);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-white);
+            text-shadow: 0 0 8px var(--neon-white);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-container { justify-content: center; }
+        }
+
+        /* --- Layout Container --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8rem 2rem 2rem 2rem;
+        }
+
+        /* --- Global Glass & Glow Effects --- */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        /* Shiny Reflective Sweep */
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%;
+            width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: left 0.7s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .glass-panel:hover::before {
+            left: 150%;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px var(--accent-glow), 0 0 15px rgba(255,255,255,0.1) inset;
+            transform: translateY(-4px);
+        }
+
+        .glass-panel > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            /* High Glow Effect */
+            background: linear-gradient(to right, #fff, #888, #fff);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: textShine 4s linear infinite;
+            text-shadow: 0 0 30px rgba(255,255,255,0.4);
+        }
+
+        @keyframes textShine {
+            to { background-position: 200% center; }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            color: var(--neon-white);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--neon-white);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Smooth Fade Up Animation */
+
+.fade-up {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Optional stagger delay */
+.fade-up.delay-1 { transition-delay: 0.1s; }
+.fade-up.delay-2 { transition-delay: 0.2s; }
+.fade-up.delay-3 { transition-delay: 0.3s; }
+.fade-up.delay-4 { transition-delay: 0.4s; }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--neon-white);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(to right, var(--border-glass), transparent);
+        }
+
+        /* --- About Me Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+
+        .profile-card {
+            padding: 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.05));
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 25px rgba(255,255,255,0.1);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--bg-dark);
+        }
+
+        .profile-card h3 { font-size: 1.5rem; margin-bottom: 0.2rem; }
+        .profile-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .social-links a:hover {
+            color: var(--neon-white);
+            border-color: var(--neon-white);
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .stat-box svg {
+            margin-bottom: 1rem;
+            color: var(--neon-white);
+        }
+
+        .stat-box h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .stat-box p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* --- Tech Architect Grid --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            gap: 1rem;
+            cursor: default;
+        }
+
+        .tech-item svg {
+            width: 40px;
+            height: 40px;
+            color: var(--text-muted);
+            transition: color 0.3s ease, filter 0.3s ease;
+        }
+
+        .tech-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .tech-item:hover svg, .tech-item:hover span {
+            color: var(--neon-white);
+        }
+        .tech-item:hover svg {
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
+        }
+
+        /* --- Dynamic Journey (Timeline) --- */
+        .journey-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .journey-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 0%; /* Animates via JS */
+            background: linear-gradient(to bottom, transparent, var(--neon-white), transparent);
+            box-shadow: 0 0 10px var(--neon-white);
+            transition: height 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .journey-node {
+            position: relative;
+            padding-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.6s ease;
+        }
+
+        .journey-node.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .journey-node::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem; /* Center on the line */
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--text-muted);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .journey-node.active::before {
+            border-color: var(--neon-white);
+            box-shadow: 0 0 15px var(--neon-white);
+        }
+
+        .journey-card {
+            padding: 2rem;
+        }
+
+        .journey-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .journey-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .journey-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-glass);
+        }
+
+        .project-card h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+        .project-card p { color: var(--text-muted); font-size: 0.9rem; flex-grow: 1; margin-bottom: 1.5rem; }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+        }
+
+        /* --- Contact Form --- */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 3rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-group input, 
+        .input-group textarea {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            padding: 1rem;
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .input-group input:focus, 
+        .input-group textarea:focus {
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: 0 0 15px rgba(255,255,255,0.1) inset;
+        }
+
+        button[type="submit"] {
+            margin-top: 1rem;
+            width: 100%;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-glass);
+        }
+    </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Constant Abrar",
+  "url": "https://constabrar.in",
+  "image": "https://gi28.in/assets/Abrarr.png",
+  "jobTitle": "Frontend Developer",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kendrapara",
+    "addressRegion": "Odisha",
+    "addressCountry": "India"
+  },
+  "sameAs": [
+    "https://github.com/const-abrar",
+    "https://www.linkedin.com/in/constabrar",
+    "https://instagram.com/const.abrar"
+  ]
+}
+</script>
 </head>
 <body>
-
-    <canvas id="fluid-canvas"></canvas>
-
-    <div class="noise-overlay"></div>
-
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-
-    <div id="preloader" aria-hidden="false">
-        <div class="loader-content">
-            <h2 class="loader-text">Constant Abrar</h2>
-            <div class="loader-line"></div>
-        </div>
+    <div id="loader">
+        <span class="loader-bracket left">&lt;</span>
+        <span class="loader-slash slash">/</span>
+        <span class="loader-bracket right">&gt;</span>
     </div>
 
-    <header class="header">
-        <nav class="navbar container">
-            <a href="#hero" class="logo" aria-label="Constant Abrar Home">
-                <span class="logo-symbol">&lt;/&gt;</span> Constant<span class="highlight">Abrar</span>
+    <nav>
+        <div class="nav-container">
+            <a href="https://constabrar.in" class="logo" target="_blank">CONST.ABRAR</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#tech">Tech</a>
+                <a href="#journey">Journey</a>
+                <a href="#projects">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+      
+        <header class="hero" id="home">
+            <h1>Constant Abrar</h1>
+            <p class="subtitle">Architecting High-Performance Digital Experiences.</p>
+            <a href="https://constabrar.in/CV.pdf" download class="btn-glow">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download CV
             </a>
-
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#about" class="nav-link">About Constant Abrar</a></li>
-                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <button class="nav-close" id="nav-close" aria-label="Close Menu">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="nav-controls">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark/Light Mode">
-                    <i class="fa-solid fa-moon theme-icon-dark"></i>
-                    <i class="fa-solid fa-sun theme-icon-light"></i>
-                </button>
+        </header>
+        <section class="section fade-up" id="about">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                About Me
+            </h2>
+            <div class="about-grid">
                 
-                <button class="nav-toggle" id="nav-toggle" aria-label="Open Menu">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="main">
-
-        <section class="hero section" id="hero">
-            <div class="container hero__container">
-                <div class="hero__content">
-                    <div class="hero__badge fade-in-up">
-                        <span class="badge-dot"></span> Available for Now
+                <div class="glass-panel profile-card">
+                    <div class="profile-img-container">
+                        <img src="https://gi28.in/assets/Abrarr.png"
+     alt="Constant Abrar Frontend Developer Odisha"
+     loading="lazy"
+     width="150"
+     height="150">
+     </div>
+                    <h3>Constant Abrar</h3>
+                    <p>@const.abrar</p>
+                    
+                    <div class="social-links">
+                        <a href="mailto:const.abrar@proton.me" aria-label="Email">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                        <a href="https://wa.me/918637213741" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor">
+        <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.89.754 5.61 2.067 7.97L.396 32l7.82-1.63A15.936 15.936 0 0 0 16 32.396c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.2c-2.53 0-4.93-.66-7.02-1.91l-.5-.3-4.64.97.99-4.52-.32-.52a13.88 13.88 0 0 1-2.12-7.42c0-7.66 6.23-13.89 13.89-13.89 3.71 0 7.2 1.45 9.82 4.07a13.8 13.8 0 0 1 4.07 9.82c0 7.66-6.23 13.89-13.89 13.89zm7.61-10.42c-.42-.21-2.49-1.23-2.88-1.37-.39-.14-.67-.21-.95.21s-1.09 1.37-1.33 1.65c-.25.28-.49.32-.91.11-.42-.21-1.77-.65-3.37-2.07-1.24-1.1-2.08-2.46-2.32-2.88-.25-.42-.03-.65.18-.86.19-.19.42-.49.63-.74.21-.25.28-.42.42-.7.14-.28.07-.53-.03-.74-.11-.21-.95-2.29-1.3-3.14-.34-.82-.69-.71-.95-.72-.25-.01-.53-.01-.81-.01s-.74.11-1.12.53c-.39.42-1.48 1.44-1.48 3.52 0 2.07 1.51 4.08 1.72 4.36.21.28 2.97 4.53 7.2 6.35 1.01.43 1.8.69 2.41.88 1.01.32 1.93.28 2.66.17.81-.12 2.49-1.02 2.84-2.01.35-.98.35-1.82.25-2.01-.11-.19-.39-.32-.81-.53z"/>
+    </svg>
+</a>
+                        <a href="https://github.com/const-abrar" target="_blank" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/constabrar" target="_blank" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://instagram.com/const.abrar" target="_blank" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
                     </div>
-                    <h1 class="hero__title fade-in-up delay-1">
-                        Hi, I'm <span class="gradient-text">Constant Abrar</span>
-                    </h1>
-                    <h2 class="hero__subtitle fade-in-up delay-2">
-                        UI/UX Designer & <br> Developer
-                    </h2>
-                    <p class="hero__description fade-in-up delay-3">
-                  I design and build modern web experiences focused on clean aesthetics and user-centered interaction.
+                </div>
+
+                <div class="about-content">
+                    <p class="about-text">
+                        I am a highly skilled Frontend Developer based in Kendrapara, Odisha. I specialize in crafting visually stunning, responsive, and insanely fast web applications. My philosophy revolves around delivering the fastest service without compromising on code quality or aesthetic brilliance.
                     </p>
                     
-                    <div class="hero__buttons fade-in-up delay-4">
-                        <a href="#projects" class="btn btn--primary">
-                            <span>View Projects</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                      <a href="CV.pdf" download class="btn btn--secondary">
-    <span>Download CV</span>
-</a>
-                    </div>
-
-                    <div class="hero__stats fade-in-up delay-5">
-                        <div class="stat-item">
-                            <span class="stat-number">2026</span>
-                      <span class="stat-label">Ready to Work</span>
+                    <div class="stats-grid">
+                        <div class="glass-panel stat-box">
+                            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            <h4>Fast Execution</h4>
+                            <p>Rapid deployment utilizing AI assistance to optimize architecture.</p>
+                        </div>
+                        <div class="glass-panel stat-box">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            <h4>Backend Integration</h4>
+                            <p>Seamless data flow using Supabase and Web3Forms.</p>
+                        </div>
+                        <div class="glass-panel stat-box">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            <h4>Business Logic</h4>
+                            <p>Managing complete digital presence for distinct client needs.</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="hero__visual fade-in-left delay-3">
-                    <div class="hero__img-wrapper glass-card">
-                        <img src="Abrar.png" alt="Constant Abrar" class="hero__img" id="hero-img">
+        <section class="section fade-up" id="tech">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Tech Architecture
+            </h2>
+            <div class="tech-grid">
+                <div class="glass-panel tech-item">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100" height="100">
+  <path fill="currentColor" d="M64 32l35 403.2L256 480l157-44.8L448 32H64zm292.1 132.4l-4.7 54H186.2l3.6 40.9h160.4l-11.7 130.6-82.5 22.3-82.5-22.3-5.6-62.4h50.6l2.8 31.3 29.1 7.9 29.1-7.9 4.5-50.7H136.1l-10.4-117h234.1l-3.7 41.2z"/>
+</svg>
+
+<span>HTML</span>
+</div>
+<div class="glass-panel tech-item">
+    <svg viewBox="0 0 128 128" fill="currentColor">
+  <path d="M64.068 84.176v0zM18.972 14.076L23.644 125.4l36.776 10.208 36.88-10.224L103.672 14.076H18.972zM92 35.1l-2.772 31.068h0l-1.92 21.436-0.168 1.904-23.124 6.412-23.092-6.412-1.58-17.704h11.316l0.804 8.992 12.568 3.388 0.032-0.008 0.008 0 12.536-3.384 1.316-14.62-26.316 0-0.224-2.532-0.516-5.716-0.268-3.024 28.324 0 1.032-11.544h-43.144l-0.224-2.536-0.516-5.716-0.268-3.024h56.472l-0.272 3.024z"/>
+</path>
+</svg>
+    <span>CSS</span>
+</div>
+<div class="glass-panel tech-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9 20C9 20 5 20 5 16V14C5 13 4 12 3 12C4 12 5 11 5 10V8C5 4 9 4 9 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 4C15 4 19 4 19 8V10C19 11 20 12 21 12C20 12 19 13 19 14V16C19 20 15 20 15 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    <span>JSON</span>
+</div>
+                <div class="glass-panel tech-item">
+    <svg viewBox="0 0 32 32" fill="none">
+        <rect x="2" y="2" width="28" height="28" rx="6"
+              fill="currentColor" opacity="0.12"/>
+        
+        <text x="16" y="20"
+              text-anchor="middle"
+              font-size="10"
+              font-weight="600"
+              letter-spacing="0.5"
+              fill="currentColor"
+              font-family="Inter, Arial, sans-serif">
+            JS
+        </text>
+    </svg>
+    <span>JavaScript</span>
+</div>
+                <div class="glass-panel tech-item">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/></svg>
+                    <span>React.js</span>
+                </div>
+                <div class="glass-panel tech-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <span>Tailwind CSS</span>
+                </div>
+                <div class="glass-panel tech-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l8 4.5v11L12 22l-8-4.5v-11L12 2z"/>
+        <path d="M8 9v6"/>
+        <path d="M16 9v6"/>
+        <path d="M8 9l4 3 4-3"/>
+    </svg>
+    <span>Node & APIs</span>
+</div>
+                <div class="glass-panel tech-item">
+                    <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+                    <span>Supabase DB</span>
+                </div>
+                <div class="glass-panel tech-item">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    <span>AI Assistant</span>
+                </div>
+                <div class="glass-panel tech-item">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    <span>Web3Forms</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-up" id="journey">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                My Journey
+            </h2>
+            <div class="journey-container" id="journey-line-container">
+                <div class="journey-line" id="animated-line"></div>
+                
+                <div class="journey-node">
+                    <div class="glass-panel journey-card">
+                        <div class="journey-date">Present • Remote</div>
+                        <h3>Frontend Developer</h3>
+                        <p>Personal Business by Websites. Handling complete frontend architecture, ensuring ultra-fast delivery times using AI tooling, and integrating complex systems like Supabase.</p>
+                    </div>
+                </div>
+                
+                <div class="journey-node">
+                    <div class="glass-panel journey-card">
+                        <div class="journey-date">Past • Freelance</div>
+                        <h3>Independent Web Specialist</h3>
+                        <p>Designed and deployed custom landing pages and digital portfolios. Perfected the integration of serverless forms via Web3Forms for high-converting client sites.</p>
+                    </div>
+                </div>
+
+                <div class="journey-node">
+                    <div class="glass-panel journey-card">
+                        <div class="journey-date">Origin</div>
+                        <h3>Foundation & Architecture</h3>
+                        <p>Deep dive into core web technologies (HTML, CSS, JS). Built an insane knowledge base in modern frameworks and responsive design paradigms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-up" id="projects">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                Projects
+            </h2>
+            <div class="projects-grid">
+          <div class="glass-panel project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Tools @GI28</h3>
+                    <p><a href="https://gi28.in/Tools/">gi28.in/Tools</a></p>
+                    <p>A sleek, multi-page business website optimized for speed. Features dynamic content loading and complex CSS glassmorphism interactions.</p>
+                    <div class="project-tags">
+                        <span>HTML/CSS</span><span>JS</span><span>Web3Forms</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </div>
+                    <h3>AI-Powered Dash</h3>
+                    <p>A complex frontend interface built with the assistance of AI tools to rapidly prototype and deploy robust data visualization layouts.</p>
+                    <div class="project-tags">
+                        <span>AI Logic</span><span>Supabase</span><span>React Flow</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel project-card">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h3>Lead Generation Portal</h3>
+                    <p>High-conversion landing page with seamless serverless form integration handling thousands of inquiries with zero downtime.</p>
+                    <div class="project-tags">
+                        <span>Web3Forms</span><span>Tailwind</span><span>Optimization</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section fade-up" id="contact">
+            <h2 class="section-title">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Initiate Contact
+            </h2>
+            <div class="contact-container">
+                <div class="glass-panel">
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="WEB3FORMS_API">
                         
-                        <div class="floating-icon icon-1"><i class="fa-brands fa-figma"></i></div>
-                        <div class="floating-icon icon-2"><i class="fa-brands fa-js"></i></div>
-                        <div class="floating-icon icon-3"><i class="fa-brands fa-react"></i></div>
-                    </div>
-                    <div class="hero__blob"></div>
+                        <div class="input-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your name">
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="name@domain.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="How can I help accelerate your business?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-glow">
+                            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Transmit Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
 
-        <section class="about section" id="about">
-            <div class="container">
-                <div class="section__header">
-                    <h2 class="section__title">About Me</h2>
-                    <span class="section__subtitle">Who I Am</span>
-                </div>
+        <footer>
+            <p>&copy; 2026 CONST.ABRAR. Architected with precision.</p>
+        </footer>
 
-                <div class="about__container glass-card scroll-reveal">
-                    <div class="about__text">
-                        <p>
-                            I am a fresher but highly skilled <strong>UI/UX Designer and Developer</strong> focused on clean, modern and user-centered web experiences. 
-                        </p>
-                        <p>
-                            My journey started in 2024 exploring web development out of curiosity. By 2025, I began building real-world projects, practicing deeply with HTML, CSS and JavaScript. <br>Now, in 2026, I am open to professional opportunities to bring creative ideas to life.
-                        </p>
-                        
-                        <div class="about__info">
-                            <div class="info-item">
-                                <i class="fa-solid fa-location-dot"></i>
-                <span>Kendrapara, Odisha, India</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fa-solid fa-graduation-cap"></i>
-          <span>Higher Secondary - Kendrapara Evening College</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="skills section" id="skills">
-            <div class="container">
-                <div class="section__header">
-                    <h2 class="section__title">My Skills</h2>
-                    <span class="section__subtitle">What I Use</span>
-                </div>
-
-                <div class="skills__grid">
-                    <div class="skill-card glass-card scroll-reveal">
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-pen-nib"></i>
-                        </div>
-                        <h3 class="skill-title">UI/UX Design</h3>
-                    <p class="skill-desc">User focused design, clean layouts and modern approaches.</p>
-                    </div>
-
-                    <div class="skill-card glass-card scroll-reveal delay-1">
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <h3 class="skill-title">Frontend Dev</h3>
-                        <p class="skill-desc">Converting designs into pixel-perfect HTML/CSS code.</p>
-                    </div>
-
-                    <div class="skill-card glass-card scroll-reveal delay-2">
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-js"></i>
-                        </div>
-                        <h3 class="skill-title">JavaScript</h3>
-              <p class="skill-desc">Creating interactive and dynamic website functionality.</p>
-                    </div>
-
-                    <div class="skill-card glass-card scroll-reveal">
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-mobile-screen"></i>
-                        </div>
-                        <h3 class="skill-title">Responsive Design</h3>
-                        <p class="skill-desc">Ensuring websites look great on mobile, tablet and desktop.</p>
-                    </div>
-
-                    <div class="skill-card glass-card scroll-reveal delay-1">
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-wordpress"></i>
-                        </div>
-                        <h3 class="skill-title">WordPress</h3>
-                      <p class="skill-desc">Building and managing content-driven websites.</p>
-                    </div>
-
-                    <div class="skill-card glass-card scroll-reveal delay-2">
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
-                        <h3 class="skill-title">User Research</h3>
-                  <p class="skill-desc">Problem solving mindset and detailed visual sense.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="projects section" id="projects">
-            <div class="container">
-                <div class="section__header">
-                    <h2 class="section__title">Portfolio</h2>
-                    <span class="section__subtitle">Recent Work</span>
-                </div>
-
-                <div class="projects__grid">
-                    <article class="project-card glass-card scroll-reveal">
-                        <div class="project__image-holder">
-                            <div class="project-placeholder-visual">gi28.in</div>
-                            <div class="project__overlay">
-                                <a href="https://gi28.in" target="_blank" class="btn-icon" aria-label="View Project">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project__content">
-                            <span class="project__category">Web Development</span>
-                            <h3 class="project__title">gi28.in</h3>
-                            <p class="project__description">
-                                This whole website is coded & Designed by Constant Abrar (Me), You can checkout <a href="https://gi28.in/Tools">Tools Page</a> for better knowledge about my ABILITY!</p>
-                            <div class="project__tags">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JS</span>
-                                <span>Optimised SEO</span>
-                                <span>Heavy Engine</span>
-                            </div>
-                            <a href="https://gi28.in" target="_blank" class="btn-text">
-                                View Live <i class="fa-solid fa-chevron-right"></i>
-                            </a>
-                        </div>
-                    </article>
-
-                    </div>
-            </div>
-        </section>
-
-        <section class="contact section" id="contact">
-            <div class="container">
-                <div class="section__header">
-                    <h2 class="section__title">Get In Touch</h2>
-                    <span class="section__subtitle">Let's Talk</span>
-                </div>
-
-                <div class="contact__container grid">
-                    <div class="contact__info glass-card scroll-reveal">
-                        <h3 class="contact__title">Contact Information</h3>
-                        <p class="contact__text">
-                            I am currently open to work and collaboration opportunities.
-                        </p>
-
-                        <div class="contact__data">
-                            <div class="contact__item">
-                                <i class="fa-solid fa-envelope"></i>
-                                <div>
-                                    <h4 class="contact__label"></h4><a href="mailto:abrarkhan@proton.me" class="contact__link">abrarkhan@proton.me</a>        </div>
-                            </div>
-
-                            <div class="contact__item">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <div>
-                                    <h4 class="contact__label"></h4>
-                             <span class="contact__link">Kendrapara, Odisha, India</span>   </div>
-                            </div>
-                        </div>
-
-                        <div class="contact__socials">
-                            <a href="https://www.linkedin.com/in/constabrar/" target="_blank" class="social-link" aria-label="LinkedIn">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://www.instagram.com/const.abrar/" target="_blank" class="social-link" aria-label="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                            <a href="https://t.me/Const_Abrar/" target="_blank" class="social-link" aria-label="Telegram">
-                                <i class="fa-brands fa-telegram"></i>
-                            </a>
-                        </div>
-                    </div>
-<form 
-  action="https://api.web3forms.com/submit" 
-  method="POST"
-  class="contact__form glass-card scroll-reveal delay-1" 
-  id="contact-form">
-
-    <!-- Web3Forms Access Key -->
-    <input type="hidden" name="access_key" value="04598148-12ed-4e9c-a789-74f88d7979c9">
-
-    <!-- Extra Pro Options -->
-    <input type="hidden" name="subject" value="New Message from Portfolio Website">
-    <input type="hidden" name="from_name" value="Abrar Khan Portfolio">
-    <input type="checkbox" name="botcheck" style="display:none;">
-
-    <div class="form__group">
-        <div class="input__wrapper">
-            <input type="text" name="name" id="name" class="contact__input" placeholder=" " required>
-            <label for="name" class="contact__label">Your Name</label>
-        </div>
-    </div>
-
-    <div class="form__group">
-        <div class="input__wrapper">
-            <input type="email" name="email" id="email" class="contact__input" placeholder=" " required>
-            <label for="email" class="contact__label">Your Email</label>
-        </div>
-    </div>
-
-    <div class="form__group">
-        <div class="input__wrapper">
-            <textarea name="message" id="message" class="contact__input" rows="5" placeholder=" " required></textarea>
-            <label for="message" class="contact__label">Message</label>
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn--primary btn--full">
-        <span>Send Request</span>
-        <i class="fa-solid fa-paper-plane"></i>
-    </button>
-
-</form>
-
-<p id="form-status" class="form-status"></p>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer__container">
-            <div class="footer__content">
-                <a href="https://devabrarkhan.github.io/Portfolio/" class="footer__logo">Abrar Khan</a>
-                <ul class="footer__links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+    <script>
+        // --- Loader Logic ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
             
-            <div class="footer__bottom">
-                <p class="footer__copy">
-                    &copy; 2026 Abrar Khan. All rights reserved.
-                </p>
-                <a href="#hero" class="scroll-top" aria-label="Back to top">
-                    <i class="fa-solid fa-arrow-up"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
+            // Wait slightly, then trigger the opening animation
+            setTimeout(() => {
+                loader.classList.add('open');
+                
+                // Wait for the open animation to finish, then fade out
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    
+                    // Remove from DOM and reveal body
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        document.body.classList.add('loaded');
+                    }, 10);
+                }, 20);
+            }, 10);
+        });
+        // --- Scroll Intersection Observer for Sections & Journey Line ---
+        document.addEventListener("DOMContentLoaded", () => {
+            // Fade in sections on scroll
+            const sections = document.querySelectorAll('.section');
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
 
-    <script src="script.js"></script>
+            sections.forEach(section => sectionObserver.observe(section));
+
+            // Dynamic Journey Line Animation
+            const journeyNodes = document.querySelectorAll('.journey-node');
+            const journeyLine = document.getElementById('animated-line');
+            
+            const journeyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Calculate how many nodes are active to set line height
+                        const activeNodes = document.querySelectorAll('.journey-node.active').length;
+                        const totalNodes = journeyNodes.length;
+                        // Rough calculation to draw the line down as nodes appear
+                        journeyLine.style.height = `${(activeNodes / totalNodes) * 100}%`;
+                    }
+                });
+            }, { threshold: 0.5, rootMargin: "0px 0px -100px 0px" });
+
+            journeyNodes.forEach(node => journeyObserver.observe(node));
+        });
+    </script>
+    <script>
+if ('loading' in HTMLImageElement.prototype) {
+  document.querySelectorAll('img').forEach(img => {
+    img.src = img.dataset.src || img.src;
+  });
+}
+</script>
 </body>
 </html>
