@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reshmi & Md. Sahid — Wedding Invitation</title>
+    <title>Reshmi & Md. Sahid — Premium Wedding Invitation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#B49A64', /* Gold */
-                        background: '#0F1A16', /* Dark Green */
-                        card: '#15241E',
-                        foreground: '#E4DDCD'
+                        primary: '#D4AF37', /* Rich Gold */
+                        background: '#0A110E', /* Very Dark Green/Black */
+                        card: '#121F1A',
+                        foreground: '#FDFBF7'
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
                         calligraphy: ['Great Vibes', 'cursive'],
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Montserrat', 'sans-serif'],
                     }
                 }
             }
@@ -27,174 +28,326 @@
     </script>
     <style>
         body {
-            background-color: #0F1A16;
-            color: #E4DDCD;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
+            background-color: #0A110E;
+            color: #FDFBF7;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden; /* Hidden until door opens */
+            margin: 0;
+            padding: 0;
         }
+
+        /* Gold Text Gradient */
         .text-gold {
-            background: linear-gradient(to right, #C9A96E, #E6C887, #C9A96E);
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         .bg-gold {
-            background: linear-gradient(to right, #C9A96E, #E6C887, #C9A96E);
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);
         }
+
+        /* Door Animations */
+        .door-left { transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
+        .door-right { transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
+        .door-open .door-left { transform: translateX(-100%); }
+        .door-open .door-right { transform: translateX(100%); }
+        .door-open #door-center { opacity: 0; transform: scale(0.5); transition: all 0.8s ease; }
+        
+        /* Fade Up Animation on Scroll */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Auto Slide Gallery */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            padding: 20px 0;
+        }
+        .slider-track {
+            display: inline-block;
+            animation: slide 25s linear infinite;
+        }
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+        .slider-item {
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            margin: 0 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .slider-item:hover img {
+            transform: scale(1.1);
+        }
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Assuming we duplicate items for seamless loop */
+        }
+
+        /* Canvas Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0A110E; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+
+        /* Pulse animation for tap */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
-        ::-webkit-scrollbar-track {
-            background: #0F1A16; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #B49A64; 
-            border-radius: 4px;
-        }
+        .pulse-btn { animation: pulse-gold 2s infinite; }
     </style>
 </head>
-<body class="antialiased selection:bg-primary selection:text-background relative">
-    
-    <div class="fixed inset-0 pointer-events-none z-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&h=900&fit=crop'); background-size: cover; background-position: center; mix-blend-mode: overlay;"></div>
+<body class="antialiased selection:bg-primary selection:text-background">
 
-    <section class="min-h-screen flex flex-col items-center justify-center px-6 text-center relative z-10">
-        <div class="max-w-xl mx-auto">
-            <p class="font-calligraphy text-2xl md:text-3xl text-primary mb-6">We are honoured to invite you to the wedding of</p>
-            <h1 class="font-cinzel text-5xl md:text-6xl font-light tracking-widest text-gold mb-4">Reshmi Parween</h1>
-            <div class="flex items-center justify-center gap-4 my-4">
-                <div class="w-16 h-px bg-primary opacity-50"></div>
-                <span class="font-calligraphy text-4xl text-primary">&amp;</span>
-                <div class="w-16 h-px bg-primary opacity-50"></div>
-            </div>
-            <h1 class="font-cinzel text-5xl md:text-6xl font-light tracking-widest text-gold mt-4 mb-10">Md. Sahid</h1>
-            <p class="font-sans text-sm tracking-[0.2em] uppercase text-primary/80">Request the honour of your presence</p>
-            
-            <div class="mt-16 animate-bounce">
-                <p class="text-xs uppercase tracking-[0.2em] text-primary/60 mb-2">Scroll</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-            </div>
+    <canvas id="particle-canvas"></canvas>
+
+    <div id="door-wrapper" class="fixed inset-0 z-50 flex cursor-pointer" onclick="openDoor()">
+        <div class="door-left w-1/2 h-full bg-[#0A110E] relative overflow-hidden border-r border-primary/40 shadow-[10px_0_30px_rgba(0,0,0,0.8)] z-20">
+            <div class="absolute inset-0 opacity-20" style="background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');"></div>
+            <div class="absolute right-2 top-4 bottom-4 w-1 bg-gradient-to-b from-transparent via-primary to-transparent opacity-50"></div>
         </div>
-    </section>
-
-    <section class="py-20 px-6 relative z-10 bg-card/50 backdrop-blur-sm">
-        <div class="max-w-2xl mx-auto text-center">
-            <p class="font-calligraphy text-2xl md:text-4xl leading-relaxed text-foreground/90">
-                As we begin our beautiful journey together in faith, love, and togetherness, we wholeheartedly thank you for being a part of this blessed occasion. We can't wait to celebrate with you!
-            </p>
+        
+        <div class="door-right w-1/2 h-full bg-[#0A110E] relative overflow-hidden border-l border-primary/40 shadow-[-10px_0_30px_rgba(0,0,0,0.8)] z-20">
+            <div class="absolute inset-0 opacity-20" style="background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');"></div>
+            <div class="absolute left-2 top-4 bottom-4 w-1 bg-gradient-to-b from-transparent via-primary to-transparent opacity-50"></div>
         </div>
-    </section>
 
-    <section class="py-20 px-6 relative z-10 text-center">
-        <h2 class="font-calligraphy text-4xl md:text-6xl text-primary mb-12">Countdown to Forever</h2>
-        <div class="flex justify-center gap-4 md:gap-8 max-w-2xl mx-auto" id="countdown">
+        <div id="door-center" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center">
+            <div class="w-32 h-32 rounded-full bg-[#0A110E] border-4 border-[#D4AF37] flex items-center justify-center pulse-btn shadow-2xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                <span class="font-cinzel text-4xl text-gold font-bold z-10">R <span class="font-calligraphy font-normal">&amp;</span> S</span>
             </div>
-    </section>
+            <p class="mt-6 font-sans text-sm tracking-[0.3em] uppercase text-primary/80 animate-pulse">Tap anywhere to open</p>
+        </div>
+    </div>
 
-    <section class="py-20 px-6 relative z-10 bg-card/50 backdrop-blur-sm">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-calligraphy text-4xl md:text-6xl text-primary mb-4">Wedding Itinerary</h2>
-                <div class="w-24 h-px bg-primary/50 mx-auto"></div>
-            </div>
-            
-            <div class="space-y-12">
-                <div class="flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left bg-background/50 p-8 rounded-xl border border-primary/20 shadow-lg">
-                    <div class="md:w-1/3 border-b md:border-b-0 md:border-r border-primary/20 pb-4 md:pb-0 md:pr-6">
-                        <h3 class="font-cinzel text-2xl text-gold mb-2">Haldi & Mehendi</h3>
-                        <p class="text-primary font-medium">Saturday</p>
-                        <p class="text-foreground/80">6th June 2026</p>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-foreground/90 mb-2">Join us for the vibrant Haldi and Mehendi ceremonies to kickstart the wedding festivities with joy and colors.</p>
-                        <p class="text-sm text-primary/80"><span class="font-semibold">Venue:</span> Our Residence, Asureswar (Cuttack / Kendrapara)</p>
-                    </div>
+    <div id="main-content" class="relative z-10 hidden opacity-0 transition-opacity duration-1000">
+        
+        <section class="min-h-screen flex flex-col items-center justify-center px-6 text-center pt-20">
+            <div class="max-w-2xl mx-auto fade-up">
+                <p class="font-calligraphy text-3xl md:text-5xl text-primary mb-8 leading-relaxed">
+                    "Do dilon ke milan ka yeh pyara safar,<br>
+                    Khuda ki rehmat se muqammal ho raha hai idhar."
+                </p>
+                <p class="font-sans text-xs md:text-sm tracking-[0.2em] uppercase text-foreground/70 mb-6">We joyfully invite you to the wedding of</p>
+                
+                <h1 class="font-cinzel text-5xl md:text-7xl font-bold tracking-widest text-gold mb-2">Reshmi</h1>
+                <div class="flex items-center justify-center gap-4 my-2">
+                    <div class="w-20 h-px bg-gradient-to-r from-transparent to-primary"></div>
+                    <span class="font-calligraphy text-5xl text-primary">&amp;</span>
+                    <div class="w-20 h-px bg-gradient-to-l from-transparent to-primary"></div>
                 </div>
-
-                <div class="flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left bg-background/50 p-8 rounded-xl border border-primary/20 shadow-lg">
-                    <div class="md:w-1/3 border-b md:border-b-0 md:border-r border-primary/20 pb-4 md:pb-0 md:pr-6">
-                        <h3 class="font-cinzel text-2xl text-gold mb-2">Wedding (Nikah)</h3>
-                        <p class="text-primary font-medium">Sunday</p>
-                        <p class="text-foreground/80">7th June 2026</p>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-foreground/90 mb-2">The main wedding ceremony where we unite in holy matrimony and seek your precious blessings.</p>
-                        <p class="text-sm text-primary/80"><span class="font-semibold">Venue:</span> Our Residence, Asureswar (Cuttack / Kendrapara)</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left bg-background/50 p-8 rounded-xl border border-primary/20 shadow-lg">
-                    <div class="md:w-1/3 border-b md:border-b-0 md:border-r border-primary/20 pb-4 md:pb-0 md:pr-6">
-                        <h3 class="font-cinzel text-2xl text-gold mb-2">Walima</h3>
-                        <p class="text-primary font-medium">Monday</p>
-                        <p class="text-foreground/80">8th June 2026</p>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-foreground/90 mb-2">We cordially invite you to the Walima reception to celebrate our new beginning over a feast.</p>
-                        <p class="text-sm text-primary/80"><span class="font-semibold">Venue:</span> Our Residence, Asureswar (Cuttack / Kendrapara)</p>
-                    </div>
+                <h1 class="font-cinzel text-5xl md:text-7xl font-bold tracking-widest text-gold mt-2 mb-12">Sahid</h1>
+                
+                <div class="mt-8 animate-bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-20 px-6 relative z-10 text-center">
-        <h2 class="font-calligraphy text-4xl md:text-6xl text-primary mb-12">Captured Moments</h2>
-        <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=600&fit=crop" class="rounded-lg shadow-lg border border-primary/30 object-cover w-full h-64" alt="Wedding Moment 1">
-            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=600&fit=crop" class="rounded-lg shadow-lg border border-primary/30 object-cover w-full h-64" alt="Wedding Moment 2">
-            <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&h=600&fit=crop" class="rounded-lg shadow-lg border border-primary/30 object-cover w-full h-64" alt="Wedding Moment 3">
-        </div>
-    </section>
-
-    <section class="py-20 px-6 relative z-10 bg-card/50 backdrop-blur-sm">
-        <div class="max-w-xl mx-auto">
-            <div class="text-center mb-10">
-                <h2 class="font-calligraphy text-4xl md:text-6xl text-primary mb-4">Send a Message</h2>
-                <p class="text-foreground/80">Kindly let us know if you will be joining us.</p>
+        <section class="py-24 px-6 relative">
+            <div class="max-w-3xl mx-auto text-center fade-up bg-card/40 backdrop-blur-md p-10 rounded-2xl border border-primary/20 shadow-2xl">
+                <p class="font-calligraphy text-2xl md:text-4xl leading-relaxed text-foreground/90">
+                    "Mohabbat ki in raahon mein ek naya mod aaya hai,<br>
+                    Khushiyon ne dekho aaj kaisa rang jamaya hai."<br><br>
+                    As we step into this beautiful journey of togetherness, your presence and blessings will make our special day complete.
+                </p>
             </div>
-            
-            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_TOKEN_HERE">
-                <input type="hidden" name="subject" value="New RSVP for Reshmi & Sahid's Wedding">
-                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+        </section>
 
-                <div>
-                    <label class="block text-sm font-medium text-primary mb-2">Your Name</label>
-                    <input type="text" name="name" required class="w-full bg-background border border-primary/30 rounded-md px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Enter your full name">
+        <section class="py-20 px-6 text-center fade-up">
+            <h2 class="font-cinzel text-3xl md:text-5xl text-gold mb-12 tracking-wider">The Big Day Approaches</h2>
+            <div class="flex justify-center gap-4 md:gap-8 max-w-2xl mx-auto" id="countdown">
+                </div>
+        </section>
+
+        <section class="py-24 px-6 relative">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 fade-up">
+                    <h2 class="font-calligraphy text-5xl md:text-7xl text-primary mb-4">Wedding Itinerary</h2>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gold_Divider.png" class="h-4 mx-auto opacity-70" alt="divider">
                 </div>
                 
-                <div>
-                    <label class="block text-sm font-medium text-primary mb-2">Email Address</label>
-                    <input type="email" name="email" required class="w-full bg-background border border-primary/30 rounded-md px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="your@email.com">
+                <div class="space-y-10 relative before:absolute before:inset-0 before:ml-5 md:before:mx-auto md:before:w-0.5 before:bg-gradient-to-b before:from-primary/10 before:via-primary/50 before:to-primary/10">
+                    
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-up">
+                        <div class="hidden md:block w-5 h-5 rounded-full bg-gold border-4 border-background absolute left-1/2 -translate-x-1/2 z-10 shadow-[0_0_15px_#D4AF37]"></div>
+                        <div class="ml-12 md:ml-0 md:w-5/12 bg-card/60 backdrop-blur-md p-8 rounded-2xl border border-primary/20 hover:border-primary/50 transition-colors shadow-xl">
+                            <h3 class="font-cinzel text-2xl md:text-3xl text-gold mb-2">Haldi & Mehendi</h3>
+                            <p class="text-primary font-medium tracking-widest text-sm uppercase mb-4">Saturday, 6th June 2026</p>
+                            <p class="text-foreground/80 mb-4 text-sm leading-relaxed">Join us for the vibrant ceremonies to kickstart the wedding festivities with joy, music, and beautiful henna.</p>
+                            <p class="text-xs text-primary/70 uppercase tracking-wider font-semibold border-t border-primary/20 pt-3">Venue: Our Residence, Asureswar</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:even:flex-row group fade-up">
+                        <div class="hidden md:block w-5 h-5 rounded-full bg-gold border-4 border-background absolute left-1/2 -translate-x-1/2 z-10 shadow-[0_0_15px_#D4AF37]"></div>
+                        <div class="ml-12 md:ml-0 md:w-5/12 bg-card/60 backdrop-blur-md p-8 rounded-2xl border border-primary/20 hover:border-primary/50 transition-colors shadow-xl md:text-right">
+                            <h3 class="font-cinzel text-2xl md:text-3xl text-gold mb-2">Wedding (Nikah)</h3>
+                            <p class="text-primary font-medium tracking-widest text-sm uppercase mb-4">Sunday, 7th June 2026</p>
+                            <p class="text-foreground/80 mb-4 text-sm leading-relaxed">The auspicious moment we unite in holy matrimony. We seek your precious presence and blessings.</p>
+                            <p class="text-xs text-primary/70 uppercase tracking-wider font-semibold border-t border-primary/20 pt-3">Venue: Our Residence, Asureswar</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group fade-up">
+                        <div class="hidden md:block w-5 h-5 rounded-full bg-gold border-4 border-background absolute left-1/2 -translate-x-1/2 z-10 shadow-[0_0_15px_#D4AF37]"></div>
+                        <div class="ml-12 md:ml-0 md:w-5/12 bg-card/60 backdrop-blur-md p-8 rounded-2xl border border-primary/20 hover:border-primary/50 transition-colors shadow-xl">
+                            <h3 class="font-cinzel text-2xl md:text-3xl text-gold mb-2">Walima</h3>
+                            <p class="text-primary font-medium tracking-widest text-sm uppercase mb-4">Monday, 8th June 2026</p>
+                            <p class="text-foreground/80 mb-4 text-sm leading-relaxed">We cordially invite you to the Walima reception to celebrate our new beginning over a grand feast.</p>
+                            <p class="text-xs text-primary/70 uppercase tracking-wider font-semibold border-t border-primary/20 pt-3">Venue: Our Residence, Asureswar</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div>
-                    <label class="block text-sm font-medium text-primary mb-2">Will you attend?</label>
-                    <select name="attendance" required class="w-full bg-background border border-primary/30 rounded-md px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none">
-                        <option value="Yes">Yes, I will be there!</option>
-                        <option value="No">Sorry, I can't make it</option>
-                    </select>
+        <section class="py-20 w-full overflow-hidden fade-up">
+            <div class="text-center mb-10">
+                <h2 class="font-calligraphy text-5xl md:text-7xl text-primary mb-2">Beautiful Memories</h2>
+                <p class="font-sans text-sm tracking-[0.2em] uppercase text-foreground/50">Glimpses of us</p>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider-track">
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop" alt="Gallery 1"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1543881477-9430c52bb7da?w=600&h=800&fit=crop" alt="Gallery 2"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=800&fit=crop" alt="Gallery 3"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=800&fit=crop" alt="Gallery 4"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop" alt="Gallery 5"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop" alt="Gallery 1"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1543881477-9430c52bb7da?w=600&h=800&fit=crop" alt="Gallery 2"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=800&fit=crop" alt="Gallery 3"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&h=800&fit=crop" alt="Gallery 4"></div>
+                    <div class="slider-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop" alt="Gallery 5"></div>
                 </div>
+            </div>
+        </section>
 
-                <div>
-                    <label class="block text-sm font-medium text-primary mb-2">Your Message</label>
-                    <textarea name="message" rows="4" class="w-full bg-background border border-primary/30 rounded-md px-4 py-3 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Write your warm wishes here..."></textarea>
+        <section class="py-24 px-6 relative">
+            <div class="max-w-xl mx-auto bg-card/60 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-primary/30 shadow-[0_0_40px_rgba(212,175,55,0.1)] fade-up">
+                <div class="text-center mb-10">
+                    <h2 class="font-cinzel text-3xl md:text-4xl text-gold mb-4">Are you attending?</h2>
+                    <p class="text-foreground/70 text-sm">Please let us know so we can prepare for your arrival.</p>
                 </div>
+                
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_TOKEN_HERE">
+                    <input type="hidden" name="subject" value="New RSVP for Reshmi & Sahid's Wedding">
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
-                <button type="submit" class="w-full bg-gold text-background font-bold font-cinzel tracking-wider py-4 rounded-md hover:opacity-90 transition-opacity shadow-lg">
-                    Send RSVP
-                </button>
-            </form>
-        </div>
-    </section>
+                    <div class="relative">
+                        <input type="text" name="name" required class="w-full bg-transparent border-b-2 border-primary/30 py-3 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent" placeholder="Name">
+                        <label class="absolute left-0 top-3 text-primary/50 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-4 peer-valid:text-xs peer-valid:text-primary pointer-events-none">Your Full Name</label>
+                    </div>
 
-    <footer class="py-12 text-center border-t border-primary/20 relative z-10 bg-background">
-        <h2 class="font-calligraphy text-3xl text-primary mb-2">Reshmi & Md. Sahid</h2>
-        <p class="text-sm text-foreground/50">Looking forward to celebrating with you!</p>
-    </footer>
+                    <div class="relative mt-8">
+                        <select name="attendance" required class="w-full bg-transparent border-b-2 border-primary/30 py-3 text-foreground focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer">
+                            <option value="" disabled selected hidden class="bg-card text-foreground/50">Will you attend?</option>
+                            <option value="Yes" class="bg-card text-foreground">Yes, joyfully attending!</option>
+                            <option value="No" class="bg-card text-foreground">Regretfully declining</option>
+                        </select>
+                    </div>
+
+                    <div class="relative mt-8">
+                        <textarea name="message" rows="2" class="w-full bg-transparent border-b-2 border-primary/30 py-3 text-foreground focus:outline-none focus:border-primary transition-colors peer placeholder-transparent" placeholder="Message"></textarea>
+                        <label class="absolute left-0 top-3 text-primary/50 text-sm transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-valid:-top-4 peer-valid:text-xs peer-valid:text-primary pointer-events-none">Blessings or Message</label>
+                    </div>
+
+                    <button type="submit" class="w-full mt-10 bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-background font-bold font-cinzel tracking-[0.2em] uppercase py-4 rounded-full hover:shadow-[0_0_20px_#D4AF37] transition-all transform hover:-translate-y-1">
+                        Send RSVP
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="py-16 text-center border-t border-primary/20 relative mt-10">
+            <h2 class="font-calligraphy text-4xl text-primary mb-4">Reshmi & Sahid</h2>
+            <p class="font-sans text-xs tracking-widest text-foreground/40 uppercase">Thank you for being part of our story.</p>
+        </footer>
+    </div>
 
     <script>
-        // Set the date we're counting down to (7th June 2026)
+        // 1. DOOR OPENING LOGIC
+        function openDoor() {
+            document.getElementById('door-wrapper').classList.add('door-open');
+            
+            // Wait for door animation to almost finish, then show content and allow scrolling
+            setTimeout(() => {
+                const mainContent = document.getElementById('main-content');
+                mainContent.classList.remove('hidden');
+                document.body.style.overflow = 'auto'; // Enable scrolling
+                
+                // Slight delay before fading in content
+                setTimeout(() => {
+                    mainContent.classList.remove('opacity-0');
+                    triggerFadeUp(); // Check visibility immediately after opening
+                }, 100);
+                
+                // Remove door from DOM to free up memory
+                setTimeout(() => {
+                    document.getElementById('door-wrapper').remove();
+                }, 1000);
+
+            }, 1000);
+        }
+
+        // 2. SCROLL FADE-UP ANIMATION (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, observerOptions);
+
+        function triggerFadeUp() {
+            document.querySelectorAll('.fade-up').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // 3. COUNTDOWN TIMER
         const weddingDate = new Date("June 7, 2026 00:00:00").getTime();
         
         const timer = setInterval(function() {
@@ -208,37 +361,100 @@
             
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<h3 class='text-3xl text-gold font-cinzel mt-6'>The Wedding Day is Here!</h3>";
+                document.getElementById("countdown").innerHTML = "<h3 class='text-3xl text-gold font-cinzel'>The Wedding Day is Here!</h3>";
                 return;
             }
 
             document.getElementById("countdown").innerHTML = `
                 <div class="text-center">
-                    <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-lg border border-primary/30 bg-primary/10 backdrop-blur-sm mb-2">
-                        <span class="font-cinzel text-3xl md:text-4xl text-gold">${days}</span>
+                    <div class="w-20 h-24 md:w-24 md:h-28 flex flex-col items-center justify-center rounded-xl border border-primary/40 bg-gradient-to-b from-card to-background shadow-lg mb-3">
+                        <span class="font-cinzel text-4xl md:text-5xl text-gold">${days}</span>
                     </div>
-                    <span class="text-xs uppercase tracking-widest text-primary/70">Days</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary/80 font-semibold">Days</span>
                 </div>
                 <div class="text-center">
-                    <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-lg border border-primary/30 bg-primary/10 backdrop-blur-sm mb-2">
-                        <span class="font-cinzel text-3xl md:text-4xl text-gold">${hours}</span>
+                    <div class="w-20 h-24 md:w-24 md:h-28 flex flex-col items-center justify-center rounded-xl border border-primary/40 bg-gradient-to-b from-card to-background shadow-lg mb-3">
+                        <span class="font-cinzel text-4xl md:text-5xl text-gold">${hours}</span>
                     </div>
-                    <span class="text-xs uppercase tracking-widest text-primary/70">Hours</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary/80 font-semibold">Hours</span>
                 </div>
                 <div class="text-center">
-                    <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-lg border border-primary/30 bg-primary/10 backdrop-blur-sm mb-2">
-                        <span class="font-cinzel text-3xl md:text-4xl text-gold">${minutes}</span>
+                    <div class="w-20 h-24 md:w-24 md:h-28 flex flex-col items-center justify-center rounded-xl border border-primary/40 bg-gradient-to-b from-card to-background shadow-lg mb-3">
+                        <span class="font-cinzel text-4xl md:text-5xl text-gold">${minutes}</span>
                     </div>
-                    <span class="text-xs uppercase tracking-widest text-primary/70">Mins</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary/80 font-semibold">Mins</span>
                 </div>
                 <div class="text-center">
-                    <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-lg border border-primary/30 bg-primary/10 backdrop-blur-sm mb-2">
-                        <span class="font-cinzel text-3xl md:text-4xl text-gold">${seconds}</span>
+                    <div class="w-20 h-24 md:w-24 md:h-28 flex flex-col items-center justify-center rounded-xl border border-primary/40 bg-gradient-to-b from-card to-background shadow-lg mb-3">
+                        <span class="font-cinzel text-4xl md:text-5xl text-gold">${seconds}</span>
                     </div>
-                    <span class="text-xs uppercase tracking-widest text-primary/70">Secs</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary/80 font-semibold">Secs</span>
                 </div>
             `;
         }, 1000);
+
+        // 4. LIVE BLURRY GOLDEN DOTS (Canvas Particles)
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1; // 1 to 4 px
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * -0.5 - 0.1; // Float slowly upwards
+                this.opacity = Math.random() * 0.5 + 0.1; // 0.1 to 0.6
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Wrap around edges
+                if (this.y < 0) this.y = canvas.height;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`; // Gold color
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "rgba(212, 175, 55, 0.8)";
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 10000; // Adjust density here
+            if(numberOfParticles > 100) numberOfParticles = 100; // Cap it so mobile doesn't lag
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
     </script>
 </body>
 </html>
