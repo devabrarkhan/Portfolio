@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',
+                        gold: '#D4AF37',
+                        goldlight: '#F3E5AB'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #121212; color: #ffffff; }
+        .mobile-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background-color: #1a1a1a; box-shadow: 0 0 20px rgba(0,0,0,0.5); overflow-x: hidden; }
+        .gold-gradient-text { background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; color: transparent; }
+        .reveal-overlay { transition: opacity 0.8s ease-out; }
+        .hidden-content { opacity: 0; transition: opacity 1s ease-in; }
+        .show-content { opacity: 1; }
+        .hide-overlay { opacity: 0; pointer-events: none; }
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+<div class="mobile-container relative pb-20">
+    
+    <div class="text-center pt-16 px-6 pb-10 border-b border-gray-800">
+        <p class="text-sm text-gold tracking-[0.2em] uppercase mb-4">Together with their families</p>
+        <h1 class="text-5xl font-serif mt-6 mb-4 gold-gradient-text">Rahul <br> <span class="text-3xl">&amp;</span> <br> Anjali</h1>
+        <p class="text-sm text-gray-400 mt-6 italic font-serif">Request the honor of your presence</p>
+        <p class="text-xs text-gray-500 mt-4 leading-relaxed">Join us as we celebrate the beginning of a new chapter filled with love, laughter, and endless memories ❤️</p>
+    </div>
+
+    <div class="px-6 py-10 border-b border-gray-800">
+        <p class="text-center text-gold font-serif text-xl mb-6">Tap to Reveal the Date</p>
+        <div class="relative w-full aspect-square bg-gray-800 rounded-xl overflow-hidden cursor-pointer shadow-lg border border-gray-700" id="revealBox" onclick="revealDate()">
+            
+            <div id="hiddenContent" class="absolute inset-0 flex flex-col items-center justify-center bg-dark hidden-content z-0">
+                <p class="text-gold font-serif text-2xl mb-2">May 30, 2026</p>
+                <p class="text-gray-400 text-sm mb-4">Saturday</p>
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Couple" class="w-48 h-48 object-cover rounded-full border-4 border-gold">
+            </div>
+
+            <div id="revealOverlay" class="absolute inset-0 bg-gold flex flex-col items-center justify-center z-10 reveal-overlay">
+                <i class="fa-solid fa-hand-pointer text-4xl text-dark mb-3 animate-bounce"></i>
+                <h3 class="text-dark font-bold tracking-widest uppercase">Tap Here</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-6 py-10 border-b border-gray-800 text-center">
+        <h2 class="font-serif text-2xl text-gold mb-6 italic">Counting Down to Forever</h2>
+        <div class="flex justify-center gap-4">
+            <div class="flex flex-col items-center"><span id="days" class="text-3xl font-bold text-white">00</span><span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Days</span></div>
+            <span class="text-3xl text-gold">:</span>
+            <div class="flex flex-col items-center"><span id="hours" class="text-3xl font-bold text-white">00</span><span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Hours</span></div>
+            <span class="text-3xl text-gold">:</span>
+            <div class="flex flex-col items-center"><span id="minutes" class="text-3xl font-bold text-white">00</span><span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Mins</span></div>
+            <span class="text-3xl text-gold">:</span>
+            <div class="flex flex-col items-center"><span id="seconds" class="text-3xl font-bold text-white">00</span><span class="text-xs text-gray-500 uppercase tracking-widest mt-1">Secs</span></div>
+        </div>
+    </div>
+
+    <div class="px-6 py-10 border-b border-gray-800">
+        <h2 class="font-serif text-2xl text-gold mb-6 text-center italic">Program Timeline</h2>
+        
+        <div class="bg-gray-800 rounded-lg p-5 mb-6 border border-gray-700">
+            <div class="flex items-start gap-4">
+                <div class="text-gold mt-1"><i class="fa-solid fa-ring text-xl"></i></div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Wedding Ceremony</h3>
+                    <p class="text-sm text-gray-400 mt-1">30 May 2026, 10:30 AM</p>
+                    <p class="text-sm text-gray-300 mt-2"><i class="fa-solid fa-location-dot text-gold mr-2"></i> Grand Palace Hall, Delhi</p>
+                    <a href="https://maps.google.com" target="_blank" class="inline-block mt-4 px-4 py-2 bg-gold text-dark font-bold text-xs rounded-full uppercase tracking-wider hover:bg-goldlight transition">View on Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-6 py-10">
+        <div class="text-center mb-6">
+            <i class="fa-regular fa-envelope text-3xl text-gold mb-2"></i>
+            <h2 class="font-serif text-2xl text-gold italic">Send a Message</h2>
+        </div>
+        
+        <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message Sent! (Connect to backend later)');">
+            <div>
+                <input type="text" placeholder="Your full name" class="w-full bg-transparent border-b border-gray-600 px-0 py-2 text-white focus:outline-none focus:border-gold transition">
+            </div>
+            <div>
+                <input type="email" placeholder="Your email" class="w-full bg-transparent border-b border-gray-600 px-0 py-2 text-white focus:outline-none focus:border-gold transition">
+            </div>
+            <div>
+                <select class="w-full bg-transparent border-b border-gray-600 px-0 py-2 text-gray-400 focus:outline-none focus:border-gold transition appearance-none">
+                    <option value="" disabled selected>Will you be attending?</option>
+                    <option value="yes" class="bg-dark text-white">Yes, I'll be there!</option>
+                    <option value="no" class="bg-dark text-white">Sorry, I can't make it.</option>
+                </select>
+            </div>
+            <div>
+                <textarea placeholder="Write your wishes..." rows="3" class="w-full bg-transparent border-b border-gray-600 px-0 py-2 text-white focus:outline-none focus:border-gold transition resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-gold text-dark font-bold py-3 rounded-md uppercase tracking-widest mt-4 hover:bg-goldlight transition">Send Message</button>
+        </form>
+    </div>
+
+    <div class="text-center py-6 border-t border-gray-800">
+        <p class="font-serif text-gold italic text-xl">We can't wait to celebrate with you!</p>
+    </div>
+
+</div>
+
+<script>
+    // --- Reveal Animation Logic ---
+    function revealDate() {
+        document.getElementById('revealOverlay').classList.add('hide-overlay');
+        document.getElementById('hiddenContent').classList.add('show-content');
+    }
+
+    // --- Countdown Timer Logic ---
+    // SET THE WEDDING DATE HERE
+    const countDownDate = new Date("May 30, 2026 10:30:00").getTime();
+
+    const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML = days < 10 ? '0' + days : days;
+        document.getElementById("hours").innerHTML = hours < 10 ? '0' + hours : hours;
+        document.getElementById("minutes").innerHTML = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById("seconds").innerHTML = seconds < 10 ? '0' + seconds : seconds;
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("days").innerHTML = "00";
+            document.getElementById("hours").innerHTML = "00";
+            document.getElementById("minutes").innerHTML = "00";
+            document.getElementById("seconds").innerHTML = "00";
+        }
+    }, 1000);
+</script>
+
+</body>
+  </html>
+                  
