@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxeelle - High Fashion Editorial</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        luxBlack: '#111111',
+                        luxWhite: '#FFFFFF',
+                        luxGray: '#F5F5F5',
+                        luxBorder: '#E5E5E5',
+                        luxAccent: '#C9A27E' /* Soft elegant gold/nude */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FFFFFF; color: #111111; overflow-x: hidden; }
+        
+        /* Subtle entrance animation */
+        .fade-up { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Custom image hover zoom without container expanding */
+        .img-hover-zoom { transition: transform 0.7s ease; }
+        .group:hover .img-hover-zoom { transform: scale(1.05); }
+    </style>
+</head>
+<body class="antialiased selection:bg-luxAccent selection:text-white">
+
+    <div id="main-page" class="w-full">
+        
+        <header class="sticky top-0 z-50 bg-luxWhite/90 backdrop-blur-md border-b border-luxBorder w-full px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-6 w-1/3">
+                <button class="text-luxBlack hover:text-luxAccent transition-colors"><i class="fa-solid fa-bars text-lg"></i></button>
+                <button class="hidden md:block text-luxBlack hover:text-luxAccent transition-colors"><i class="fa-solid fa-magnifying-glass text-lg"></i></button>
+            </div>
+
+            <div class="w-1/3 text-center cursor-pointer">
+                <h1 class="text-2xl md:text-3xl font-serif font-bold tracking-tighter uppercase">Luxeelle.</h1>
+            </div>
+
+            <div class="flex items-center justify-end gap-6 w-1/3">
+                <span class="hidden md:block text-xs font-medium uppercase tracking-widest cursor-pointer hover:text-luxAccent transition-colors">Sign In</span>
+                <button class="relative text-luxBlack hover:text-luxAccent transition-colors">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span class="absolute -top-2 -right-2 bg-luxBlack text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">2</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="w-full h-[70vh] md:h-[85vh] relative flex items-center justify-center overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000&auto=format&fit=crop" alt="High Fashion" class="absolute inset-0 w-full h-full object-cover object-top opacity-90">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+            
+            <div class="relative z-10 text-center text-white px-4 fade-up">
+                <p class="text-xs md:text-sm tracking-[0.3em] uppercase mb-4 font-medium">The Fall Collection</p>
+                <h2 class="text-5xl md:text-8xl font-serif font-bold mb-8 tracking-tight">Modern <br><span class="italic font-light">Elegance</span></h2>
+                <button class="border border-white hover:bg-white hover:text-luxBlack transition-colors duration-300 px-10 py-3 text-xs md:text-sm uppercase tracking-widest font-medium">
+                    Discover Now
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center py-16 md:py-24 px-6 fade-up delay-1">
+            <h3 class="text-2xl md:text-4xl font-serif leading-snug mb-6">"Crafted for the woman who finds power in subtlety and luxury in the everyday details."</h3>
+            <p class="text-sm text-gray-500 uppercase tracking-widest">Explore The Categories</p>
+        </div>
+
+        <div class="border-y border-luxBorder w-full overflow-hidden mb-16">
+            <div class="flex items-center justify-start md:justify-center gap-8 md:gap-16 px-6 py-6 overflow-x-auto no-scrollbar whitespace-nowrap">
+                <a href="#" class="text-sm font-medium uppercase tracking-widest hover:text-luxAccent transition-colors">Bags</a>
+                <a href="#" class="text-sm font-medium uppercase tracking-widest hover:text-luxAccent transition-colors">Footwear</a>
+                <a href="#" class="text-sm font-medium uppercase tracking-widest hover:text-luxAccent transition-colors">Jewellery</a>
+                <a href="#" class="text-sm font-medium uppercase tracking-widest hover:text-luxAccent transition-colors">Watches</a>
+                <a href="#" class="text-sm font-medium uppercase tracking-widest hover:text-luxAccent transition-colors text-red-800">Sale</a>
+            </div>
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-6 mb-24">
+            <div class="flex justify-between items-end mb-10 border-b border-luxBlack pb-4">
+                <h3 class="text-3xl font-serif font-bold">New Arrivals</h3>
+                <a href="#" class="text-xs uppercase tracking-widest font-medium hover:text-luxAccent">View All</a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-8 md:gap-y-16">
+                
+                <div class="group cursor-pointer" onclick="openProductPage('Leather Crossbody Bag', '₹4,599', 'https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Leather Bag">
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Handbags</p>
+                            <h4 class="font-serif text-base font-semibold">Leather Crossbody Bag</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹4,599</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openProductPage('Classic Stiletto Heels', '₹3,299', 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Stiletto Heels">
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Footwear</p>
+                            <h4 class="font-serif text-base font-semibold">Classic Stiletto Heels</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹3,299</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openProductPage('Rose Gold Mesh Watch', '₹5,499', 'https://images.unsplash.com/photo-1508656966622-bf0343a059d4?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1508656966622-bf0343a059d4?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Gold Watch">
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Watches</p>
+                            <h4 class="font-serif text-base font-semibold">Rose Gold Mesh Watch</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹5,499</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openProductPage('Pearl Drop Necklace', '₹2,199', 'https://images.unsplash.com/photo-1599643478514-4a820cbf311c?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1599643478514-4a820cbf311c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Pearl Necklace">
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Jewellery</p>
+                            <h4 class="font-serif text-base font-semibold">Pearl Drop Necklace</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹2,199</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openProductPage('Oversized Sunglasses', '₹1,899', 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Sunglasses">
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Accessories</p>
+                            <h4 class="font-serif text-base font-semibold">Oversized Sunglasses</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹1,899</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openProductPage('Printed Silk Scarf', '₹1,299', 'https://images.unsplash.com/photo-1584030373081-f37b7bb4fa8e?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1584030373081-f37b7bb4fa8e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Silk Scarf">
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Accessories</p>
+                            <h4 class="font-serif text-base font-semibold">Printed Silk Scarf</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹1,299</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openProductPage('Signature Eau De Parfum', '₹3,999', 'https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Perfume">
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Beauty</p>
+                            <h4 class="font-serif text-base font-semibold">Signature Eau De Parfum</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹3,999</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openProductPage('Gold Hoop Earrings', '₹1,499', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop')">
+                    <div class="w-full aspect-[4/5] bg-luxGray mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Gold Earrings">
+                        <button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-luxWhite text-luxBlack text-xs uppercase tracking-widest px-6 py-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0" onclick="event.stopPropagation(); alert('Added!');">Add to Bag</button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Jewellery</p>
+                            <h4 class="font-serif text-base font-semibold">Gold Hoop Earrings</h4>
+                        </div>
+                        <span class="text-sm font-medium">₹1,499</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-full bg-luxBlack text-luxWhite flex flex-col md:flex-row">
+            <div class="w-full md:w-1/2 p-10 md:p-24 flex flex-col justify-center">
+                <span class="text-xs uppercase tracking-[0.2em] text-luxAccent mb-6 block">The Atelier</span>
+                <h2 class="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">Artisanal <br>Craftsmanship.</h2>
+                <p class="text-sm text-gray-400 mb-10 leading-relaxed max-w-md">Every stitch, every cut, every detail is meticulously designed to create pieces that stand the test of time. Discover the story behind our latest collection.</p>
+                <a href="#" class="uppercase text-xs tracking-widest font-medium border-b border-luxAccent w-max pb-1 hover:text-luxAccent transition-colors">Read The Journal</a>
+            </div>
+            <div class="w-full md:w-1/2 h-[50vh] md:h-auto">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Fashion Editorial">
+            </div>
+        </div>
+
+        <footer class="border-t border-luxBorder bg-luxWhite pt-16 pb-8 px-6">
+            <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                
+                <div class="md:col-span-1">
+                    <h2 class="text-2xl font-serif font-bold uppercase mb-4">Luxeelle.</h2>
+                    <p class="text-xs text-gray-500 leading-relaxed">Redefining modern luxury for the contemporary woman. Quality, elegance, and timeless style.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest mb-6">Shop</h4>
+                    <ul class="text-sm text-gray-600 space-y-4">
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">Bestsellers</a></li>
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">Handbags</a></li>
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">Jewellery</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest mb-6">Client Care</h4>
+                    <ul class="text-sm text-gray-600 space-y-4">
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-luxBlack transition-colors">Size Guide</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest mb-6">The Insider</h4>
+                    <p class="text-xs text-gray-500 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    <div class="flex border-b border-luxBlack pb-2">
+                        <input type="email" placeholder="Email Address" class="w-full bg-transparent outline-none text-sm placeholder-gray-400">
+                        <button class="uppercase text-xs font-bold tracking-widest hover:text-luxAccent transition-colors">Join</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center border-t border-luxBorder pt-8">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-4 md:mb-0">© 2026 Luxeelle. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-luxBlack hover:text-luxAccent transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="#" class="text-luxBlack hover:text-luxAccent transition-colors"><i class="fa-brands fa-pinterest-p text-lg"></i></a>
+                    <a href="#" class="text-luxBlack hover:text-luxAccent transition-colors"><i class="fa-brands fa-tiktok text-lg"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <div id="product-page" class="w-full min-h-screen bg-luxWhite hidden fade-up">
+        
+        <header class="border-b border-luxBorder w-full px-6 py-4 flex items-center justify-between bg-luxWhite">
+            <button onclick="closeProductPage()" class="text-xs font-medium uppercase tracking-widest hover:text-luxAccent transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i> Return
+            </button>
+            <h1 class="text-xl font-serif font-bold uppercase">Luxeelle.</h1>
+            <div class="w-16"></div> </header>
+
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row min-h-[calc(100vh-70px)]">
+            
+            <div class="w-full md:w-3/5 bg-luxGray flex items-center justify-center p-6 md:p-12">
+                <img id="detail-img" src="" alt="Product" class="w-full h-auto max-h-[80vh] object-contain shadow-2xl">
+            </div>
+            
+            <div class="w-full md:w-2/5 p-8 md:p-16 flex flex-col justify-center bg-luxWhite">
+                <div class="mb-8 border-b border-luxBorder pb-8">
+                    <p class="text-xs uppercase tracking-widest text-luxAccent mb-3">New Season</p>
+                    <h2 id="detail-title" class="text-3xl md:text-5xl font-serif font-bold mb-4">Product Title</h2>
+                    <h3 id="detail-price" class="text-xl md:text-2xl font-light">₹0</h3>
+                </div>
+
+                <p class="text-sm text-gray-600 leading-relaxed mb-8">This piece represents the pinnacle of modern craftsmanship. Minimalist, sophisticated, and designed to seamlessly integrate into your curated wardrobe.</p>
+                
+                <div class="mb-8">
+                    <label class="text-xs uppercase tracking-widest font-bold mb-3 block">Quantity</label>
+                    <div class="flex items-center border border-luxBorder w-max">
+                        <button class="px-4 py-2 hover:bg-luxGray transition-colors">-</button>
+                        <span class="px-4 text-sm">1</span>
+                        <button class="px-4 py-2 hover:bg-luxGray transition-colors">+</button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <button class="w-full bg-luxBlack text-luxWhite py-4 text-xs uppercase tracking-widest font-bold hover:bg-luxAccent transition-colors duration-300" onclick="alert('Item Added to Bag!')">
+                        Add to Bag
+                    </button>
+                    <button class="w-full border border-luxBlack text-luxBlack py-4 text-xs uppercase tracking-widest font-bold hover:bg-luxGray transition-colors duration-300">
+                        Add to Wishlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openProductPage(title, price, imgSrc) {
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-price').innerText = price;
+            document.getElementById('detail-img').src = imgSrc;
+            
+            document.getElementById('main-page').classList.add('hidden');
+            document.getElementById('product-page').classList.remove('hidden');
+            
+            window.scrollTo(0, 0);
+        }
+
+        function closeProductPage() {
+            document.getElementById('product-page').classList.add('hidden');
+            document.getElementById('main-page').classList.remove('hidden');
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
