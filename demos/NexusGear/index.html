@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusGear - Future Tech</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        tech: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        bgDark: '#0a0a0c',
+                        cardDark: 'rgba(255, 255, 255, 0.03)',
+                        neonCyan: '#00F0FF',
+                        neonPurple: '#8A2BE2'
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 15px rgba(0, 240, 255, 0.5)',
+                        'neon-cyan-hover': '0 0 25px rgba(0, 240, 255, 0.8)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #ffffff;
+            /* Cool subtle tech grid background */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+        
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(20, 20, 25, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #00F0FF, #8A2BE2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="main-page" class="w-full max-w-7xl mx-auto px-4 md:px-8 py-6 fade-in">
+        
+        <header class="flex flex-wrap items-center justify-between gap-4 mb-8 glass-panel rounded-full px-6 py-4 sticky top-4 z-50 shadow-glass">
+            <div class="flex items-center gap-3 cursor-pointer">
+                <i class="fa-solid fa-microchip text-neonCyan text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold font-tech tracking-wider text-white">NEXUS<span class="text-neonCyan">GEAR</span></h1>
+            </div>
+
+            <div class="flex-1 w-full md:w-auto order-last md:order-none max-w-xl">
+                <div class="bg-black/50 border border-white/10 rounded-full flex items-center px-5 py-2.5 focus-within:border-neonCyan transition-colors">
+                    <i class="fa-solid fa-search text-gray-400 mr-3 text-sm"></i>
+                    <input type="text" placeholder="Search for headsets, PCs, accessories..." 
+                           class="bg-transparent border-none outline-none w-full text-xs md:text-sm text-gray-200 placeholder-gray-500">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors border border-white/10">
+                    <i class="fa-regular fa-user text-gray-300"></i>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors border border-white/10 relative shadow-neon-cyan">
+                    <i class="fa-solid fa-cart-shopping text-neonCyan"></i>
+                    <span class="absolute -top-1 -right-1 bg-neonPurple text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="glass-panel rounded-[2rem] p-6 md:p-12 flex flex-col md:flex-row items-center gap-8 mb-12 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-64 h-64 bg-neonCyan/20 rounded-full blur-[80px] -z-10"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-neonPurple/20 rounded-full blur-[80px] -z-10"></div>
+
+            <div class="flex-1 w-full text-center md:text-left z-10">
+                <span class="bg-neonCyan/10 text-neonCyan border border-neonCyan/30 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-6 inline-block">
+                    Next-Gen Tech
+                </span>
+                <h2 class="text-4xl md:text-6xl font-bold font-tech leading-tight mb-4">
+                    Upgrade Your <br> <span class="text-gradient">Reality.</span>
+                </h2>
+                <p class="text-gray-400 mb-8 max-w-md mx-auto md:mx-0 text-sm md:text-base leading-relaxed">
+                    Premium gaming gear, smart accessories, and cutting-edge tech for the ultimate setup.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <button class="bg-neonCyan text-black font-bold text-sm px-8 py-3.5 rounded-full hover:shadow-neon-cyan-hover transition-all flex items-center gap-2">
+                        Shop Collection <i class="fa-solid fa-bolt text-xs"></i>
+                    </button>
+                    <button class="bg-transparent border border-white/20 text-white font-medium text-sm px-8 py-3.5 rounded-full hover:bg-white/5 transition-all">
+                        View Deals
+                    </button>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 h-64 md:h-[400px] rounded-[1.5rem] overflow-hidden z-10 border border-white/10 relative group">
+                <div class="absolute inset-0 bg-gradient-to-t from-bgDark to-transparent opacity-50 z-10"></div>
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" 
+                     alt="Retro PC Tech" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+        </div>
+
+        <div class="mb-12 overflow-hidden">
+            <div class="flex gap-4 md:gap-6 overflow-x-auto pb-4 px-2 no-scrollbar snap-x">
+                <button class="flex items-center gap-3 shrink-0 glass-panel px-6 py-3 rounded-full hover:border-neonCyan/50 transition-colors group">
+                    <i class="fa-solid fa-headset text-neonCyan group-hover:text-white transition-colors"></i>
+                    <span class="text-xs font-semibold text-gray-200">Audio</span>
+                </button>
+                <button class="flex items-center gap-3 shrink-0 glass-panel px-6 py-3 rounded-full hover:border-neonCyan/50 transition-colors group">
+                    <i class="fa-solid fa-keyboard text-gray-400 group-hover:text-white transition-colors"></i>
+                    <span class="text-xs font-semibold text-gray-200">Keyboards</span>
+                </button>
+                <button class="flex items-center gap-3 shrink-0 glass-panel px-6 py-3 rounded-full hover:border-neonCyan/50 transition-colors group">
+                    <i class="fa-solid fa-computer-mouse text-gray-400 group-hover:text-white transition-colors"></i>
+                    <span class="text-xs font-semibold text-gray-200">Mice</span>
+                </button>
+                <button class="flex items-center gap-3 shrink-0 glass-panel px-6 py-3 rounded-full hover:border-neonCyan/50 transition-colors group">
+                    <i class="fa-solid fa-vr-cardboard text-gray-400 group-hover:text-white transition-colors"></i>
+                    <span class="text-xs font-semibold text-gray-200">VR & AR</span>
+                </button>
+                <button class="flex items-center gap-3 shrink-0 glass-panel px-6 py-3 rounded-full hover:border-neonCyan/50 transition-colors group">
+                    <i class="fa-solid fa-camera text-gray-400 group-hover:text-white transition-colors"></i>
+                    <span class="text-xs font-semibold text-gray-200">Cameras</span>
+                </button>
+                <button class="flex items-center gap-3 shrink-0 glass-panel px-6 py-3 rounded-full hover:border-neonCyan/50 transition-colors group">
+                    <i class="fa-solid fa-laptop text-gray-400 group-hover:text-white transition-colors"></i>
+                    <span class="text-xs font-semibold text-gray-200">Laptops</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-end mb-6">
+            <h3 class="text-xl md:text-2xl font-bold font-tech text-white">Trending Gear</h3>
+            <a href="#" class="text-xs md:text-sm font-semibold text-neonCyan hover:text-white transition-colors">See All <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12">
+            
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('Sony WH-1000XM4', '₹24,990', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.9</div>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">Audio</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">Sony WH-1000XM4 Wireless</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹24,990</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('Keychron K2 Mechanical', '₹7,499', 'https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.7</div>
+                    <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">Peripherals</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">Keychron K2 Mechanical</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹7,499</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('Logitech MX Master 3', '₹8,995', 'https://images.unsplash.com/photo-1527814050087-151f0ce715ed?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.8</div>
+                    <img src="https://images.unsplash.com/photo-1527814050087-151f0ce715ed?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">Peripherals</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">Logitech MX Master 3</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹8,995</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('Apple Watch Ultra', '₹89,900', 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.9</div>
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">Wearables</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">Apple Watch Ultra</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹89,900</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('MacBook Pro M3', '₹1,69,900', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.9</div>
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">Laptops</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">MacBook Pro M3</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹1,69k</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('Meta Quest 3', '₹49,999', 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.6</div>
+                    <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">VR / AR</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">Meta Quest 3</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹49,999</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('Sony A7 IV Mirrorless', '₹2,14,990', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.9</div>
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">Cameras</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">Sony A7 IV Mirrorless</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹2.14L</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-3 md:p-4 cursor-pointer hover:-translate-y-1 hover:shadow-neon-cyan transition-all duration-300 group"
+                 onclick="openProductPage('Xbox Elite Series 2', '₹15,990', 'https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?q=80&w=600&auto=format&fit=crop')">
+                <div class="relative rounded-xl overflow-hidden h-36 md:h-48 mb-4 bg-black/40">
+                    <div class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm border border-white/10 rounded-md px-2 py-1 text-[9px] font-bold flex items-center gap-1 z-10 text-yellow-400"><i class="fa-solid fa-star"></i> 4.8</div>
+                    <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-[10px] text-neonCyan mb-1 font-tech tracking-wide uppercase">Gaming</p>
+                <h4 class="font-bold text-xs md:text-sm mb-2 truncate text-white">Xbox Elite Series 2</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-sm md:text-base text-gray-200">₹15,990</span>
+                    <button class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-neonCyan hover:text-black hover:border-neonCyan transition-all" onclick="event.stopPropagation(); alert('Added to setup!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel border-neonPurple/30 rounded-[2rem] p-6 md:p-10 flex flex-col md:flex-row items-center justify-between mb-12 relative overflow-hidden gap-6">
+            <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-r from-bgDark via-bgDark/80 to-transparent z-10"></div>
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop" alt="Gaming Setup" class="absolute inset-0 w-full h-full object-cover">
+            
+            <div class="z-20 w-full text-center md:text-left">
+                <span class="bg-neonPurple text-white px-3 py-1 rounded-sm text-[10px] font-bold uppercase mb-4 inline-block font-tech">Limited Drop</span>
+                <h2 class="text-3xl md:text-5xl font-bold font-tech leading-tight mb-2 text-white">
+                    Pro Streamer <br> <span class="text-neonCyan">Starter Kit</span>
+                </h2>
+                <p class="text-gray-300 mb-6 text-xs md:text-sm max-w-sm">Save 20% when you bundle mic, camera, and lighting.</p>
+                <button class="bg-white text-black font-bold text-sm px-8 py-3 hover:bg-gray-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                    Unlock Bundle
+                </button>
+            </div>
+        </div>
+
+        <footer class="pt-10 border-t border-white/10 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex justify-center md:justify-start items-center gap-2 mb-4">
+                        <i class="fa-solid fa-microchip text-neonCyan text-xl"></i>
+                        <h1 class="text-xl font-bold font-tech tracking-wider text-white">NEXUS<span class="text-neonCyan">GEAR</span></h1>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6 md:pr-20">Empowering creators, gamers, and tech enthusiasts with next-generation hardware. Build the setup of your dreams.</p>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center cursor-pointer hover:bg-neonCyan hover:text-black transition-colors border border-white/10"><i class="fa-brands fa-discord text-xs"></i></div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center cursor-pointer hover:bg-neonCyan hover:text-black transition-colors border border-white/10"><i class="fa-brands fa-twitter text-xs"></i></div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center cursor-pointer hover:bg-neonCyan hover:text-black transition-colors border border-white/10"><i class="fa-brands fa-twitch text-xs"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm font-tech text-white">Hardware</h4>
+                    <ul class="text-xs text-gray-400 space-y-3">
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Components</li>
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Peripherals</li>
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Audio Gear</li>
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Monitors</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm font-tech text-white">Support</h4>
+                    <ul class="text-xs text-gray-400 space-y-3">
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Warranty Info</li>
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Track Order</li>
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Returns</li>
+                        <li class="hover:text-neonCyan cursor-pointer transition-colors">Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="py-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-500">
+                <p>© 2026 NexusGear. All systems operational.</p>
+                <div class="flex gap-4">
+                    <span>Privacy</span>
+                    <span>Terms</span>
+                    <span>Cookies</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <div id="product-page" class="w-full max-w-5xl mx-auto px-4 md:px-8 py-8 hidden fade-in min-h-screen">
+        
+        <button onclick="closeProductPage()" class="glass-panel rounded-full px-5 py-2 text-xs font-semibold flex items-center gap-2 mb-8 hover:bg-white/10 hover:border-neonCyan transition-all text-gray-300">
+            <i class="fa-solid fa-arrow-left"></i> Return to Hub
+        </button>
+
+        <div class="flex flex-col md:flex-row gap-8 md:gap-12 glass-panel p-6 md:p-10 rounded-[2rem]">
+            <div class="w-full md:w-1/2 h-72 md:h-[450px] bg-black/50 rounded-[1.5rem] p-2 border border-white/10 overflow-hidden relative">
+                <div class="absolute inset-0 bg-neonCyan/5 z-10 pointer-events-none mix-blend-overlay"></div>
+                <img id="detail-img" src="" alt="Product" class="w-full h-full object-cover rounded-xl relative z-0">
+            </div>
+            
+            <div class="w-full md:w-1/2 py-2 flex flex-col justify-center">
+                <div class="bg-neonPurple/20 border border-neonPurple/50 text-neonPurple inline-flex rounded-sm px-3 py-1 text-[10px] font-bold mb-4 w-max font-tech uppercase tracking-widest">
+                    <i class="fa-solid fa-bolt mr-1.5"></i> In Stock
+                </div>
+                <h2 id="detail-title" class="text-3xl md:text-4xl font-bold font-tech mb-3 text-white">Product Title</h2>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">Experience zero-latency performance and industry-leading precision. Built with premium materials to ensure maximum durability during intense sessions.</p>
+                
+                <h3 id="detail-price" class="text-3xl md:text-4xl font-bold text-neonCyan mb-8">₹0</h3>
+
+                <div class="flex gap-4 md:gap-6 mt-4">
+                    <button class="flex-1 bg-neonCyan text-black hover:shadow-neon-cyan-hover transition-all rounded-full py-3.5 font-bold text-sm md:text-base flex justify-center items-center gap-2" onclick="alert('System Updated: Item added to cart!')">
+                        <i class="fa-solid fa-microchip"></i> Add to Cart
+                    </button>
+                    <button class="w-12 h-12 md:w-14 md:h-14 glass-panel rounded-full flex items-center justify-center text-white hover:text-red-500 hover:border-red-500 transition-all">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                
+                <div class="flex gap-6 mt-8 pt-6 border-t border-white/10">
+                    <div class="flex items-center gap-2 text-xs font-semibold text-gray-300"><i class="fa-solid fa-shield-halved text-neonPurple"></i> 2 Year Warranty</div>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-gray-300"><i class="fa-solid fa-rocket text-neonPurple"></i> Express Shipping</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openProductPage(title, price, imgSrc) {
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-price').innerText = price;
+            document.getElementById('detail-img').src = imgSrc;
+            
+            document.getElementById('main-page').classList.add('hidden');
+            document.getElementById('product-page').classList.remove('hidden');
+            
+            window.scrollTo(0, 0);
+        }
+
+        function closeProductPage() {
+            document.getElementById('product-page').classList.add('hidden');
+            document.getElementById('main-page').classList.remove('hidden');
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
