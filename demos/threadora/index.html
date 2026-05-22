@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <title>Threadora - Wear Your Story</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        neuBg: '#E9ECEF', // Soft grayish background for neumorphism
+                        primary: '#2D3748',
+                        accent: '#48BB78'
+                    },
+                    boxShadow: {
+                        'neu': '8px 8px 16px #c5c8cb, -8px -8px 16px #ffffff',
+                        'neu-sm': '5px 5px 10px #c5c8cb, -5px -5px 10px #ffffff',
+                        'neu-inset': 'inset 5px 5px 10px #c5c8cb, inset -5px -5px 10px #ffffff',
+                        'neu-hover': '12px 12px 20px #c5c8cb, -12px -12px 20px #ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #E9ECEF;
+            color: #2D3748;
+            overflow-x: hidden;
+            /* Smooth scrolling */
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E9ECEF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A0AEC0;
+            border-radius: 4px;
+        }
+
+        /* Animation Classes */
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+    <div id="main-page" class="w-[1280px] mx-auto px-10 py-6 fade-in">
+        
+        <header class="flex items-center justify-between py-4 mb-8">
+            <div class="flex items-center gap-3 cursor-pointer">
+                <div class="w-10 h-10 shadow-neu rounded-full flex items-center justify-center bg-neuBg">
+                    <i class="fa-solid fa-shirt text-primary text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Threadora</h1>
+                    <p class="text-xs text-gray-500">Wear Your Story</p>
+                </div>
+            </div>
+
+            <div class="flex-1 max-w-2xl mx-8">
+                <div class="shadow-neu-inset rounded-full flex items-center px-4 py-3 bg-neuBg">
+                    <i class="fa-solid fa-search text-gray-400 mr-3"></i>
+                    <input type="text" placeholder="Search for T-Shirts, Hoodies, Jeans..." 
+                           class="bg-transparent border-none outline-none w-full text-sm text-gray-700 placeholder-gray-400">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <div class="shadow-neu rounded-full px-6 py-2.5 flex items-center gap-2 cursor-pointer hover:shadow-neu-hover transition-all bg-neuBg text-sm font-medium">
+                    Cart <span class="bg-primary text-white text-[10px] px-2 py-0.5 rounded-full">3</span>
+                </div>
+                <div class="shadow-neu rounded-full px-6 py-2.5 cursor-pointer hover:shadow-neu-hover transition-all bg-neuBg text-sm font-medium">
+                    Login
+                </div>
+            </div>
+        </header>
+
+        <div class="shadow-neu rounded-[2rem] p-12 flex items-center gap-10 mb-10 bg-neuBg">
+            <div class="flex-1">
+                <span class="shadow-neu-inset px-4 py-1.5 rounded-full text-xs font-semibold text-blue-600 tracking-wide uppercase mb-6 inline-block">
+                    New Collection
+                </span>
+                <h2 class="text-6xl font-bold leading-tight mb-4 text-primary">
+                    Dress Better. <br> <span class="relative">Feel Better.<div class="absolute bottom-1 left-0 w-full h-1.5 bg-green-500 rounded-full opacity-70"></div></span>
+                </h2>
+                <p class="text-gray-600 mb-8 max-w-md text-lg">
+                    Explore premium clothing crafted for comfort, style & everyday confidence.
+                </p>
+                <div class="flex gap-4">
+                    <button class="shadow-neu hover:shadow-neu-inset transition-all rounded-full px-8 py-3.5 bg-primary text-white font-medium">
+                        Shop Now
+                    </button>
+                    <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-8 py-3.5 bg-neuBg text-primary font-medium">
+                        Explore Collection
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1 h-[400px] shadow-neu-inset rounded-[2rem] overflow-hidden p-2">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Clothes Rack" class="w-full h-full object-cover rounded-[1.5rem]">
+            </div>
+        </div>
+
+        <div class="flex justify-center gap-4 mb-10">
+            <button class="shadow-neu-inset rounded-full px-6 py-2.5 bg-neuBg text-sm font-semibold text-blue-600 flex items-center gap-2">
+                <i class="fa-solid fa-border-all"></i> All
+            </button>
+            <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium text-gray-600 flex items-center gap-2">
+                <i class="fa-solid fa-person"></i> Men
+            </button>
+            <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium text-gray-600 flex items-center gap-2">
+                <i class="fa-solid fa-person-dress"></i> Women
+            </button>
+            <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium text-gray-600 flex items-center gap-2">
+                <i class="fa-solid fa-child"></i> Kids
+            </button>
+            <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium text-gray-600 flex items-center gap-2">
+                Hoodies
+            </button>
+            <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium text-gray-600 flex items-center gap-2">
+                T-Shirts
+            </button>
+            <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium text-gray-600 flex items-center gap-2">
+                Jeans
+            </button>
+            <button class="shadow-neu hover:shadow-neu-hover transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium text-gray-600 flex items-center gap-2">
+                Jackets
+            </button>
+        </div>
+
+        <div class="shadow-neu rounded-2xl p-6 bg-neuBg mb-12 flex justify-between items-center px-12">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 shadow-neu-inset rounded-full flex items-center justify-center text-blue-500"><i class="fa-solid fa-gem"></i></div>
+                <div><h4 class="font-semibold text-sm">Premium Quality</h4><p class="text-xs text-gray-500">Finest fabrics & stitching</p></div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 shadow-neu-inset rounded-full flex items-center justify-center text-blue-500"><i class="fa-solid fa-truck-fast"></i></div>
+                <div><h4 class="font-semibold text-sm">Free Shipping</h4><p class="text-xs text-gray-500">On orders above ₹999</p></div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 shadow-neu-inset rounded-full flex items-center justify-center text-blue-500"><i class="fa-solid fa-rotate-left"></i></div>
+                <div><h4 class="font-semibold text-sm">Easy Returns</h4><p class="text-xs text-gray-500">Hassle-free returns</p></div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 shadow-neu-inset rounded-full flex items-center justify-center text-blue-500"><i class="fa-solid fa-shield-halved"></i></div>
+                <div><h4 class="font-semibold text-sm">Secure Checkout</h4><p class="text-xs text-gray-500">100% safe & secure</p></div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-end mb-6">
+            <h3 class="text-2xl font-bold">Top Picks For You</h3>
+            <a href="#" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">View All <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+
+        <div class="grid grid-cols-4 gap-8 mb-12">
+            
+            <div class="shadow-neu rounded-2xl p-4 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform duration-300" 
+                 onclick="openProductPage('Classic Beige Hoodie', '₹1,299', 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                <div class="relative shadow-neu-inset rounded-xl overflow-hidden h-64 mb-4 p-2 bg-[#f4f6f8]">
+                    <div class="absolute top-4 left-4 shadow-neu bg-neuBg rounded-full px-2 py-1 text-xs font-semibold flex items-center gap-1 z-10">
+                        <i class="fa-solid fa-star text-yellow-500 text-[10px]"></i> 4.8
+                    </div>
+                    <div class="absolute top-4 right-4 w-8 h-8 shadow-neu bg-neuBg rounded-full flex items-center justify-center z-10 text-gray-400 hover:text-red-500 transition-colors">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hoodie" class="w-full h-full object-cover rounded-lg mix-blend-multiply">
+                </div>
+                <p class="text-xs text-gray-500 mb-1">Hoodies</p>
+                <h4 class="font-semibold text-sm mb-2 truncate">Classic Beige Hoodie</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-lg">₹1,299</span>
+                    <button class="w-8 h-8 shadow-neu rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all" onclick="event.stopPropagation(); alert('Added to cart!');">
+                        <i class="fa-solid fa-cart-shopping text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="shadow-neu rounded-2xl p-4 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform duration-300"
+                 onclick="openProductPage('Forest Green Tee', '₹599', 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                <div class="relative shadow-neu-inset rounded-xl overflow-hidden h-64 mb-4 p-2 bg-[#f4f6f8]">
+                    <div class="absolute top-4 left-4 shadow-neu bg-neuBg rounded-full px-2 py-1 text-xs font-semibold flex items-center gap-1 z-10"><i class="fa-solid fa-star text-yellow-500 text-[10px]"></i> 4.6</div>
+                    <div class="absolute top-4 right-4 w-8 h-8 shadow-neu bg-neuBg rounded-full flex items-center justify-center z-10 text-gray-400 hover:text-red-500"><i class="fa-regular fa-heart"></i></div>
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="T-Shirt" class="w-full h-full object-cover rounded-lg mix-blend-multiply">
+                </div>
+                <p class="text-xs text-gray-500 mb-1">T-Shirts</p>
+                <h4 class="font-semibold text-sm mb-2 truncate">Forest Green Tee</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-lg">₹599</span>
+                    <button class="w-8 h-8 shadow-neu rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all" onclick="event.stopPropagation(); alert('Added to cart!');"><i class="fa-solid fa-cart-shopping text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="shadow-neu rounded-2xl p-4 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform duration-300"
+                 onclick="openProductPage('Slim Fit Blue Jeans', '₹1,599', 'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                <div class="relative shadow-neu-inset rounded-xl overflow-hidden h-64 mb-4 p-2 bg-[#f4f6f8]">
+                    <div class="absolute top-4 left-4 shadow-neu bg-neuBg rounded-full px-2 py-1 text-xs font-semibold flex items-center gap-1 z-10"><i class="fa-solid fa-star text-yellow-500 text-[10px]"></i> 4.7</div>
+                    <div class="absolute top-4 right-4 w-8 h-8 shadow-neu bg-neuBg rounded-full flex items-center justify-center z-10 text-gray-400 hover:text-red-500"><i class="fa-regular fa-heart"></i></div>
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jeans" class="w-full h-full object-cover rounded-lg mix-blend-multiply">
+                </div>
+                <p class="text-xs text-gray-500 mb-1">Jeans</p>
+                <h4 class="font-semibold text-sm mb-2 truncate">Slim Fit Blue Jeans</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-lg">₹1,599</span>
+                    <button class="w-8 h-8 shadow-neu rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all" onclick="event.stopPropagation(); alert('Added to cart!');"><i class="fa-solid fa-cart-shopping text-xs"></i></button>
+                </div>
+            </div>
+
+             <div class="shadow-neu rounded-2xl p-4 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform duration-300"
+                 onclick="openProductPage('Black Bomber Jacket', '₹2,199', 'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')">
+                <div class="relative shadow-neu-inset rounded-xl overflow-hidden h-64 mb-4 p-2 bg-[#f4f6f8]">
+                    <div class="absolute top-4 left-4 shadow-neu bg-neuBg rounded-full px-2 py-1 text-xs font-semibold flex items-center gap-1 z-10"><i class="fa-solid fa-star text-yellow-500 text-[10px]"></i> 4.9</div>
+                    <div class="absolute top-4 right-4 w-8 h-8 shadow-neu bg-neuBg rounded-full flex items-center justify-center z-10 text-gray-400 hover:text-red-500"><i class="fa-regular fa-heart text-red-500 font-solid"></i></div>
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jacket" class="w-full h-full object-cover rounded-lg mix-blend-multiply">
+                </div>
+                <p class="text-xs text-gray-500 mb-1">Jackets</p>
+                <h4 class="font-semibold text-sm mb-2 truncate">Black Bomber Jacket</h4>
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-lg">₹2,199</span>
+                    <button class="w-8 h-8 shadow-neu rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all" onclick="event.stopPropagation(); alert('Added to cart!');"><i class="fa-solid fa-cart-shopping text-xs"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="shadow-neu rounded-[2rem] p-10 flex items-center justify-between mb-12 bg-neuBg">
+            <div>
+                <span class="shadow-neu-inset px-4 py-1.5 rounded-full text-xs font-semibold text-blue-600 tracking-wide uppercase mb-4 inline-block">
+                    Limited Time Offer
+                </span>
+                <h2 class="text-5xl font-bold leading-tight mb-2 text-primary">
+                    Flat <span class="text-green-500">30%</span> OFF <br> On New Arrivals
+                </h2>
+                <p class="text-gray-600 mb-6 text-sm">Upgrade your wardrobe with our latest styles.</p>
+                <button class="shadow-neu hover:shadow-neu-inset transition-all rounded-full px-8 py-3 bg-neuBg text-primary font-medium text-sm">
+                    Shop The Sale
+                </button>
+            </div>
+            <div class="w-[500px] h-[250px] shadow-neu-inset rounded-[1.5rem] overflow-hidden p-2">
+                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Folded Clothes" class="w-full h-full object-cover rounded-xl">
+            </div>
+        </div>
+
+        <footer class="mt-16 pt-10 border-t border-gray-300">
+            <div class="shadow-neu rounded-2xl p-6 mb-10 flex justify-between items-center bg-neuBg">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 shadow-neu-inset rounded-full flex items-center justify-center text-blue-500"><i class="fa-regular fa-envelope"></i></div>
+                    <div><h4 class="font-bold text-sm">Join Our Newsletter</h4><p class="text-xs text-gray-500">Get exclusive updates, new arrivals & special offers.</p></div>
+                </div>
+                <div class="flex gap-4 w-[500px]">
+                    <div class="shadow-neu-inset rounded-full flex-1 flex items-center px-4 py-2 bg-neuBg">
+                        <input type="email" placeholder="Enter your email" class="bg-transparent border-none outline-none w-full text-sm">
+                    </div>
+                    <button class="shadow-neu hover:shadow-neu-inset transition-all rounded-full px-6 py-2 bg-blue-100 text-blue-700 font-medium text-sm">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-5 gap-8 pb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-shirt text-primary text-xl"></i>
+                        <h1 class="text-xl font-bold tracking-tight">Threadora</h1>
+                    </div>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6 pr-10">Premium clothing for the modern generation. Style, comfort & quality you can trust.</p>
+                    <div class="flex gap-4">
+                        <div class="w-8 h-8 shadow-neu rounded-full flex items-center justify-center cursor-pointer hover:text-blue-600"><i class="fa-brands fa-instagram text-sm"></i></div>
+                        <div class="w-8 h-8 shadow-neu rounded-full flex items-center justify-center cursor-pointer hover:text-blue-600"><i class="fa-brands fa-facebook-f text-sm"></i></div>
+                        <div class="w-8 h-8 shadow-neu rounded-full flex items-center justify-center cursor-pointer hover:text-blue-600"><i class="fa-brands fa-twitter text-sm"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm">Shop</h4>
+                    <ul class="text-xs text-gray-500 space-y-3">
+                        <li class="hover:text-primary cursor-pointer transition-colors">Men</li>
+                        <li class="hover:text-primary cursor-pointer transition-colors">Women</li>
+                        <li class="hover:text-primary cursor-pointer transition-colors">Kids</li>
+                        <li class="hover:text-primary cursor-pointer transition-colors">New Arrivals</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm">Customer Care</h4>
+                    <ul class="text-xs text-gray-500 space-y-3">
+                        <li class="hover:text-primary cursor-pointer transition-colors">Help Center</li>
+                        <li class="hover:text-primary cursor-pointer transition-colors">Returns</li>
+                        <li class="hover:text-primary cursor-pointer transition-colors">Shipping Info</li>
+                        <li class="hover:text-primary cursor-pointer transition-colors">Size Guide</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-sm">Secure Payments</h4>
+                    <p class="text-xs text-gray-500 mb-4">100% secure payments powered by trusted partners.</p>
+                    <div class="flex gap-2">
+                        <div class="w-10 h-6 shadow-neu-inset rounded bg-neuBg flex justify-center items-center text-[10px] font-bold text-blue-800">VISA</div>
+                        <div class="w-10 h-6 shadow-neu-inset rounded bg-neuBg flex justify-center items-center text-[10px] font-bold text-red-500">MC</div>
+                        <div class="w-10 h-6 shadow-neu-inset rounded bg-neuBg flex justify-center items-center text-[10px] font-bold text-blue-500">UPI</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="product-page" class="w-[1280px] mx-auto px-10 py-10 hidden fade-in min-h-screen">
+        
+        <button onclick="closeProductPage()" class="shadow-neu hover:shadow-neu-inset transition-all rounded-full px-6 py-2.5 bg-neuBg text-sm font-medium flex items-center gap-2 mb-8">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </button>
+
+        <div class="flex gap-12 bg-neuBg p-8 rounded-[2rem] shadow-neu">
+            <div class="w-1/2 h-[500px] shadow-neu-inset rounded-[2rem] p-4 bg-[#f4f6f8]">
+                <img id="detail-img" src="" alt="Product" class="w-full h-full object-cover rounded-2xl mix-blend-multiply">
+            </div>
+            
+            <div class="w-1/2 py-4">
+                <div class="shadow-neu inline-block rounded-full px-3 py-1 text-xs font-semibold text-yellow-600 mb-4">
+                    <i class="fa-solid fa-star"></i> 4.8 Top Rated
+                </div>
+                <h2 id="detail-title" class="text-4xl font-bold mb-2 text-primary">Product Title</h2>
+                <p class="text-gray-500 text-sm mb-6">Premium comfortable fit crafted with the finest materials for everyday style and durability.</p>
+                
+                <h3 id="detail-price" class="text-3xl font-bold text-primary mb-8">₹0</h3>
+
+                <div class="mb-8">
+                    <h4 class="text-sm font-bold mb-3">Select Size</h4>
+                    <div class="flex gap-4">
+                        <button class="w-12 h-12 shadow-neu rounded-full flex items-center justify-center hover:shadow-neu-inset transition-all font-medium">S</button>
+                        <button class="w-12 h-12 shadow-neu-inset rounded-full flex items-center justify-center text-blue-600 font-medium">M</button>
+                        <button class="w-12 h-12 shadow-neu rounded-full flex items-center justify-center hover:shadow-neu-inset transition-all font-medium">L</button>
+                        <button class="w-12 h-12 shadow-neu rounded-full flex items-center justify-center hover:shadow-neu-inset transition-all font-medium">XL</button>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 mt-10">
+                    <button class="flex-1 shadow-neu hover:shadow-neu-inset transition-all rounded-full py-4 bg-primary text-white font-semibold text-lg flex justify-center items-center gap-2" onclick="alert('Added to Cart!')">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <button class="w-16 h-16 shadow-neu hover:shadow-neu-inset transition-all rounded-full flex items-center justify-center text-red-500 text-xl">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openProductPage(title, price, imgSrc) {
+            // Setup details
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-price').innerText = price;
+            document.getElementById('detail-img').src = imgSrc;
+            
+            // Toggle Views
+            document.getElementById('main-page').classList.add('hidden');
+            document.getElementById('product-page').classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function closeProductPage() {
+            // Toggle Views
+            document.getElementById('product-page').classList.add('hidden');
+            document.getElementById('main-page').classList.remove('hidden');
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
