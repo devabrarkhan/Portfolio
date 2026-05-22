@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azad Cycle - Dominate The Road</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        neuBg: '#E0E5EC', /* Cool steel gray */
+                        primary: '#2D3748', /* Dark Slate */
+                        accent: '#FF5722', /* Sporty Orange */
+                    },
+                    boxShadow: {
+                        'neu': '9px 9px 16px rgba(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.6)',
+                        'neu-sm': '5px 5px 10px rgba(163,177,198,0.6), -5px -5px 10px rgba(255,255,255, 0.6)',
+                        'neu-inset': 'inset 6px 6px 12px rgba(163,177,198,0.6), inset -6px -6px 12px rgba(255,255,255, 0.6)',
+                        'neu-active': 'inset 3px 3px 6px rgba(163,177,198,0.8), inset -3px -3px 6px rgba(255,255,255, 0.8)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #E0E5EC;
+            color: #2D3748;
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
+        
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Filter Transition */
+        .cycle-card { transition: all 0.4s ease; }
+        .show { display: block; animation: popIn 0.4s ease; }
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="main-page" class="w-full max-w-[1400px] mx-auto px-4 md:px-8 py-6">
+        
+        <header class="flex items-center justify-between mb-8 fade-in">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 shadow-neu rounded-xl flex items-center justify-center bg-neuBg text-accent">
+                    <i class="fa-solid fa-motorcycle text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-heading font-bold tracking-wider uppercase text-primary leading-none">AZAD</h1>
+                    <p class="text-[10px] text-gray-500 font-bold tracking-[0.2em] uppercase">Cycle</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="shadow-neu rounded-full px-5 py-2.5 hidden md:flex items-center gap-3 bg-neuBg text-sm font-bold uppercase tracking-wider text-primary cursor-pointer hover:text-accent transition-all">
+                    <i class="fa-solid fa-search"></i> Search
+                </div>
+                <div class="w-12 h-12 shadow-neu rounded-full flex items-center justify-center cursor-pointer bg-neuBg hover:text-accent transition-all relative">
+                    <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    <span class="absolute top-0 right-0 bg-accent text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">4</span>
+                </div>
+                <div class="w-12 h-12 shadow-neu rounded-full flex md:hidden items-center justify-center cursor-pointer bg-neuBg text-primary active:shadow-neu-inset">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="shadow-neu rounded-[2rem] p-6 md:p-12 flex flex-col md:flex-row items-center gap-10 mb-10 bg-neuBg fade-in">
+            <div class="flex-1 w-full text-center md:text-left z-10">
+                <span class="shadow-neu-inset px-4 py-1.5 rounded-sm text-[10px] font-bold text-accent tracking-[0.2em] uppercase mb-4 inline-block">
+                    2026 Edition
+                </span>
+                <h2 class="text-5xl md:text-7xl font-heading font-bold uppercase leading-tight mb-4 text-primary tracking-tight">
+                    Conquer <br> The <span class="text-accent">Terrain.</span>
+                </h2>
+                <p class="text-gray-600 mb-8 max-w-md mx-auto md:mx-0 text-sm md:text-base font-medium">
+                    Engineered for extreme performance, unbeatable durability, and the ultimate riding experience.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <button class="shadow-neu hover:shadow-neu-inset transition-all rounded-sm px-8 py-4 bg-accent text-white font-heading font-bold tracking-wider uppercase text-sm flex items-center gap-2">
+                        View Fleet <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 h-64 md:h-[400px] shadow-neu-inset rounded-[1.5rem] p-3 relative flex items-center justify-center bg-[#D6DCE5]">
+                <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=1200&auto=format&fit=crop" 
+                     alt="Azad Hero Cycle" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+            </div>
+        </div>
+
+        <div class="sticky top-0 z-40 bg-[#E0E5EC] pt-4 pb-6 fade-in">
+            <div class="flex gap-4 md:justify-center overflow-x-auto px-2 no-scrollbar snap-x">
+                <button class="filter-btn shadow-neu-inset px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-accent shrink-0 active-btn transition-all" onclick="filterSelection('all')">
+                    All Cycles
+                </button>
+                <button class="filter-btn shadow-neu px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-primary hover:text-accent shrink-0 transition-all" onclick="filterSelection('mountain')">
+                    Mountain
+                </button>
+                <button class="filter-btn shadow-neu px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-primary hover:text-accent shrink-0 transition-all" onclick="filterSelection('road')">
+                    Road
+                </button>
+                <button class="filter-btn shadow-neu px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-primary hover:text-accent shrink-0 transition-all" onclick="filterSelection('electric')">
+                    Electric
+                </button>
+                <button class="filter-btn shadow-neu px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-primary hover:text-accent shrink-0 transition-all" onclick="filterSelection('hybrid')">
+                    Hybrid
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-16 fade-in" id="product-grid">
+
+            <div class="cycle-card mountain shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Trailblazer X1', '₹45,000', 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Mountain</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Trailblazer X1</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹45,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card mountain shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Summit Pro', '₹65,000', 'https://images.unsplash.com/photo-1576435728678-68ce0f62e4f0?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1576435728678-68ce0f62e4f0?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Mountain</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Summit Pro</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹65,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card mountain shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Rockhopper', '₹32,000', 'https://images.unsplash.com/photo-1565545364-1e247e68e4c7?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1565545364-1e247e68e4c7?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Mountain</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Rockhopper</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹32,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card mountain shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Alpine Ridge', '₹55,000', 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5] relative">
+                    <span class="absolute top-2 left-2 bg-accent text-white text-[8px] font-bold px-2 py-0.5 rounded uppercase">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Mountain</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Alpine Ridge</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹55,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card mountain shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Dirt Master', '₹28,000', 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Mountain</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Dirt Master</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹28,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card road shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Aero Sprint', '₹85,000', 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Road</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Aero Sprint</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹85,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card road shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Velocity R', '₹1,15,000', 'https://images.unsplash.com/photo-1511994298241-608e28f14fde?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5] relative">
+                    <span class="absolute top-2 left-2 bg-primary text-white text-[8px] font-bold px-2 py-0.5 rounded uppercase">Pro Edition</span>
+                    <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Road</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Velocity R</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹1,15,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card road shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Tarmac Elite', '₹75,000', 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Road</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Tarmac Elite</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹75,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card road shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Phantom Speed', '₹95,000', 'https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1484503793037-5c9644d6a80a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Road</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Phantom Speed</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹95,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card road shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Cruiser Lite', '₹42,000', 'https://images.unsplash.com/photo-1534142491512-4b20da54c55a?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1534142491512-4b20da54c55a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Road</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Cruiser Lite</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹42,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card electric shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad E-Volt City', '₹68,000', 'https://images.unsplash.com/photo-1528629297340-d1d466945dc5?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5] relative">
+                     <span class="absolute top-2 left-2 bg-green-500 text-white text-[8px] font-bold px-2 py-0.5 rounded uppercase"><i class="fa-solid fa-bolt"></i> EV</span>
+                    <img src="https://images.unsplash.com/photo-1528629297340-d1d466945dc5?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Electric</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad E-Volt City</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹68,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card electric shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Thunder MTB', '₹88,000', 'https://images.unsplash.com/photo-1612440316499-4a0094709f18?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1612440316499-4a0094709f18?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Electric</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Thunder MTB</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹88,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card electric shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Spark Commuter', '₹52,000', 'https://images.unsplash.com/photo-1506509939524-7667823e20e8?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1506509939524-7667823e20e8?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Electric</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Spark Commuter</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹52,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card electric shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad E-Glide Pro', '₹1,05,000', 'https://images.unsplash.com/photo-1593710777977-cfc47097e376?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1593710777977-cfc47097e376?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Electric</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad E-Glide Pro</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹1,05,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card electric shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Pulse Hybrid', '₹72,000', 'https://images.unsplash.com/photo-1571183597-2a492b4fa267?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1571183597-2a492b4fa267?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Electric</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Pulse Hybrid</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹72,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card hybrid shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Metro Cross', '₹26,000', 'https://images.unsplash.com/photo-1605333552093-4e4465df510f?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1605333552093-4e4465df510f?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Hybrid</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Metro Cross</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹26,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card hybrid shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Urban Trek', '₹34,000', 'https://images.unsplash.com/photo-1612151694291-11a511394c8e?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1612151694291-11a511394c8e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Hybrid</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Urban Trek</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹34,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card hybrid shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad City Scape', '₹22,000', 'https://images.unsplash.com/photo-1585848981665-2a2b00fdf6b9?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1585848981665-2a2b00fdf6b9?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Hybrid</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad City Scape</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹22,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card hybrid shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Pathfinder', '₹38,000', 'https://images.unsplash.com/photo-1530268578403-124b1f4df054?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1530268578403-124b1f4df054?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Hybrid</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Pathfinder</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹38,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+            <div class="cycle-card hybrid shadow-neu rounded-3xl p-3 md:p-5 bg-neuBg cursor-pointer hover:-translate-y-2 transition-transform" onclick="openProductPage('Azad Daily Ride', '₹19,000', 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=600&auto=format&fit=crop')">
+                <div class="h-32 md:h-48 shadow-neu-inset rounded-2xl p-2 mb-4 bg-[#D6DCE5]">
+                    <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                <p class="text-[9px] font-bold text-accent uppercase tracking-widest mb-1">Hybrid</p>
+                <h4 class="font-heading font-bold text-sm md:text-lg mb-2 uppercase truncate">Azad Daily Ride</h4>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="font-bold text-sm md:text-xl">₹19,000</span>
+                    <button class="w-8 h-8 md:w-10 md:h-10 shadow-neu rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors" onclick="event.stopPropagation(); alert('Added!');"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="product-page" class="fixed inset-0 bg-[#E0E5EC] z-50 hidden overflow-y-auto fade-in">
+        <div class="w-full max-w-6xl mx-auto px-4 md:px-10 py-8 min-h-screen flex flex-col justify-center">
+            
+            <button onclick="closeProductPage()" class="shadow-neu rounded-full w-12 h-12 flex items-center justify-center text-primary mb-8 active:shadow-neu-active hover:text-accent transition-colors">
+                <i class="fa-solid fa-arrow-left text-lg"></i>
+            </button>
+
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12 shadow-neu rounded-[3rem] p-6 md:p-12 bg-neuBg">
+                <div class="w-full md:w-1/2 h-72 md:h-[500px] shadow-neu-inset rounded-[2rem] p-4 flex items-center justify-center bg-[#D6DCE5]">
+                    <img id="detail-img" src="" alt="Product" class="w-full h-full object-cover rounded-xl mix-blend-multiply">
+                </div>
+                
+                <div class="w-full md:w-1/2 flex flex-col justify-center">
+                    <div class="shadow-neu inline-flex rounded-full px-4 py-1.5 text-[10px] font-bold text-accent uppercase tracking-widest mb-4 w-max">
+                        <i class="fa-solid fa-fire mr-2"></i> High Performance Series
+                    </div>
+                    <h2 id="detail-title" class="text-4xl md:text-5xl font-heading font-bold mb-4 text-primary uppercase">Product Title</h2>
+                    <p class="text-gray-600 text-sm md:text-base mb-8 leading-relaxed font-medium">Built with aerospace-grade aluminum and precision shifting, providing you the ultimate control and speed on any terrain. Azad Cycles guarantee unmatched durability.</p>
+                    
+                    <h3 id="detail-price" class="text-4xl font-bold text-primary mb-8">₹0</h3>
+
+                    <div class="flex gap-4 md:gap-6 mt-auto">
+                        <button class="flex-1 shadow-neu hover:shadow-neu-inset transition-all rounded-sm py-4 bg-accent text-white font-heading font-bold text-lg flex justify-center items-center gap-2 uppercase tracking-widest" onclick="alert('Successfully added to your garage!')">
+                            <i class="fa-solid fa-cart-plus"></i> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set 'All' active by default
+        filterSelection("all");
+
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("cycle-card");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                removeClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+            }
+
+            // Update Active Button Style
+            var btns = document.getElementsByClassName("filter-btn");
+            for (i = 0; i < btns.length; i++) {
+                // Reset all to default shadow
+                btns[i].classList.remove("shadow-neu-inset", "text-accent");
+                btns[i].classList.add("shadow-neu", "text-primary");
+            }
+            // Add inset shadow to clicked target
+            event.currentTarget.classList.remove("shadow-neu", "text-primary");
+            event.currentTarget.classList.add("shadow-neu-inset", "text-accent");
+        }
+
+        function addClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            }
+        }
+
+        function removeClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Product Modal Logic
+        function openProductPage(title, price, imgSrc) {
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-price').innerText = price;
+            document.getElementById('detail-img').src = imgSrc;
+            
+            document.getElementById('main-page').classList.add('hidden');
+            document.getElementById('product-page').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function closeProductPage() {
+            document.getElementById('product-page').classList.add('hidden');
+            document.getElementById('main-page').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
