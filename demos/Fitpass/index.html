@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FitPass - Gym Marketplace</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- QRCode.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: '#39ff14', // Vibrant neon green
+                        darkbg: '#0a0a0a',
+                        cardbg: '#171717'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+        .app-container { max-width: 480px; margin: 0 auto; background-color: #0a0a0a; min-height: 100vh; position: relative; overflow-x: hidden; padding-bottom: 80px; box-shadow: 0 0 50px rgba(57, 255, 20, 0.1); }
+        .view { display: none; animation: fadeIn 0.3s ease; }
+        .view.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Hide scrollbar */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        .glass-nav { background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px); border-top: 1px solid rgba(57, 255, 20, 0.2); }
+        .neon-border { border: 1px solid rgba(57, 255, 20, 0.5); box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
+        .neon-text { text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="app-container">
+    
+    <!-- ================= VIEWS ================= -->
+
+    <!-- View 1: Marketplace Home -->
+    <div id="view-home" class="view active px-4 pt-6">
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Welcome to <span class="text-neon neon-text">FitPass</span></h1>
+                <p class="text-gray-400 text-sm">Find and access premium gyms</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-cardbg flex items-center justify-center border border-gray-800">
+                <i class="fa-solid fa-user text-gray-400"></i>
+            </div>
+        </div>
+        
+        <div class="mb-6 relative">
+            <input type="text" placeholder="Search gyms by name or area..." class="w-full bg-cardbg text-white border border-gray-800 rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-neon focus:ring-1 focus:ring-neon transition-all">
+            <i class="fa-solid fa-search absolute left-4 top-3.5 text-gray-500"></i>
+        </div>
+
+        <h2 class="text-lg font-semibold mb-4">Featured Gyms</h2>
+        <div id="gym-list" class="space-y-4">
+            <!-- Gyms populated by JS -->
+        </div>
+    </div>
+
+    <!-- View 2: Gym Detail -->
+    <div id="view-gym-detail" class="view">
+        <div id="gym-detail-content">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- View 3: Onboarding & Payment -->
+    <div id="view-onboarding" class="view px-4 pt-6">
+        <button onclick="navigateTo('view-gym-detail')" class="text-neon mb-4"><i class="fa-solid fa-arrow-left mr-2"></i> Back</button>
+        <h2 class="text-2xl font-bold mb-2">Join <span id="onboard-gym-name" class="text-neon"></span></h2>
+        <p class="text-gray-400 text-sm mb-6">Fill in your details to generate your pass.</p>
+
+        <form id="onboarding-form" class="space-y-4" onsubmit="handleOnboardingSubmit(event)">
+            <div>
+                <label class="block text-sm text-gray-400 mb-1">Full Name</label>
+                <input type="text" id="ob-name" required class="w-full bg-cardbg border border-gray-800 rounded-xl py-3 px-4 focus:outline-none focus:border-neon">
+            </div>
+            <div class="flex space-x-4">
+                <div class="w-1/2">
+                    <label class="block text-sm text-gray-400 mb-1">Age</label>
+                    <input type="number" id="ob-age" required min="14" max="100" class="w-full bg-cardbg border border-gray-800 rounded-xl py-3 px-4 focus:outline-none focus:border-neon">
+                </div>
+                <div class="w-1/2">
+                    <label class="block text-sm text-gray-400 mb-1">Primary Goal</label>
+                    <select id="ob-purpose" class="w-full bg-cardbg border border-gray-800 rounded-xl py-3 px-4 focus:outline-none focus:border-neon text-white">
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="General Fitness">General Fitness</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="bg-cardbg p-4 rounded-xl border border-gray-800 mt-6">
+                <h3 class="font-semibold mb-2 text-neon">Payment Summary</h3>
+                <div class="flex justify-between text-sm text-gray-400 mb-1"><span>Monthly Fee:</span> <span id="ob-monthly">₹0</span></div>
+                <div class="flex justify-between text-sm text-gray-400 mb-3 border-b border-gray-700 pb-2"><span>Admission Fee:</span> <span id="ob-admission">₹0</span></div>
+                <div class="flex justify-between font-bold text-lg"><span>Total:</span> <span id="ob-total">₹0</span></div>
+            </div>
+
+            <button type="submit" class="w-full bg-neon text-black font-bold py-4 rounded-xl mt-4 shadow-[0_0_15px_rgba(57,255,20,0.4)] transition-transform active:scale-95">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <!-- View 3.1: Payment Simulation Modal (Overlay inside view) -->
+    <div id="payment-modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-cardbg rounded-2xl p-6 w-full max-w-sm border border-gray-800 text-center relative overflow-hidden">
+            <div id="payment-step-1">
+                <i class="fa-brands fa-google-pay text-4xl mb-4 text-white"></i>
+                <h3 class="text-xl font-bold mb-2">Secure Verification</h3>
+                <p class="text-sm text-gray-400 mb-4">To verify your identity and activate the pass, simulate a custom transaction.</p>
+                <div class="bg-darkbg p-4 rounded-lg mb-4">
+                    <p class="text-xs text-gray-500 mb-1">Enter exact amount to approve</p>
+                    <p class="text-2xl font-bold text-neon" id="pay-exact-amount">₹999.16</p>
+                </div>
+                <input type="number" step="0.01" id="pay-input" placeholder="0.00" class="w-full bg-darkbg text-center text-xl font-bold border border-gray-700 rounded-xl py-3 px-4 focus:outline-none focus:border-neon mb-4">
+                <button onclick="processPayment()" class="w-full bg-neon text-black font-bold py-3 rounded-xl">Verify Payment</button>
+                <button onclick="closePaymentModal()" class="w-full text-gray-500 text-sm mt-3 py-2">Cancel</button>
+            </div>
+            
+            <div id="payment-step-2" class="hidden py-8">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-neon mx-auto mb-4"></div>
+                <h3 class="text-lg font-bold text-neon">Waiting for Admin Approval...</h3>
+                <p class="text-xs text-gray-500 mt-2">Simulating auto-approval in <span id="countdown">3</span>s</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- View 4: Virtual ID Card -->
+    <div id="view-id-card" class="view px-4 pt-8">
+        <h2 class="text-2xl font-bold mb-6 text-center tracking-tight">Your <span class="text-neon">Access Pass</span></h2>
+        
+        <div id="no-pass-msg" class="text-center py-12 text-gray-500 hidden">
+            <i class="fa-solid fa-ticket text-4xl mb-3 opacity-50"></i>
+            <p>You haven't joined any gym yet.</p>
+            <button onclick="navigateTo('view-home')" class="mt-4 px-6 py-2 border border-neon text-neon rounded-full text-sm">Browse Gyms</button>
+        </div>
+
+        <div id="active-pass-container" class="hidden">
+            <div class="bg-cardbg rounded-2xl p-6 neon-border relative overflow-hidden">
+                <!-- Decorative background elements -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-neon opacity-10 rounded-full blur-2xl"></div>
+                
+                <div class="text-center mb-6">
+                    <h3 class="text-xl font-bold text-white" id="pass-gym-name">Gym Name</h3>
+                    <p class="text-xs text-neon uppercase tracking-widest mt-1 font-semibold">Active Member</p>
+                </div>
+
+                <div class="flex justify-center mb-6">
+                    <div class="bg-white p-2 rounded-xl">
+                        <div id="qrcode"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-3 bg-darkbg p-4 rounded-xl border border-gray-800">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500 uppercase">Name</span>
+                        <span class="font-semibold text-sm" id="pass-user-name">John Doe</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500 uppercase">Member ID</span>
+                        <span class="font-mono text-sm text-gray-300" id="pass-user-id">#123456</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500 uppercase">Valid Until</span>
+                        <span class="font-semibold text-sm text-neon" id="pass-expiry">12 Oct 2026</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-6"><i class="fa-solid fa-shield-halved mr-1"></i> Present this QR code at the gym reception.</p>
+        </div>
+    </div>
+
+    <!-- View 5: Gym Admin Panel -->
+    <div id="view-gym-admin" class="view px-4 pt-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold">Partner <span class="text-neon">Dashboard</span></h2>
+            <select id="admin-gym-selector" onchange="renderGymAdmin()" class="bg-cardbg border border-gray-800 text-xs rounded p-1 text-neon focus:outline-none">
+                <!-- Options populated by JS -->
+            </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="bg-cardbg border border-gray-800 p-4 rounded-xl text-center">
+                <i class="fa-solid fa-users text-gray-500 mb-2"></i>
+                <div class="text-2xl font-bold text-white" id="admin-total-members">0</div>
+                <div class="text-xs text-gray-400">Active Members</div>
+            </div>
+            <div class="bg-cardbg border border-gray-800 p-4 rounded-xl text-center">
+                <i class="fa-solid fa-check-to-slot text-gray-500 mb-2"></i>
+                <div class="text-2xl font-bold text-neon" id="admin-today-checkins">0</div>
+                <div class="text-xs text-gray-400">Today's Check-ins</div>
+            </div>
+        </div>
+
+        <button onclick="simulateQRScan()" class="w-full bg-white text-black font-bold py-4 rounded-xl mb-6 shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform">
+            <i class="fa-solid fa-qrcode"></i> Scan Member QR
+        </button>
+
+        <h3 class="font-semibold mb-3">Today's Attendance Log</h3>
+        <div class="bg-cardbg border border-gray-800 rounded-xl overflow-hidden">
+            <ul id="admin-attendance-list" class="divide-y divide-gray-800">
+                <!-- Populated by JS -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- View 6: Super Admin Panel -->
+    <div id="view-super-admin" class="view px-4 pt-6">
+        <h2 class="text-xl font-bold mb-6 text-purple-400"><i class="fa-solid fa-bolt mr-2"></i>Super Admin</h2>
+        
+        <div id="sa-login" class="bg-cardbg border border-gray-800 p-6 rounded-xl">
+            <h3 class="font-semibold mb-4 text-center">Admin Login</h3>
+            <input type="password" id="sa-pass" placeholder="Enter Password (admin123)" class="w-full bg-darkbg text-center border border-gray-700 rounded-lg py-2 px-3 focus:outline-none focus:border-purple-500 mb-4 text-white">
+            <button onclick="superAdminLogin()" class="w-full bg-purple-600 text-white font-bold py-2 rounded-lg">Login</button>
+        </div>
+
+        <div id="sa-dashboard" class="hidden space-y-6">
+            <div class="bg-cardbg border border-gray-800 p-4 rounded-xl">
+                <h3 class="font-semibold mb-3 text-neon border-b border-gray-800 pb-2">Add New Gym</h3>
+                <form id="add-gym-form" onsubmit="handleAddGym(event)" class="space-y-3">
+                    <input type="text" id="ag-name" placeholder="Gym Name" required class="w-full bg-darkbg border border-gray-700 rounded p-2 text-sm text-white">
+                    <input type="text" id="ag-area" placeholder="Location/Area" required class="w-full bg-darkbg border border-gray-700 rounded p-2 text-sm text-white">
+                    <input type="url" id="ag-img" placeholder="Image URL" required class="w-full bg-darkbg border border-gray-700 rounded p-2 text-sm text-white">
+                    <div class="flex space-x-2">
+                        <input type="number" id="ag-adm" placeholder="Admission Fee" required class="w-full bg-darkbg border border-gray-700 rounded p-2 text-sm text-white">
+                        <input type="number" id="ag-mon" placeholder="Monthly Fee" required class="w-full bg-darkbg border border-gray-700 rounded p-2 text-sm text-white">
+                    </div>
+                    <button type="submit" class="w-full bg-neon text-black font-bold py-2 rounded">Create Gym</button>
+                </form>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-2">System Database</h3>
+                <button onclick="resetSystemData()" class="w-full border border-red-500 text-red-500 py-2 rounded text-sm hover:bg-red-500 hover:text-white transition-colors">Factory Reset Data</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= BOTTOM NAVIGATION ================= -->
+    <div class="fixed bottom-0 left-0 right-0 glass-nav z-40 max-w-[480px] mx-auto rounded-t-2xl">
+        <div class="flex justify-around items-center py-3">
+            <button onclick="navigateTo('view-home')" class="nav-btn flex flex-col items-center text-neon w-1/3" data-target="view-home">
+                <i class="fa-solid fa-dumbbell text-xl mb-1"></i>
+                <span class="text-[10px] font-medium uppercase tracking-wider">Explore</span>
+            </button>
+            <button onclick="navigateTo('view-id-card')" class="nav-btn flex flex-col items-center text-gray-500 w-1/3" data-target="view-id-card">
+                <i class="fa-solid fa-id-card text-xl mb-1"></i>
+                <span class="text-[10px] font-medium uppercase tracking-wider">My Pass</span>
+            </button>
+            <button onclick="handleAdminNavClick()" class="nav-btn flex flex-col items-center text-gray-500 w-1/3" data-target="admin-group">
+                <i class="fa-solid fa-chart-line text-xl mb-1"></i>
+                <span class="text-[10px] font-medium uppercase tracking-wider">Partner</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Admin Choice Modal -->
+    <div id="admin-choice-modal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-end justify-center backdrop-blur-sm pb-20">
+        <div class="bg-cardbg rounded-t-2xl p-6 w-full max-w-[480px] border-t border-gray-800 transform transition-transform animate-slideUp">
+            <h3 class="text-lg font-bold mb-4 border-b border-gray-800 pb-2">Select Admin Role</h3>
+            <button onclick="navigateTo('view-gym-admin'); closeAdminChoice();" class="w-full text-left p-4 hover:bg-gray-800 rounded-xl mb-2 flex items-center">
+                <i class="fa-solid fa-store w-8 text-neon"></i> Gym Partner Dashboard
+            </button>
+            <button onclick="navigateTo('view-super-admin'); closeAdminChoice();" class="w-full text-left p-4 hover:bg-gray-800 rounded-xl mb-4 flex items-center">
+                <i class="fa-solid fa-bolt w-8 text-purple-400"></i> Platform Super Admin
+            </button>
+            <button onclick="closeAdminChoice()" class="w-full py-3 bg-gray-800 rounded-xl text-sm font-semibold">Cancel</button>
+        </div>
+    </div>
+    <style>
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .animate-slideUp { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    </style>
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    // --- Data Models & Init ---
+    const defaultGyms = [
+        { id: 'g1', name: 'Iron Forge Fitness', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80', area: 'Downtown Core', admissionFee: 500, monthlyFee: 1500, facilities: ['Cardio Zone', 'Free Weights', 'Crossfit Area'], supplements: ['Whey Protein', 'Pre-workout'], timings: '5:00 AM - 11:00 PM' },
+        { id: 'g2', name: 'Neon Power Gym', image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80', area: 'Uptown Tech Park', admissionFee: 1000, monthlyFee: 2500, facilities: ['Sauna', 'Pool', 'Zumba Studio', 'Powerlifting Racks'], supplements: ['Isolate', 'Creatine', 'Energy Bars'], timings: '24/7' },
+        { id: 'g3', name: 'Zenith Yoga & Core', image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80', area: 'Westside Residential', admissionFee: 200, monthlyFee: 1200, facilities: ['Yoga Mats', 'Pilates', 'Meditation Room'], supplements: ['Electrolytes', 'Vegan Protein'], timings: '6:00 AM - 8:00 PM' }
+    ];
+
+    let db = {
+        gyms: JSON.parse(localStorage.getItem('fm_gyms')) || defaultGyms,
+        users: JSON.parse(localStorage.getItem('fm_users')) || [],
+        attendance: JSON.parse(localStorage.getItem('fm_attendance')) || [],
+        currentUser: JSON.parse(localStorage.getItem('fm_currentUser')) || null
+    };
+
+    function saveDB() {
+        localStorage.setItem('fm_gyms', JSON.stringify(db.gyms));
+        localStorage.setItem('fm_users', JSON.stringify(db.users));
+        localStorage.setItem('fm_attendance', JSON.stringify(db.attendance));
+        localStorage.setItem('fm_currentUser', JSON.stringify(db.currentUser));
+    }
+
+    // Initialize DB if empty
+    if(!localStorage.getItem('fm_gyms')) saveDB();
+
+    // App State
+    let selectedGymId = null;
+    let qrCodeInstance = null;
+
+    // --- Routing System ---
+    function navigateTo(viewId, param = null) {
+        // Hide all views
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        // Show target view
+        document.getElementById(viewId).classList.add('active');
+        window.scrollTo(0, 0);
+
+        // Update Nav UI
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('text-neon');
+            btn.classList.add('text-gray-500');
+            if(btn.dataset.target === viewId || (btn.dataset.target === 'admin-group' && viewId.includes('admin'))) {
+                btn.classList.remove('text-gray-500');
+                btn.classList.add('text-neon');
+            }
+        });
+
+        // Trigger view-specific logic
+        if(viewId === 'view-home') renderMarketplace();
+        if(viewId === 'view-gym-detail') renderGymDetail(param || selectedGymId);
+        if(viewId === 'view-onboarding') renderOnboarding();
+        if(viewId === 'view-id-card') renderIdCard();
+        if(viewId === 'view-gym-admin') initGymAdmin();
+        if(viewId === 'view-super-admin') document.getElementById('sa-pass').value = '';
+    }
+
+    // --- View Renderers ---
+
+    // 1. Marketplace Home
+    function renderMarketplace() {
+        const container = document.getElementById('gym-list');
+        container.innerHTML = '';
+        
+        db.gyms.forEach(gym => {
+            const card = document.createElement('div');
+            card.className = "bg-cardbg rounded-2xl overflow-hidden border border-gray-800 shadow-md active:scale-[0.98] transition-transform cursor-pointer";
+            card.onclick = () => navigateTo('view-gym-detail', gym.id);
+            
+            card.innerHTML = `
+                <div class="h-40 w-full bg-gray-800 relative">
+                    <img src="${gym.image}" class="w-full h-full object-cover opacity-80" alt="${gym.name}">
+                    <div class="absolute bottom-2 right-2 bg-black/80 backdrop-blur text-white text-xs px-2 py-1 rounded-md border border-gray-700">
+                        <i class="fa-solid fa-star text-yellow-400 mr-1"></i> 4.8
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-1">
+                        <h3 class="font-bold text-lg leading-tight text-white">${gym.name}</h3>
+                        <span class="text-neon font-bold">₹${gym.monthlyFee}<span class="text-[10px] text-gray-500">/mo</span></span>
+                    </div>
+                    <p class="text-gray-400 text-xs mb-3"><i class="fa-solid fa-location-dot mr-1"></i>${gym.area}</p>
+                    <div class="flex gap-2">
+                        ${gym.facilities.slice(0, 2).map(f => `<span class="bg-darkbg border border-gray-700 text-gray-300 text-[10px] px-2 py-1 rounded-full">${f}</span>`).join('')}
+                        ${gym.facilities.length > 2 ? `<span class="bg-darkbg border border-gray-700 text-gray-300 text-[10px] px-2 py-1 rounded-full">+${gym.facilities.length - 2}</span>` : ''}
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // 2. Gym Detail
+    function renderGymDetail(gymId) {
+        selectedGymId = gymId;
+        const gym = db.gyms.find(g => g.id === gymId);
+        if(!gym) return navigateTo('view-home');
+
+        const isMember = db.currentUser && db.currentUser.gymId === gym.id;
+
+        let actionButton = '';
+        if (isMember) {
+            actionButton = `<button onclick="navigateTo('view-id-card')" class="w-full bg-gray-800 text-white font-bold py-4 rounded-xl mt-6 border border-gray-700">View Active Pass</button>`;
+        } else {
+            actionButton = `<button onclick="navigateTo('view-onboarding')" class="w-full bg-neon text-black font-bold py-4 rounded-xl mt-6 shadow-[0_0_15px_rgba(57,255,20,0.4)]">Join Now - ₹${gym.admissionFee + gym.monthlyFee}</button>`;
+        }
+
+        const html = `
+            <div class="relative h-64 w-full">
+                <button onclick="navigateTo('view-home')" class="absolute top-6 left-4 z-10 w-10 h-10 bg-black/50 backdrop-blur rounded-full flex items-center justify-center border border-gray-700 text-white"><i class="fa-solid fa-arrow-left"></i></button>
+                <img src="${gym.image}" class="w-full h-full object-cover opacity-70" alt="${gym.name}">
+                <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-darkbg/60 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                    <span class="bg-neon text-black text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-2 inline-block">Partner Gym</span>
+                    <h2 class="text-3xl font-bold text-white mb-1">${gym.name}</h2>
+                    <p class="text-sm text-gray-300"><i class="fa-solid fa-location-dot mr-1 text-neon"></i> ${gym.area}</p>
+                </div>
+            </div>
+            
+            <div class="p-5 pb-24">
+                <div class="flex justify-between items-center mb-6 bg-cardbg p-4 rounded-xl border border-gray-800">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Admission</p>
+                        <p class="font-bold text-lg">₹${gym.admissionFee}</p>
+                    </div>
+                    <div class="w-px h-8 bg-gray-700"></div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Monthly</p>
+                        <p class="font-bold text-lg text-neon">₹${gym.monthlyFee}</p>
+                    </div>
+                    <div class="w-px h-8 bg-gray-700"></div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Timing</p>
+                        <p class="font-bold text-xs mt-1 text-gray-300">${gym.timings}</p>
+                    </div>
+                </div>
+
+                <h3 class="font-semibold mb-3 border-l-2 border-neon pl-2 text-white">Facilities Included</h3>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    ${gym.facilities.map(f => `<span class="bg-cardbg border border-gray-800 text-sm px-3 py-1.5 rounded-lg"><i class="fa-solid fa-check text-neon mr-2 text-xs"></i>${f}</span>`).join('')}
+                </div>
+
+                <h3 class="font-semibold mb-3 border-l-2 border-neon pl-2 text-white">Available Supplements (In-store)</h3>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    ${gym.supplements.map(s => `<span class="bg-darkbg border border-gray-700 text-gray-400 text-xs px-3 py-1.5 rounded-full"><i class="fa-solid fa-prescription-bottle text-gray-500 mr-1"></i>${s}</span>`).join('')}
+                </div>
+                
+                ${actionButton}
+            </div>
+        `;
+        document.getElementById('gym-detail-content').innerHTML = html;
+    }
+
+    // 3. Onboarding & Payment
+    let currentPaymentAmount = 0;
+    
+    function renderOnboarding() {
+        const gym = db.gyms.find(g => g.id === selectedGymId);
+        document.getElementById('onboard-gym-name').textContent = gym.name;
+        document.getElementById('ob-monthly').textContent = `₹${gym.monthlyFee}`;
+        document.getElementById('ob-admission').textContent = `₹${gym.admissionFee}`;
+        const total = gym.monthlyFee + gym.admissionFee;
+        document.getElementById('ob-total').textContent = `₹${total}`;
+        
+        // Generate random decimal for simulation
+        const randomDec = (Math.random() * (0.99 - 0.11) + 0.11).toFixed(2);
+        currentPaymentAmount = (total + parseFloat(randomDec)).toFixed(2);
+        
+        // Pre-fill if user exists but joining new gym
+        if(db.currentUser) {
+            document.getElementById('ob-name').value = db.currentUser.name;
+            document.getElementById('ob-age').value = db.currentUser.age || '';
+        }
+    }
+
+    function handleOnboardingSubmit(e) {
+        e.preventDefault();
+        
+        document.getElementById('pay-exact-amount').textContent = `₹${currentPaymentAmount}`;
+        document.getElementById('pay-input').value = '';
+        
+        document.getElementById('payment-step-1').classList.remove('hidden');
+        document.getElementById('payment-step-2').classList.add('hidden');
+        document.getElementById('payment-modal').classList.remove('hidden');
+    }
+
+    function closePaymentModal() {
+        document.getElementById('payment-modal').classList.add('hidden');
+    }
+
+    function processPayment() {
+        const inputStr = document.getElementById('pay-input').value;
+        const inputAmount = parseFloat(inputStr).toFixed(2);
+        
+        if(inputAmount !== currentPaymentAmount) {
+            alert(`Payment Failed: Amount mismatch. Please enter exactly ₹${currentPaymentAmount}`);
+            return;
+        }
+
+        // Show processing state
+        document.getElementById('payment-step-1').classList.add('hidden');
+        document.getElementById('payment-step-2').classList.remove('hidden');
+
+        let count = 3;
+        document.getElementById('countdown').textContent = count;
+        
+        const timer = setInterval(() => {
+            count--;
+            document.getElementById('countdown').textContent = count;
+            if(count <= 0) {
+                clearInterval(timer);
+                completeOnboarding();
+            }
+        }, 1000);
+    }
+
+    function completeOnboarding() {
+        const name = document.getElementById('ob-name').value;
+        const age = document.getElementById('ob-age').value;
+        const purpose = document.getElementById('ob-purpose').value;
+        const gymId = selectedGymId;
+
+        // Generate expiry date (1 month from today)
+        const date = new Date();
+        date.setMonth(date.getMonth() + 1);
+        const expiryDate = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+        // Generate User ID
+        const userId = 'FP' + Math.floor(100000 + Math.random() * 900000);
+
+        const newUser = {
+            id: userId,
+            gymId: gymId,
+            name: name,
+            age: age,
+            purpose: purpose,
+            expiryDate: expiryDate,
+            joinDate: new Date().toISOString()
+        };
+
+        // Update DB
+        const existingIndex = db.users.findIndex(u => u.name === name); // Simplistic check
+        if(existingIndex > -1) db.users[existingIndex] = newUser;
+        else db.users.push(newUser);
+        
+        db.currentUser = newUser;
+        saveDB();
+
+        closePaymentModal();
+        navigateTo('view-id-card');
+    }
+
+    // 4. Virtual ID Card
+    function renderIdCard() {
+        if(!db.currentUser || !db.currentUser.gymId) {
+            document.getElementById('no-pass-msg').classList.remove('hidden');
+            document.getElementById('active-pass-container').classList.add('hidden');
+            return;
+        }
+
+        document.getElementById('no-pass-msg').classList.add('hidden');
+        document.getElementById('active-pass-container').classList.remove('hidden');
+
+        const user = db.currentUser;
+        const gym = db.gyms.find(g => g.id === user.gymId);
+
+        document.getElementById('pass-gym-name').textContent = gym ? gym.name : 'Unknown Gym';
+        document.getElementById('pass-user-name').textContent = user.name;
+        document.getElementById('pass-user-id').textContent = user.id;
+        document.getElementById('pass-expiry').textContent = user.expiryDate;
+
+        // Generate QR Code
+        const qrContainer = document.getElementById('qrcode');
+        qrContainer.innerHTML = ''; // Clear previous
+        
+        // Timeout to ensure DOM is visible for QRCode to render properly
+        setTimeout(() => {
+            qrCodeInstance = new QRCode(qrContainer, {
+                text: JSON.stringify({ uid: user.id, gid: gym.id }),
+                width: 160,
+                height: 160,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }, 100);
+    }
+
+    // 5. Admin Panels & Navigation
+    function handleAdminNavClick() {
+        document.getElementById('admin-choice-modal').classList.remove('hidden');
+    }
+
+    function closeAdminChoice() {
+        document.getElementById('admin-choice-modal').classList.add('hidden');
+    }
+
+    function initGymAdmin() {
+        // Populate selector
+        const selector = document.getElementById('admin-gym-selector');
+        selector.innerHTML = '';
+        db.gyms.forEach(gym => {
+            const opt = document.createElement('option');
+            opt.value = gym.id;
+            opt.textContent = gym.name;
+            selector.appendChild(opt);
+        });
+        
+        // Default to first or previously selected
+        if(selectedGymId && db.gyms.find(g=>g.id === selectedGymId)) {
+            selector.value = selectedGymId;
+        }
+        
+        renderGymAdmin();
+    }
+
+    function renderGymAdmin() {
+        const gymId = document.getElementById('admin-gym-selector').value;
+        if(!gymId) return;
+
+        // Calc stats
+        const gymMembers = db.users.filter(u => u.gymId === gymId);
+        document.getElementById('admin-total-members').textContent = gymMembers.length;
+
+        const todayStr = new Date().toDateString();
+        const todaysAttendance = db.attendance.filter(a => a.gymId === gymId && a.date === todayStr);
+        document.getElementById('admin-today-checkins').textContent = todaysAttendance.length;
+
+        // Render List
+        const listContainer = document.getElementById('admin-attendance-list');
+        listContainer.innerHTML = '';
+
+        if(todaysAttendance.length === 0) {
+            listContainer.innerHTML = '<li class="p-4 text-center text-sm text-gray-500">No check-ins today yet.</li>';
+        } else {
+            // Sort newest first
+            [...todaysAttendance].reverse().forEach(att => {
+                const user = db.users.find(u => u.id === att.userId);
+                const userName = user ? user.name : 'Unknown User';
+                const time = new Date(att.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                
+                listContainer.innerHTML += `
+                    <li class="p-4 flex justify-between items-center bg-darkbg/50">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-xs text-neon"><i class="fa-solid fa-check"></i></div>
+                            <div>
+                                <p class="text-sm font-semibold text-white">${userName}</p>
+                                <p class="text-[10px] text-gray-500 font-mono">${att.userId}</p>
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-400">${time}</div>
+                    </li>
+                `;
+            });
+        }
+    }
+
+    function simulateQRScan() {
+        const gymId = document.getElementById('admin-gym-selector').value;
+        if(!gymId) return alert("Select a gym first");
+
+        // Simulate reading the QR JSON payload by prompting for User ID
+        const inputId = prompt("SIMULATION: Enter User ID from QR Code (e.g., FP123456)");
+        
+        if(!inputId) return; // Cancelled
+        
+        const userId = inputId.toUpperCase();
+        const user = db.users.find(u => u.id === userId);
+
+        if(!user) {
+            alert(`❌ Invalid Pass: Member ID ${userId} not found.`);
+            return;
+        }
+
+        if(user.gymId !== gymId) {
+            alert(`❌ Invalid Pass: Member ${user.name} does not have a plan for this gym.`);
+            return;
+        }
+
+        // Record Attendance
+        const newRecord = {
+            userId: userId,
+            gymId: gymId,
+            timestamp: new Date().toISOString(),
+            date: new Date().toDateString()
+        };
+        
+        db.attendance.push(newRecord);
+        saveDB();
+        
+        alert(`✅ Check-in Successful!\nName: ${user.name}\nValid till: ${user.expiryDate}`);
+        renderGymAdmin(); // Refresh dashboard
+    }
+
+    // Super Admin Functions
+    function superAdminLogin() {
+        const pass = document.getElementById('sa-pass').value;
+        if(pass === 'admin123') {
+            document.getElementById('sa-login').classList.add('hidden');
+            document.getElementById('sa-dashboard').classList.remove('hidden');
+        } else {
+            alert("Incorrect Password");
+        }
+    }
+
+    function handleAddGym(e) {
+        e.preventDefault();
+        const newGym = {
+            id: 'g' + Date.now(),
+            name: document.getElementById('ag-name').value,
+            area: document.getElementById('ag-area').value,
+            image: document.getElementById('ag-img').value,
+            admissionFee: parseInt(document.getElementById('ag-adm').value),
+            monthlyFee: parseInt(document.getElementById('ag-mon').value),
+            facilities: ['Standard Equipment'], // Default
+            supplements: [], // Default
+            timings: '6:00 AM - 10:00 PM'
+        };
+
+        db.gyms.push(newGym);
+        saveDB();
+        
+        alert("Gym Added Successfully!");
+        e.target.reset();
+        
+        // Re-render marketplace if home is clicked next
+    }
+
+    function resetSystemData() {
+        if(confirm("Are you sure? This will wipe all users, attendance, and custom gyms. Proceed?")) {
+            localStorage.clear();
+            location.reload();
+        }
+    }
+
+    // Initialize App
+    window.onload = () => {
+        navigateTo('view-home');
+    };
+
+</script>
+</body>
+</html>
