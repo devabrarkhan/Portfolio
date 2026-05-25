@@ -1,991 +1,646 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://constabrar.in/Abrarr.png">
-    <!-- Primary Meta -->
-    <head>
-  <meta http-equiv="refresh" content="0; url=https://constabrar.in/homepage/">
-    </head>
-<title>Constant Abrar | ABRAR ALLI KHAN | Developer in Odisha | Full Stack 
-</title>
-<meta name="description" content="Constant Abrar is a high-performance Frontend Developer from Odisha, India. Expert in All Things According to him. Ultra-fast business websites & digital solutions. But not work under someone.">
-<meta name="keywords" content="Frontend Developer Odisha, Backend Developer Odisha, Web Developer Kendrapara, React Developer India, Developer, Portfolio Website Developer, Web3Forms Integration">
-<meta name="author" content="Constant Abrar">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://constabrar.in/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Mobile Optimization -->
-<meta name="theme-color" content="#030303">
-
-<!-- Open Graph (Facebook / LinkedIn) -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Constant Abrar | ABRAR ALLI KHAN | A developer you can’t afford. <br> Note; He Doesn't work for anyone.">
-<meta property="og:description" content="Founder of GI28 | Working on STORZEN | Sorry but he'll not reveal everything before being a billionaire.">
-<meta property="og:url" content="https://constabrar.in/">
-<meta property="og:image" content="https://constabrar.in/Abrarr.png">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Constant Abrar | Frontend Developer">
-<meta name="twitter:description" content="Architecting insanely fast digital experiences.">
-<meta name="twitter:image" content="https://constabrar.in/Abrarr.png">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-        :root {
-            --bg-dark: #030303;
-            --bg-card: rgba(15, 15, 15, 0.6);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --text-main: #f8f8f8;
-            --text-muted: #9ca3af;
-            --accent-glow: rgba(255, 255, 255, 0.15);
-            --neon-white: #ffffff;
-            --glass-highlight: rgba(255, 255, 255, 0.05);
+    <title>Constant Abrar | ABRAR ALLI KHAN | Founder & Full Stack Developer @ 16</title>
+    <meta name="description" content="Abrar Alli Khan, 16-year-old Full Stack Developer & Founder of STORZEN, IMPROVETOGETHER & GI28. Building the future from Kendrapara, Odisha.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        themeYellow: '#FFD93D',
+                        themeCyan: '#66D9EF',
+                        themeGreen: '#A8E6CF',
+                        themePink: '#FF6B9D',
+                        themeOrange: '#FF9A3C',
+                        themePurple: '#B794F4',
+                        themeBlack: '#111111',
+                        themeWhite: '#FFFFFF',
+                        bgLight: '#F7F7F2',
+                        bgDark: '#0C0C0C',
+                        cardLight: '#FFFFFF',
+                        cardDark: '#181818',
+                    },
+                    fontFamily: {
+                        sans: ['"Bricolage Grotesque"', 'sans-serif'],
+                        mono: ['"DM Mono"', 'monospace'],
+                        hand: ['"Caveat"', 'cursive'],
+                    },
+                    boxShadow: {
+                        'neo-sm': '3px 3px 0px rgba(17,17,17,1)',
+                        'neo-md': '6px 6px 0px rgba(17,17,17,1)',
+                        'neo-lg': '10px 10px 0px rgba(17,17,17,1)',
+                        'neo-dark-sm': '3px 3px 0px #FFD93D',
+                        'neo-dark-md': '6px 6px 0px #FFD93D',
+                        'neo-dark-lg': '10px 10px 0px #FFD93D',
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'float1': 'float 3s ease-in-out infinite alternate',
+                        'float2': 'float 3.5s ease-in-out infinite alternate-reverse',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '100%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
+    </script>
+    <style>
+        /* Essential Custom Styles for Grid/Pattern Background */
+        body {
+            background-image: linear-gradient(rgba(17,17,17,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,17,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
             scroll-behavior: smooth;
         }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            opacity: 0; /* Hidden until loader finishes */
-            transition: opacity 0.8s ease-in-out;
-        }
-
-        body.loaded {
-            opacity: 1;
-        }
-
-        /* --- Loader Animation --- */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-dark);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: monospace;
-            font-size: 3rem;
-            color: var(--neon-white);
-            font-weight: 700;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader-bracket {
-            display: inline-block;
-            transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1);
-        }
-
-        .loader-slash {
-            margin: 0 5px;
-            opacity: 1;
-            transition: opacity 0.4s ease;
-        }
-
-        /* The open state for < / > */
-        #loader.open .left { transform: translateX(-30px); }
-        #loader.open .right { transform: translateX(30px); }
-        #loader.open .slash { opacity: 0; }
-
-        /* --- SVG Utility --- */
-        svg {
-            width: 24px;
-            height: 24px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* --- Navigation --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(3, 3, 3, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 1000;
-            padding: 1.2rem 0;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--neon-white);
-            text-decoration: none;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--neon-white);
-            text-shadow: 0 0 8px var(--neon-white);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-container { justify-content: center; }
-        }
-
-        /* --- Layout Container --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 8rem 2rem 2rem 2rem;
-        }
-
-        /* --- Global Glass & Glow Effects --- */
-        .glass-panel {
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-        }
-
-        /* Shiny Reflective Sweep */
-        .glass-panel::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -150%;
-            width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            transition: left 0.7s ease;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .glass-panel:hover::before {
-            left: 150%;
-        }
-
-        .glass-panel:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px var(--accent-glow), 0 0 15px rgba(255,255,255,0.1) inset;
-            transform: translateY(-4px);
-        }
-
-        .glass-panel > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            text-align: center;
-            padding: 6rem 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
-            /* High Glow Effect */
-            background: linear-gradient(to right, #fff, #888, #fff);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            animation: textShine 4s linear infinite;
-            text-shadow: 0 0 30px rgba(255,255,255,0.4);
-        }
-
-        @keyframes textShine {
-            to { background-position: 200% center; }
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .btn-glow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1rem 2rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-            color: var(--neon-white);
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-glow:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: var(--neon-white);
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-        
-        /* Smooth Fade Up Animation */
-
-.fade-up {
-    opacity: 0;
-    transform: translate3d(0, 40px, 0);
-    transition:
-        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
-}
-
-.fade-up.visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
-/* Optional stagger delay */
-.fade-up.delay-1 { transition-delay: 0.1s; }
-.fade-up.delay-2 { transition-delay: 0.2s; }
-.fade-up.delay-3 { transition-delay: 0.3s; }
-.fade-up.delay-4 { transition-delay: 0.4s; }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--neon-white);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            height: 1px;
-            flex-grow: 1;
-            background: linear-gradient(to right, var(--border-glass), transparent);
-        }
-
-        /* --- About Me Section --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 3rem;
-        }
-
-        @media (max-width: 900px) {
-            .about-grid { grid-template-columns: 1fr; }
-        }
-
-        .profile-card {
-            padding: 2rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .profile-img-container {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.05));
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 25px rgba(255,255,255,0.1);
-        }
-
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--bg-dark);
-        }
-
-        .profile-card h3 { font-size: 1.5rem; margin-bottom: 0.2rem; }
-        .profile-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            border: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .social-links a:hover {
-            color: var(--neon-white);
-            border-color: var(--neon-white);
-            box-shadow: 0 0 15px rgba(255,255,255,0.2);
-            transform: translateY(-3px);
-        }
-
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .about-text {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .stat-box {
-            padding: 1.5rem;
-            border-radius: 16px;
-        }
-
-        .stat-box svg {
-            margin-bottom: 1rem;
-            color: var(--neon-white);
-        }
-
-        .stat-box h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .stat-box p { font-size: 0.85rem; color: var(--text-muted); }
-
-        /* --- Tech Architect Grid --- */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem;
-            gap: 1rem;
-            cursor: default;
-        }
-
-        .tech-item svg {
-            width: 40px;
-            height: 40px;
-            color: var(--text-muted);
-            transition: color 0.3s ease, filter 0.3s ease;
-        }
-
-        .tech-item span {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: color 0.3s ease;
-        }
-
-        .tech-item:hover svg, .tech-item:hover span {
-            color: var(--neon-white);
-        }
-        .tech-item:hover svg {
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
-        }
-
-        /* --- Dynamic Journey (Timeline) --- */
-        .journey-container {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .journey-line {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            height: 0%; /* Animates via JS */
-            background: linear-gradient(to bottom, transparent, var(--neon-white), transparent);
-            box-shadow: 0 0 10px var(--neon-white);
-            transition: height 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .journey-node {
-            position: relative;
-            padding-bottom: 3rem;
-            opacity: 0;
-            transform: translateX(20px);
-            transition: all 0.6s ease;
-        }
-
-        .journey-node.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .journey-node::before {
-            content: '';
-            position: absolute;
-            left: -2.35rem; /* Center on the line */
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg-dark);
-            border: 2px solid var(--text-muted);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .journey-node.active::before {
-            border-color: var(--neon-white);
-            box-shadow: 0 0 15px var(--neon-white);
-        }
-
-        .journey-card {
-            padding: 2rem;
-        }
-
-        .journey-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .journey-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .journey-card p { color: var(--text-muted); font-size: 0.95rem; }
-
-        /* --- Projects Section --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-glass);
-        }
-
-        .project-card h3 { font-size: 1.25rem; margin-bottom: 1rem; }
-        .project-card p { color: var(--text-muted); font-size: 0.9rem; flex-grow: 1; margin-bottom: 1.5rem; }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .project-tags span {
-            font-size: 0.75rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border-glass);
-            color: var(--text-muted);
-        }
-
-        /* --- Contact Form --- */
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            padding: 3rem;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .input-group label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .input-group input, 
-        .input-group textarea {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border-glass);
-            color: var(--text-main);
-            padding: 1rem;
-            border-radius: 12px;
-            outline: none;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .input-group input:focus, 
-        .input-group textarea:focus {
-            border-color: rgba(255,255,255,0.5);
-            box-shadow: 0 0 15px rgba(255,255,255,0.1) inset;
-        }
-
-        button[type="submit"] {
-            margin-top: 1rem;
-            width: 100%;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-glass);
-        }
+        .dark body {
+            background-image: linear-gradient(rgba(240,240,238,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(240,240,238,0.05) 1px, transparent 1px);
+        }
+        /* Loader */
+        .loader-hide { opacity: 0; pointer-events: none; transition: opacity 0.5s ease; }
+        /* Box3D Cursor */
+        #box3d { cursor: grab; }
+        #box3d:active { cursor: grabbing; }
     </style>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Constant Abrar",
-  "url": "https://constabrar.in",
-  "image": "https://gi28.in/assets/Abrarr.png",
-  "jobTitle": "Frontend Developer",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Kendrapara",
-    "addressRegion": "Odisha",
-    "addressCountry": "India"
-  },
-  "sameAs": [
-    "https://github.com/const-abrar",
-    "https://www.linkedin.com/in/constabrar",
-    "https://instagram.com/const.abrar"
-  ]
+    <style>
+      #box3d {
+    background:
+        radial-gradient(circle at center,
+        yellow,
+        cyan;
+
+    backdrop-filter: blur(10px);
 }
-</script>
+
+#c3d {
+    touch-action: none;
+}
+    </style>
 </head>
-<body>
-    <div id="loader">
-        <span class="loader-bracket left">&lt;</span>
-        <span class="loader-slash slash">/</span>
-        <span class="loader-bracket right">&gt;</span>
+<body class="bg-bgLight dark:bg-bgDark text-themeBlack dark:text-gray-100 transition-colors duration-300 overflow-x-hidden">
+
+    <div id="loader" class="fixed inset-0 z-[9999] bg-themeYellow flex flex-col items-center justify-center transition-all duration-500">
+        <div class="w-24 h-24 bg-themeCyan border-4 border-themeBlack rounded-xl flex items-center justify-center text-4xl font-extrabold text-themeBlack shadow-neo-md animate-pulse">CA</div>
+        <div class="font-mono text-sm tracking-widest uppercase text-themeBlack mt-6">Initializing Empire...</div>
     </div>
 
-    <nav>
-        <div class="nav-container">
-            <a href="https://constabrar.in" class="logo" target="_blank">CONST.ABRAR</a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#tech">Tech</a>
-                <a href="#journey">Journey</a>
-                <a href="#projects">Work</a>
-                <a href="#contact">Contact</a>
-            </div>
+    <nav class="fixed top-0 w-full z-50 bg-themeYellow border-b-4 border-themeBlack px-6 py-4 flex items-center justify-between h-[76px]">
+        <a href="#hero" class="w-12 h-12 bg-themeCyan border-4 border-themeBlack rounded-lg flex items-center justify-center shadow-neo-sm hover:-translate-y-1 hover:shadow-neo-md transition-all duration-200 overflow-hidden">
+  <img 
+    src="https://constabrar.in/Abrarr.png" 
+    alt="Logo" 
+    class="w-8 h-8 object-contain"
+  />
+</a>
+        <ul class="hidden md:flex gap-8 font-semibold text-[15px] text-themeBlack">
+            <li><a href="#about" class="hover:underline decoration-4 underline-offset-4">About</a></li>
+            <li><a href="#projects" class="hover:underline decoration-4 underline-offset-4">Ventures</a></li>
+            <li><a href="#skills" class="hover:underline decoration-4 underline-offset-4">Stack</a></li>
+            <li><a href="#contact" class="hover:underline decoration-4 underline-offset-4">Contact</a></li>
+        </ul>
+
+        <div class="flex items-center gap-4">
+            <a href="#contact" class="hidden md:flex bg-themeBlack text-themeYellow border-4 border-themeBlack rounded-lg px-5 py-2 font-bold text-sm shadow-neo-sm hover:-translate-y-1 hover:-translate-x-1 hover:shadow-neo-md transition-all duration-200">connect</a>
+            <button id="themeBtn" class="w-10 h-10 bg-white dark:bg-cardDark border-4 border-themeBlack dark:border-white rounded-lg flex items-center justify-center text-xl shadow-neo-sm dark:shadow-neo-dark-sm hover:-translate-y-1 transition-all">🌙</button>
+            
+            <button id="mobileMenuBtn" class="md:hidden flex flex-col gap-1.5 p-2">
+                <span class="w-6 h-1 bg-themeBlack rounded block"></span>
+                <span class="w-6 h-1 bg-themeBlack rounded block"></span>
+                <span class="w-6 h-1 bg-themeBlack rounded block"></span>
+            </button>
         </div>
     </nav>
 
-    <main class="container">
-      
-        <header class="hero" id="home">
-            <h1>Constant Abrar</h1>
-            <p class="subtitle">Architecting High-Performance Digital Experiences.</p>
-            <a href="https://constabrar.in/CV.pdf" download class="btn-glow">
-                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Download CV
-            </a>
-        </header>
-        <section class="section fade-up" id="about">
-            <h2 class="section-title">
-                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                About Me
-            </h2>
-            <div class="about-grid">
+    <div id="mobileMenu" class="fixed inset-0 top-[76px] bg-themeYellow z-40 hidden flex-col items-center justify-center gap-8 text-2xl font-bold border-b-4 border-themeBlack">
+        <a href="#about" class="mobile-link text-themeBlack">About</a>
+        <a href="#projects" class="mobile-link text-themeBlack">Ventures</a>
+        <a href="#skills" class="mobile-link text-themeBlack">Stack</a>
+        <a href="#contact" class="mobile-link text-themeBlack">Contact</a>
+    </div>
+
+    <section id="hero" class="min-h-screen pt-32 pb-16 px-6 max-w-7xl mx-auto flex items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+            <div class="order-2 lg:order-1 flex flex-col items-start gap-4 z-10">
+                <span class="font-hand text-3xl md:text-4xl text-blue-600 dark:text-themeCyan">Hey, Meet Abrar! 🙋🏻‍♂️</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-themeBlack dark:text-white">
+                    I'm Constant<br>Abrar<span class="text-themeYellow">.</span>
+                </h1>
+                <div class="flex flex-wrap items-center gap-3 font-mono text-sm md:text-base mt-2 text-gray-700 dark:text-gray-300">
+                    <span class="bg-themeYellow text-themeBlack border-2 border-themeBlack px-3 py-1 font-bold rounded-md">Founder @ STORZEN</span>
+                    <span>Full Stack Developer</span>
+                    <span class="bg-themeCyan text-themeBlack border-2 border-themeBlack px-3 py-1 font-bold rounded-md">16 y/o</span>
+                </div>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-lg mt-4 leading-relaxed">
+                    Building the future from Kendrapara, Odisha. I don't just write code; I build entire startups from scratch. Currently scaling <a href="https://storzen.io/"><b>storzen.io</b></a> and architecting next-gen web apps.
+                </p>
                 
-                <div class="glass-panel profile-card">
-                    <div class="profile-img-container">
-                        <img src="https://gi28.in/assets/Abrarr.png"
-     alt="Constant Abrar Frontend Developer Odisha"
-     loading="lazy"
-     width="150"
-     height="150">
-     </div>
-                    <h3>Constant Abrar</h3>
-                    <p>@const.abrar</p>
+                <div class="flex flex-wrap gap-4 mt-6 w-full">
+                    <a href="#projects" class="group flex items-center gap-2 bg-themeCyan text-themeBlack border-4 border-themeBlack rounded-xl px-6 py-3 font-bold text-lg shadow-neo-md hover:shadow-neo-lg hover:-translate-y-1 transition-all">
+                        View Ventures
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2 flex justify-center relative py-10 z-10">
+                <div class="relative w-72 h-80 md:w-96 md:h-[420px] group">
+                    <div class="absolute inset-0 bg-themeYellow border-4 border-themeBlack rounded-2xl shadow-neo-lg dark:shadow-neo-dark-lg transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
+                    <div class="absolute inset-0 bg-themeCyan border-4 border-themeBlack rounded-2xl overflow-hidden shadow-neo-md flex items-center justify-center bg-cover bg-center" style="background-image: url('https://constabrar.in/Abrarr.png');">
+                        <div class="text-7xl font-black text-themeBlack opacity-50">ABRAR</div>
+                    </div>
                     
-                    <div class="social-links">
-                        <a href="mailto:const.abrar@proton.me" aria-label="Email">
-                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <div class="absolute -top-6 -left-6 bg-white border-4 border-themeBlack px-4 py-2 rounded-xl font-bold text-sm shadow-neo-sm animate-float1 flex items-center gap-2">
+                        <span>Age;</span> 16
+                    </div>
+                    <div class="absolute bottom-10 -right-8 bg-themeGreen border-4 border-themeBlack px-4 py-2 rounded-xl font-bold text-sm shadow-neo-sm animate-float2 flex items-center gap-2">
+                        <span>Alli</span> Khan
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full bg-themeYellow border-y-4 border-themeBlack py-4 overflow-hidden z-10 relative">
+        <div class="flex w-max animate-marquee gap-8">
+            <div class="flex items-center gap-8 font-mono font-bold text-themeBlack text-lg">
+                <span>React</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Node.js</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>HTML/CSS</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>MongoDB</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Tailwind</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Next.js</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>AI Tools</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Founder</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+            </div>
+            <div class="flex items-center gap-8 font-mono font-bold text-themeBlack text-lg">
+                <span>React</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Node.js</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>MongoDB</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Tailwind</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Next.js</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>HTML/CSS</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>AI Tools</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+                <span>Founder</span><span class="w-2 h-2 bg-themeBlack rounded-full"></span>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto z-10 relative">
+        <div class="inline-flex items-center gap-2 bg-themeYellow border-2 border-themeBlack px-4 py-1.5 rounded-full font-mono text-xs font-bold shadow-neo-sm mb-6 text-themeBlack">
+            About Abrar
+        </div>
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-12 text-themeBlack dark:text-white">
+            Not Just A Dev. <span class="bg-themeCyan px-2 text-themeBlack border-2 border-themeBlack inline-block -rotate-2">A Builder.</span>
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p>Most developers spend years learning tools. I use tools to build <strong>empires</strong>. At 16, I transitioned from just writing frontend code to architecting entire scalable systems.</p>
+                <p>I am the Founder of <strong>STORZEN (storzen.io)</strong>, <strong>IMPROVETOGETHER</strong>, and <strong>GI28</strong>. I design the UI, write the backend, manage databases, and deploy the infrastructure entirely on my own.</p>
+                <p>I don't build resumes. I build products that solve real problems, automate workflows, and handle real users. If there's an idea, I have the stack to bring it to life.</p>
+                <p>By the way, <b><a href="https://gi28.in/">GI28</a></b> is my only project in which I focused on UI, Honestly I want review. 😇</p>
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <div class="bg-cardLight dark:bg-cardDark border-4 border-themeBlack dark:border-white p-5 rounded-xl shadow-neo-sm hover:shadow-neo-md hover:-translate-y-1 transition-all">
+                        <div class="text-4xl font-black text-themeYellow">16k+</div>
+                        <div class="font-mono text-sm mt-1 dark:text-gray-400">Contacts</div>
+                    </div>
+                    <div class="bg-themeGreen border-4 border-themeBlack p-5 rounded-xl shadow-neo-sm hover:shadow-neo-md hover:-translate-y-1 transition-all">
+                        <div class="text-4xl font-black text-themeBlack">0</div>
+                        <div class="font-mono text-sm mt-1 text-themeBlack font-bold">Free Time</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-[400px] md:h-[500px] bg-themeBlack border-4 border-themeBlack dark:border-white rounded-2xl shadow-neo-lg dark:shadow-neo-dark-lg relative overflow-hidden group" id="box3d">
+                <canvas id="c3d" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white text-themeBlack border-2 border-themeBlack px-4 py-1 rounded-full font-mono text-xs font-bold shadow-neo-sm pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
+                    Feel for Free
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 bg-themeBlack text-white border-y-4 border-themeBlack z-10 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-themePink border-2 border-white px-4 py-1.5 rounded-full font-mono text-xs font-bold shadow-[3px_3px_0px_#fff] mb-6 text-themeBlack">
+                Empires
+            </div>
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-12">
+                Startups I've <span class="text-themeYellow underline decoration-4 underline-offset-8">Launched</span> or Working on.
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-[#1a1a1a] border-4 border-themeYellow rounded-2xl p-8 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#FFD93D] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-themeYellow opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity"></div>
+                    <div class="flex items-center gap-2 font-mono text-xs font-bold text-themeGreen border border-themeGreen bg-themeGreen/10 px-3 py-1 rounded-full w-max mb-6">
+                     
+                          <span class="w-2 h-2 bg-themeYellow rounded-full"></span> Scaling
+                    
+                    </div>
+                    <div class="text-themeCyan font-mono text-sm mb-2">Main Venture</div>
+                    <h3 class="text-3xl font-black mb-4">STORZEN <span class="text-lg font-mono text-gray-400 font-normal">(storzen.io)</span></h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                  Recently started with a intention to make every shop digital, Our government can only mention these in speeches, I'm building really. I've a partner in this project named SHAIKH FARHAN. Yes, We both are muslim & We know who is CHUTIYA but we'll complete this INSHALLAH.</p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="bg-themeYellow/10 text-themeYellow border border-themeYellow/30 px-2 py-1 rounded font-mono text-xs">Founder</span>
+                        <span class="bg-themeCyan/10 text-themeCyan border border-themeCyan/30 px-2 py-1 rounded font-mono text-xs">Full Stack</span>
+                        <span class="bg-white/10 text-white border border-white/30 px-2 py-1 rounded font-mono text-xs">Next.js/React</span>
+                    </div>
+                    <a href="https://storzen.io" target="_blank" class="inline-flex items-center gap-2 bg-themeYellow text-themeBlack font-bold px-6 py-3 rounded-lg hover:bg-white transition-colors">
+                        Visit storzen.io <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+
+                <div class="bg-[#1a1a1a] border-4 border-themeCyan rounded-2xl p-8 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#66D9EF] transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-themeCyan opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity"></div>
+                    <div class="flex items-center gap-2 font-mono text-xs font-bold text-themeYellow border border-themeYellow bg-themeYellow/10 px-3 py-1 rounded-full w-max mb-6">
+                      <span class="w-2 h-2 bg-themeGreen rounded-full animate-pulse-fast"></span> Live </div>
+                    <div class="text-themeCyan font-mono text-sm mb-2">Co-Venture</div>
+                    <h3 class="text-3xl font-black mb-4">IMPROVE TOGETHER</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        A community-driven platform focused on collective growth. Built the complete platform architecture, integrating seamless user experiences with robust backend performance.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="bg-themeYellow/10 text-themeYellow border border-themeYellow/30 px-2 py-1 rounded font-mono text-xs">Founder</span>
+                        <span class="bg-themeCyan/10 text-themeCyan border border-themeCyan/30 px-2 py-1 rounded font-mono text-xs">Community Platform</span>
+                    </div>
+                    <a href="https://improvetogether.in/" class="inline-flex items-center gap-2 bg-themeCyan text-themeBlack font-bold px-6 py-3 rounded-lg hover:bg-white transition-colors">
+                        Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="bg-[#1a1a1a] border-4 border-themePink rounded-2xl p-8 hover:-translate-y-2 hover:shadow-[10px_10px_0px_#FF6B9D] transition-all duration-300 relative overflow-hidden group md:col-span-2">
+                    <div class="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 font-mono text-xs font-bold text-themeGreen border border-themeGreen bg-themeGreen/10 px-3 py-1 rounded-full w-max mb-4">
+                                <span class="w-2 h-2 bg-themeGreen rounded-full animate-pulse-fast"></span> Live & Autopilot
+                            </div>
+                            <h3 class="text-3xl font-black mb-2">GI28</h3>
+                            <p class="text-gray-400 max-w-2xl">
+                                My first major strike. A fully automated SMM panel handling real orders and real users autonomously. I coded the frontend, wired the backend API integrations, and deployed it solo.
+                            Currently Managed by ARSHAD.</p>
+                            
+                        </div>
+                        <a href="https://gi28.in" target="_blank" class="shrink-0 inline-flex items-center gap-2 bg-themePink text-themeBlack font-bold px-8 py-4 rounded-xl border-2 border-themePink hover:bg-transparent hover:text-themePink transition-all">
+                            Visit
                         </a>
-                        <a href="https://wa.me/918637213741" target="_blank" aria-label="WhatsApp">
-    <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor">
-        <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.89.754 5.61 2.067 7.97L.396 32l7.82-1.63A15.936 15.936 0 0 0 16 32.396c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.2c-2.53 0-4.93-.66-7.02-1.91l-.5-.3-4.64.97.99-4.52-.32-.52a13.88 13.88 0 0 1-2.12-7.42c0-7.66 6.23-13.89 13.89-13.89 3.71 0 7.2 1.45 9.82 4.07a13.8 13.8 0 0 1 4.07 9.82c0 7.66-6.23 13.89-13.89 13.89zm7.61-10.42c-.42-.21-2.49-1.23-2.88-1.37-.39-.14-.67-.21-.95.21s-1.09 1.37-1.33 1.65c-.25.28-.49.32-.91.11-.42-.21-1.77-.65-3.37-2.07-1.24-1.1-2.08-2.46-2.32-2.88-.25-.42-.03-.65.18-.86.19-.19.42-.49.63-.74.21-.25.28-.42.42-.7.14-.28.07-.53-.03-.74-.11-.21-.95-2.29-1.3-3.14-.34-.82-.69-.71-.95-.72-.25-.01-.53-.01-.81-.01s-.74.11-1.12.53c-.39.42-1.48 1.44-1.48 3.52 0 2.07 1.51 4.08 1.72 4.36.21.28 2.97 4.53 7.2 6.35 1.01.43 1.8.69 2.41.88 1.01.32 1.93.28 2.66.17.81-.12 2.49-1.02 2.84-2.01.35-.98.35-1.82.25-2.01-.11-.19-.39-.32-.81-.53z"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 max-w-7xl mx-auto z-10 relative">
+        <div class="bg-themeYellow dark:bg-themeYellow border-4 border-themeBlack rounded-3xl p-8 md:p-16 shadow-neo-lg dark:shadow-neo-dark-lg flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="max-w-xl">
+                <h2 class="text-4xl md:text-5xl font-black text-themeBlack mb-6 leading-tight">
+                    Let's Build The Next Big Thing.
+                </h2>
+                <p class="text-lg text-themeBlack/80 font-medium mb-8">
+                    I'm constantly building, scaling, and innovating. Whether you want to talk about STORZEN, have a business inquiry, or just want to connect with a fellow builder—drop a message.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="mailto:abrar@storzen.io" class="bg-themeBlack text-white px-6 py-3 rounded-lg font-bold border-2 border-themeBlack flex items-center gap-2 hover:-translate-y-1 hover:shadow-neo-md transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Email Me
+                    </a>
+                    <a href="https://wa.me/918637213741" target="_blank" class="bg-white text-themeBlack px-6 py-3 rounded-lg font-bold border-2 border-themeBlack flex items-center gap-2 hover:-translate-y-1 hover:shadow-neo-md transition-all">
+                        <svg class="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.488-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-auto flex flex-col gap-4">
+  <a href="https://www.instagram.com/const.abrar" target="_blank" class="bg-white border-4 border-themeBlack rounded-xl p-4 flex items-center justify-between font-bold text-lg hover:-translate-y-1 hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 hover:text-white transition-all group">
+    <span class="flex items-center gap-3">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.322 4 20 5.678 20 7.75v8.5C20 18.322 18.322 20 16.25 20h-8.5C5.678 20 4 18.322 4 16.25v-8.5C4 5.678 5.678 4 7.75 4zm8.75 1a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+        </svg>
+        Instagram
+    </span>
+    <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
     </svg>
 </a>
-                        <a href="https://github.com/const-abrar" target="_blank" aria-label="GitHub">
-                            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/constabrar" target="_blank" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        </a>
-                        <a href="https://instagram.com/const.abrar" target="_blank" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                        </a>
-                    </div>
-                </div>
 
-                <div class="about-content">
-                    <p class="about-text">
-                        I am a highly skilled Frontend Developer based in Kendrapara, Odisha. I specialize in crafting visually stunning, responsive, and insanely fast web applications. My philosophy revolves around delivering the fastest service without compromising on code quality or aesthetic brilliance.
-                    </p>
-                    
-                    <div class="stats-grid">
-                        <div class="glass-panel stat-box">
-                            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                            <h4>Fast Execution</h4>
-                            <p>Rapid deployment utilizing AI assistance to optimize architecture.</p>
-                        </div>
-                        <div class="glass-panel stat-box">
-                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                            <h4>Backend Integration</h4>
-                            <p>Seamless data flow using Supabase and Web3Forms.</p>
-                        </div>
-                        <div class="glass-panel stat-box">
-                            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                            <h4>Business Logic</h4>
-                            <p>Managing complete digital presence for distinct client needs.</p>
-                        </div>
-                    </div>
-                </div>
+<a href="https://t.me/ConstAbrar" target="_blank" class="bg-white border-4 border-themeBlack rounded-xl p-4 flex items-center justify-between font-bold text-lg hover:-translate-y-1 hover:bg-[#229ED9] hover:text-white transition-all group">
+    <span class="flex items-center gap-3">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9.993 15.674l-.396 5.573c.567 0 .813-.244 1.108-.537l2.658-2.54 5.508 4.03c1.01.557 1.723.264 1.995-.93l3.617-16.95h.001c.32-1.49-.538-2.073-1.523-1.706L1.68 10.34c-1.454.567-1.432 1.378-.247 1.742l5.748 1.793L19.9 5.847c.6-.397 1.145-.177.696.22"/>
+        </svg>
+        Telegram
+    </span>
+    <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+    </svg>
+</a>
+
             </div>
-        </section>
-
-        <section class="section fade-up" id="tech">
-            <h2 class="section-title">
-                <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                Tech Architecture
-            </h2>
-            <div class="tech-grid">
-                <div class="glass-panel tech-item">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100" height="100">
-  <path fill="currentColor" d="M64 32l35 403.2L256 480l157-44.8L448 32H64zm292.1 132.4l-4.7 54H186.2l3.6 40.9h160.4l-11.7 130.6-82.5 22.3-82.5-22.3-5.6-62.4h50.6l2.8 31.3 29.1 7.9 29.1-7.9 4.5-50.7H136.1l-10.4-117h234.1l-3.7 41.2z"/>
-</svg>
-
-<span>HTML</span>
-</div>
-<div class="glass-panel tech-item">
-    <svg viewBox="0 0 128 128" fill="currentColor">
-  <path d="M64.068 84.176v0zM18.972 14.076L23.644 125.4l36.776 10.208 36.88-10.224L103.672 14.076H18.972zM92 35.1l-2.772 31.068h0l-1.92 21.436-0.168 1.904-23.124 6.412-23.092-6.412-1.58-17.704h11.316l0.804 8.992 12.568 3.388 0.032-0.008 0.008 0 12.536-3.384 1.316-14.62-26.316 0-0.224-2.532-0.516-5.716-0.268-3.024 28.324 0 1.032-11.544h-43.144l-0.224-2.536-0.516-5.716-0.268-3.024h56.472l-0.272 3.024z"/>
-</path>
-</svg>
-    <span>CSS</span>
-</div>
-<div class="glass-panel tech-item">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M9 20C9 20 5 20 5 16V14C5 13 4 12 3 12C4 12 5 11 5 10V8C5 4 9 4 9 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M15 4C15 4 19 4 19 8V10C19 11 20 12 21 12C20 12 19 13 19 14V16C19 20 15 20 15 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-    <span>JSON</span>
-</div>
-                <div class="glass-panel tech-item">
-    <svg viewBox="0 0 32 32" fill="none">
-        <rect x="2" y="2" width="28" height="28" rx="6"
-              fill="currentColor" opacity="0.12"/>
+        </div>
         
-        <text x="16" y="20"
-              text-anchor="middle"
-              font-size="10"
-              font-weight="600"
-              letter-spacing="0.5"
-              fill="currentColor"
-              font-family="Inter, Arial, sans-serif">
-            JS
-        </text>
-    </svg>
-    <span>JavaScript</span>
-</div>
-                <div class="glass-panel tech-item">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"/></svg>
-                    <span>React.js</span>
-                </div>
-                <div class="glass-panel tech-item">
-                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    <span>Tailwind CSS</span>
-                </div>
-                <div class="glass-panel tech-item">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2l8 4.5v11L12 22l-8-4.5v-11L12 2z"/>
-        <path d="M8 9v6"/>
-        <path d="M16 9v6"/>
-        <path d="M8 9l4 3 4-3"/>
-    </svg>
-    <span>Node & APIs</span>
-</div>
-                <div class="glass-panel tech-item">
-                    <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
-                    <span>Supabase DB</span>
-                </div>
-                <div class="glass-panel tech-item">
-                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                    <span>AI Assistant</span>
-                </div>
-                <div class="glass-panel tech-item">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                    <span>Web3Forms</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="section fade-up" id="journey">
-            <h2 class="section-title">
-                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                My Journey
-            </h2>
-            <div class="journey-container" id="journey-line-container">
-                <div class="journey-line" id="animated-line"></div>
-                
-                <div class="journey-node">
-                    <div class="glass-panel journey-card">
-                        <div class="journey-date">Present • Remote</div>
-                        <h3>Frontend Developer</h3>
-                        <p>Personal Business by Websites. Handling complete frontend architecture, ensuring ultra-fast delivery times using AI tooling, and integrating complex systems like Supabase.</p>
-                    </div>
-                </div>
-                
-                <div class="journey-node">
-                    <div class="glass-panel journey-card">
-                        <div class="journey-date">Past • Freelance</div>
-                        <h3>Independent Web Specialist</h3>
-                        <p>Designed and deployed custom landing pages and digital portfolios. Perfected the integration of serverless forms via Web3Forms for high-converting client sites.</p>
-                    </div>
-                </div>
-
-                <div class="journey-node">
-                    <div class="glass-panel journey-card">
-                        <div class="journey-date">Origin</div>
-                        <h3>Foundation & Architecture</h3>
-                        <p>Deep dive into core web technologies (HTML, CSS, JS). Built an insane knowledge base in modern frameworks and responsive design paradigms.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section fade-up" id="projects">
-            <h2 class="section-title">
-                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                Projects
-            </h2>
-            <div class="projects-grid">
-          <div class="glass-panel project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <h3>Tools @GI28</h3>
-                    <p><a href="https://gi28.in/Tools/">gi28.in/Tools</a></p>
-                    <p>A sleek, multi-page business website optimized for speed. Features dynamic content loading and complex CSS glassmorphism interactions.</p>
-                    <div class="project-tags">
-                        <span>HTML/CSS</span><span>JS</span><span>Web3Forms</span>
-                    </div>
-                </div>
-
-                <div class="glass-panel project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                    </div>
-                    <h3>AI-Powered Dash</h3>
-                    <p>A complex frontend interface built with the assistance of AI tools to rapidly prototype and deploy robust data visualization layouts.</p>
-                    <div class="project-tags">
-                        <span>AI Logic</span><span>Supabase</span><span>React Flow</span>
-                    </div>
-                </div>
-
-                <div class="glass-panel project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    </div>
-                    <h3>Lead Generation Portal</h3>
-                    <p>High-conversion landing page with seamless serverless form integration handling thousands of inquiries with zero downtime.</p>
-                    <div class="project-tags">
-                        <span>Web3Forms</span><span>Tailwind</span><span>Optimization</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="section fade-up" id="contact">
-            <h2 class="section-title">
-                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                Initiate Contact
-            </h2>
-            <div class="contact-container">
-                <div class="glass-panel">
-                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="cd5f82c2-33df-4d7f-9e51-8214f81ca59a">
-                        
-                        <div class="input-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your name">
-                        </div>
-                        <div class="input-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="name@domain.com">
-                        </div>
-                        <div class="input-group">
-                            <label for="message">Project Details</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="How can I help accelerate your business?"></textarea>
-                        </div>
-                        <button type="submit" class="btn-glow">
-                            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                            Transmit Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 CONST.ABRAR. Architected with precision.</p>
-        </footer>
-
-    </main>
+        <div class="mt-12 text-center font-mono text-sm text-gray-500 dark:text-gray-400">
+            © 2026 Constant Abrar. Building the future, one deploy at a time.
+        </div>
+    </section>
 
     <script>
-        // --- Loader Logic ---
+        // Loader
         window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            
-            // Wait slightly, then trigger the opening animation
             setTimeout(() => {
-                loader.classList.add('open');
-                
-                // Wait for the open animation to finish, then fade out
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    
-                    // Remove from DOM and reveal body
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        document.body.classList.add('loaded');
-                    }, 10);
-                }, 20);
-            }, 10);
+                const loader = document.getElementById('loader');
+                loader.classList.add('loader-hide');
+                setTimeout(() => loader.remove(), 500);
+            }, 1500);
         });
-        // --- Scroll Intersection Observer for Sections & Journey Line ---
-        document.addEventListener("DOMContentLoaded", () => {
-            // Fade in sections on scroll
-            const sections = document.querySelectorAll('.section');
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
 
-            sections.forEach(section => sectionObserver.observe(section));
+        // Theme Toggle
+        const html = document.documentElement;
+        const themeBtn = document.getElementById('themeBtn');
+        let isDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        const applyTheme = () => {
+            if (isDark) {
+                html.classList.add('dark');
+                themeBtn.textContent = '☀️';
+            } else {
+                html.classList.remove('dark');
+                themeBtn.textContent = '🌙';
+            }
+        };
+        applyTheme();
 
-            // Dynamic Journey Line Animation
-            const journeyNodes = document.querySelectorAll('.journey-node');
-            const journeyLine = document.getElementById('animated-line');
-            
-            const journeyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        // Calculate how many nodes are active to set line height
-                        const activeNodes = document.querySelectorAll('.journey-node.active').length;
-                        const totalNodes = journeyNodes.length;
-                        // Rough calculation to draw the line down as nodes appear
-                        journeyLine.style.height = `${(activeNodes / totalNodes) * 100}%`;
-                    }
-                });
-            }, { threshold: 0.5, rootMargin: "0px 0px -100px 0px" });
+        themeBtn.addEventListener('click', () => {
+            isDark = !isDark;
+            localStorage.theme = isDark ? 'dark' : 'light';
+            applyTheme();
+        });
 
-            journeyNodes.forEach(node => journeyObserver.observe(node));
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
         });
     </script>
     <script>
-if ('loading' in HTMLImageElement.prototype) {
-  document.querySelectorAll('img').forEach(img => {
-    img.src = img.dataset.src || img.src;
-  });
-}
+(function () {
+    const container = document.getElementById('box3d');
+    const canvas = document.getElementById('c3d');
+
+    if (!container || !canvas || typeof THREE === 'undefined') return;
+
+    // Scene
+    const scene = new THREE.Scene();
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(
+        45,
+        container.offsetWidth / container.offsetHeight,
+        0.1,
+        1000
+    );
+
+    camera.position.z = 5;
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true
+    });
+
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Texture Loader
+    const textureLoader = new THREE.TextureLoader();
+
+    const texture = textureLoader.load(
+        'https://constabrar.in/file_00000000f80c720ba810fb44ada1e78b.png'
+    );
+
+    texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+    // Sphere Geometry
+    const sphereGeometry = new THREE.SphereGeometry(1.5, 128, 128);
+
+    // Main Material
+    const sphereMaterial = new THREE.MeshPhysicalMaterial({
+        map: texture,
+        transparent: true,
+        roughness: 0.15,
+        metalness: 0.25,
+        clearcoat: 1,
+        clearcoatRoughness: 0.1,
+        transmission: 0.15,
+        thickness: 1.5,
+        envMapIntensity: 1.2
+    });
+
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    scene.add(sphere);
+
+    // Outer Glow Ring
+    const glowGeometry = new THREE.SphereGeometry(1.65, 64, 64);
+
+    const glowMaterial = new THREE.MeshBasicMaterial({
+        color: 0x66D9EF,
+        transparent: true,
+        opacity: 0.12,
+        side: THREE.BackSide
+    });
+
+    const glowSphere = new THREE.Mesh(glowGeometry, glowMaterial);
+    scene.add(glowSphere);
+
+    // Wireframe Shell
+    const wireGeometry = new THREE.SphereGeometry(1.72, 48, 48);
+
+    const wireMaterial = new THREE.MeshBasicMaterial({
+        color: 0xFFD93D,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.18
+    });
+
+    const wireSphere = new THREE.Mesh(wireGeometry, wireMaterial);
+    scene.add(wireSphere);
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    const cyanLight = new THREE.PointLight(0x66D9EF, 3, 20);
+    cyanLight.position.set(-3, 2, 4);
+    scene.add(cyanLight);
+
+    const pinkLight = new THREE.PointLight(0xFF6B9D, 2, 20);
+    pinkLight.position.set(3, -2, 4);
+    scene.add(pinkLight);
+
+    // Interaction
+    let isDragging = false;
+
+    let previousMousePosition = {
+        x: 0,
+        y: 0
+    };
+
+    let targetRotation = {
+        x: 0,
+        y: 0
+    };
+
+    let currentRotation = {
+        x: 0,
+        y: 0
+    };
+
+    function startDrag(x, y) {
+        isDragging = true;
+        previousMousePosition = { x, y };
+    }
+
+    function moveDrag(x, y) {
+        if (!isDragging) return;
+
+        const deltaX = x - previousMousePosition.x;
+        const deltaY = y - previousMousePosition.y;
+
+        targetRotation.y += deltaX * 0.008;
+        targetRotation.x += deltaY * 0.008;
+
+        previousMousePosition = { x, y };
+    }
+
+    function endDrag() {
+        isDragging = false;
+    }
+
+    // Mouse
+    container.addEventListener('mousedown', (e) => {
+        startDrag(e.clientX, e.clientY);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        moveDrag(e.clientX, e.clientY);
+    });
+
+    window.addEventListener('mouseup', endDrag);
+
+    // Touch
+    container.addEventListener(
+        'touchstart',
+        (e) => {
+            startDrag(
+                e.touches[0].clientX,
+                e.touches[0].clientY
+            );
+        },
+        { passive: true }
+    );
+
+    window.addEventListener(
+        'touchmove',
+        (e) => {
+            moveDrag(
+                e.touches[0].clientX,
+                e.touches[0].clientY
+            );
+        },
+        { passive: true }
+    );
+
+    window.addEventListener('touchend', endDrag);
+
+    // Resize
+    window.addEventListener('resize', () => {
+        camera.aspect =
+            container.offsetWidth / container.offsetHeight;
+
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+            container.offsetWidth,
+            container.offsetHeight
+        );
+    });
+
+    // Animation
+    const clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const elapsed = clock.getElapsedTime();
+
+        // Auto rotate
+        if (!isDragging) {
+            targetRotation.y += 0.003;
+        }
+
+        // Smooth lerp
+        currentRotation.x +=
+            (targetRotation.x - currentRotation.x) * 0.08;
+
+        currentRotation.y +=
+            (targetRotation.y - currentRotation.y) * 0.08;
+
+        sphere.rotation.x = currentRotation.x;
+        sphere.rotation.y = currentRotation.y;
+
+        glowSphere.rotation.x = currentRotation.x * 0.9;
+        glowSphere.rotation.y = currentRotation.y * 0.9;
+
+        wireSphere.rotation.x = currentRotation.x * -0.4;
+        wireSphere.rotation.y = currentRotation.y * 1.3;
+
+        // Floating effect
+        const floatY = Math.sin(elapsed * 1.5) * 0.15;
+
+        sphere.position.y = floatY;
+        glowSphere.position.y = floatY;
+        wireSphere.position.y = floatY;
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+})();
 </script>
 </body>
 </html>
