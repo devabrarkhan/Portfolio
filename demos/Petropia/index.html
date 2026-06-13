@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petropia | Ultra-Premium Pet Ecosystem</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            50: '#fcf9f9', // Soft rose-white base
+                            900: '#1a1617' // Deep dark mode base
+                        },
+                        dark: {
+                            text: '#2d2d2d',
+                            textDark: '#f0eaea'
+                        }
+                    },
+                    boxShadow: {
+                        // Light Mode Neumorphism
+                        'neu-light': '12px 12px 24px #e5e2e2, -12px -12px 24px #ffffff',
+                        'neu-light-sm': '6px 6px 12px #e5e2e2, -6px -6px 12px #ffffff',
+                        'neu-light-inset': 'inset 8px 8px 16px #e5e2e2, inset -8px -8px 16px #ffffff',
+                        // Dark Mode Neumorphism
+                        'neu-dark': '12px 12px 24px #120f10, -12px -12px 24px #221d1e',
+                        'neu-dark-sm': '6px 6px 12px #120f10, -6px -6px 12px #221d1e',
+                        'neu-dark-inset': 'inset 8px 8px 16px #120f10, inset -8px -8px 16px #221d1e',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        @layer utilities {
+            /* Base Neumorphic Classes */
+            .neu {
+                @apply bg-rose-50 shadow-neu-light dark:bg-rose-900 dark:shadow-neu-dark rounded-[30px] border border-white/40 dark:border-white/5;
+            }
+            .neu-sm {
+                @apply bg-rose-50 shadow-neu-light-sm dark:bg-rose-900 dark:shadow-neu-dark-sm rounded-2xl border border-white/40 dark:border-white/5;
+            }
+            .neu-inset {
+                @apply bg-rose-50 shadow-neu-light-inset dark:bg-rose-900 dark:shadow-neu-dark-inset rounded-[30px] border border-transparent;
+            }
+            .neu-btn {
+                @apply bg-rose-50 shadow-neu-light dark:bg-rose-900 dark:shadow-neu-dark rounded-full px-8 py-4 font-semibold tracking-wide transition-all duration-300 text-dark-text dark:text-dark-textDark border border-white/40 dark:border-white/5;
+            }
+            .neu-btn:hover {
+                @apply shadow-neu-light-sm dark:shadow-neu-dark-sm translate-y-[2px];
+            }
+        }
+
+        /* Animations */
+        body { font-family: 'Inter', sans-serif; }
+        
+        .float-fast { animation: float 4s ease-in-out infinite; }
+        .float-slow { animation: float 7s ease-in-out infinite reverse; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hide scrollbar for clean horizontal scrolls */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* SVG Breathing */
+        .svg-breathe { animation: breathe 4s infinite ease-in-out; }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-rose-50 dark:bg-rose-900 text-dark-text dark:text-dark-textDark transition-colors duration-500 overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 top-0 py-6 px-8 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto neu-sm px-8 py-4 flex justify-between items-center backdrop-blur-md bg-opacity-80">
+            <div class="flex items-center gap-3">
+                <svg class="w-8 h-8 svg-breathe text-rose-500 dark:text-rose-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6zm0 2c2.206 0 4 1.794 4 4 0 2.5-3.5 7.5-4 9.5-.5-2-4-7-4-9.5 0-2.206 1.794-4 4-4zm0 2.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+                </svg>
+                <span class="text-2xl font-bold tracking-tighter">Petropia<span class="text-rose-400">.</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 font-medium">
+                <a href="#adopt" class="hover:text-rose-400 transition-colors">Adopt</a>
+                <a href="#services" class="hover:text-rose-400 transition-colors">Services</a>
+                <a href="#community" class="hover:text-rose-400 transition-colors">Community</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="neu p-3 rounded-full magnetic">
+                    <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button class="neu-btn magnetic hidden md:block">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-8 overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none" id="parallax-container">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=300&q=80" alt="Kitten" class="absolute top-32 left-10 w-24 h-24 object-cover rounded-full neu float-fast shadow-2xl opacity-80" data-speed="2">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=300&q=80" alt="Dog" class="absolute top-48 right-20 w-32 h-32 object-cover rounded-full neu float-slow shadow-2xl opacity-90" data-speed="-3">
+            <img src="https://images.unsplash.com/photo-1552728089-57105a8e7dac?auto=format&fit=crop&w=300&q=80" alt="Parrot" class="absolute bottom-40 left-32 w-28 h-28 object-cover rounded-full neu float-slow shadow-2xl opacity-80" data-speed="4">
+            <img src="https://images.unsplash.com/photo-1585110396000-c9fd4e4e5030?auto=format&fit=crop&w=300&q=80" alt="Rabbit" class="absolute bottom-20 right-40 w-20 h-20 object-cover rounded-full neu float-fast shadow-2xl opacity-70" data-speed="-2">
+            <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=300&q=80" alt="Hamster" class="absolute top-1/2 left-1/4 w-16 h-16 object-cover rounded-full neu float-slow shadow-2xl opacity-60" data-speed="1">
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center z-10 reveal">
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-6 leading-tight">
+                The Luxury <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">Pet Ecosystem</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto font-light">
+                Discover, adopt, and manage the life of your premium companion in one seamlessly designed platform.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button class="neu-btn text-lg px-12 magnetic w-full sm:w-auto">Explore Pets</button>
+                <button class="neu-sm px-8 py-4 rounded-full font-medium magnetic w-full sm:w-auto flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Watch Platform Tour
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
+            <div class="neu p-8 text-center magnetic">
+                <h3 class="text-4xl font-bold mb-2">24k+</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-widest">Pets Adopted</p>
+            </div>
+            <div class="neu p-8 text-center magnetic">
+                <h3 class="text-4xl font-bold mb-2">150+</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-widest">Premium Vets</p>
+            </div>
+            <div class="neu p-8 text-center magnetic">
+                <h3 class="text-4xl font-bold mb-2">99%</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-widest">Success Rate</p>
+            </div>
+            <div class="neu p-8 text-center magnetic">
+                <h3 class="text-4xl font-bold mb-2">$50M</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-widest">Community Value</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="adopt" class="py-20 px-8">
+        <div class="max-w-7xl mx-auto reveal">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Elite Companions</h2>
+            <p class="text-xl text-gray-500 dark:text-gray-400 mb-12">Carefully curated companions ready for premium homes.</p>
+            
+            <div class="flex overflow-x-auto pb-12 gap-8 no-scrollbar snap-x cursor-grab" id="slider">
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=400&q=80" alt="Persian Cat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Luna</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Cat</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Persian • 1 Year</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Luna</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=400&q=80" alt="Golden Retriever" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Max</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Dog</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Golden Retriever • 2 Years</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Max</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1533038676251-512c0199e436?auto=format&fit=crop&w=400&q=80" alt="Parrot" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Charlie</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Bird</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Macaw • 4 Years</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Charlie</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1585110396000-c9fd4e4e5030?auto=format&fit=crop&w=400&q=80" alt="Rabbit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Bella</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Rabbit</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Lop Eared • 6 Months</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Bella</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1589139973215-998f8245cd12?auto=format&fit=crop&w=400&q=80" alt="Hamster" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Milo</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Rodent</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Syrian Hamster • 3 Months</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Milo</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1537151608804-ea2f11739810?auto=format&fit=crop&w=400&q=80" alt="Beagle" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Daisy</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Dog</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Beagle • 1.5 Years</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Daisy</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1513245543132-31f507417b26?auto=format&fit=crop&w=400&q=80" alt="Siamese Cat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Oliver</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Cat</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Siamese • 2 Years</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Oliver</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1605568420125-4c0422960f27?auto=format&fit=crop&w=400&q=80" alt="Husky" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Leo</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Dog</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Siberian Husky • 3 Years</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Leo</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400&q=80" alt="Pug" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Chloe</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Dog</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">Pug • 8 Months</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Chloe</button>
+                    </div>
+                </div>
+                <div class="neu min-w-[300px] p-4 snap-start shrink-0 group">
+                    <div class="neu-inset rounded-2xl h-64 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=80" alt="French Bulldog" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold">Rocky</h3>
+                            <span class="neu-sm px-3 py-1 text-xs font-semibold rounded-full">Dog</span>
+                        </div>
+                        <p class="text-gray-500 mb-6">French Bulldog • 1 Year</p>
+                        <button class="w-full neu-sm py-3 font-semibold hover:bg-rose-100 dark:hover:bg-rose-800 transition-colors">Meet Rocky</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 bg-white/5 dark:bg-black/5">
+        <div class="max-w-7xl mx-auto reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 tracking-tight">The Ecosystem Flow</h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center justify-between relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 neu-inset -z-10"></div>
+                
+                <div class="neu p-8 w-full md:w-1/3 text-center relative bg-rose-50 dark:bg-rose-900">
+                    <div class="w-16 h-16 mx-auto neu-inset rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Discover</h3>
+                    <p class="text-gray-500">Find your perfect match through our AI-driven compatibility algorithms.</p>
+                </div>
+                <div class="neu p-8 w-full md:w-1/3 text-center relative bg-rose-50 dark:bg-rose-900">
+                    <div class="w-16 h-16 mx-auto neu-inset rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Integrate</h3>
+                    <p class="text-gray-500">Seamless adoption, training, and setting up the perfect home environment.</p>
+                </div>
+                <div class="neu p-8 w-full md:w-1/3 text-center relative bg-rose-50 dark:bg-rose-900">
+                    <div class="w-16 h-16 mx-auto neu-inset rounded-full flex items-center justify-center mb-6">
+                        <span class="text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Nurture</h3>
+                    <p class="text-gray-500">Access elite veterinary, grooming, and boarding services on demand.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-8">
+        <div class="max-w-7xl mx-auto reveal">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Premium Services</h2>
+                    <p class="text-xl text-gray-500 max-w-xl">Everything your companion needs, handled by certified professionals.</p>
+                </div>
+                <button class="neu-btn mt-6 md:mt-0">View All Services</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="neu p-8 hover:translate-y-[-5px] transition-transform duration-300">
+                    <div class="w-14 h-14 neu-inset rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Veterinary Care</h3>
+                    <p class="text-gray-500">24/7 access to world-class veterinary professionals and digital health tracking.</p>
+                </div>
+                <div class="neu p-8 hover:translate-y-[-5px] transition-transform duration-300">
+                    <div class="w-14 h-14 neu-inset rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Spa & Grooming</h3>
+                    <p class="text-gray-500">Luxury grooming packages utilizing organic, stress-free products.</p>
+                </div>
+                <div class="neu p-8 hover:translate-y-[-5px] transition-transform duration-300">
+                    <div class="w-14 h-14 neu-inset rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Pet Boarding</h3>
+                    <p class="text-gray-500">Five-star accommodation for your pet while you travel, complete with webcam access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8">
+        <div class="max-w-4xl mx-auto reveal">
+            <div class="neu p-10 md:p-16">
+                <h2 class="text-4xl font-bold mb-8 text-center">Book a Consultation</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500 mb-2">Pet Owner Name</label>
+                            <input type="text" class="w-full neu-inset px-6 py-4 bg-transparent outline-none focus:ring-2 ring-rose-400 rounded-2xl" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-500 mb-2">Service Required</label>
+                            <select class="w-full neu-inset px-6 py-4 bg-transparent outline-none focus:ring-2 ring-rose-400 rounded-2xl appearance-none">
+                                <option>Veterinary Checkup</option>
+                                <option>Grooming Session</option>
+                                <option>Boarding Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-500 mb-2">Preferred Date</label>
+                        <input type="date" class="w-full neu-inset px-6 py-4 bg-transparent outline-none focus:ring-2 ring-rose-400 rounded-2xl">
+                    </div>
+                    <button type="button" class="w-full neu-btn py-5 text-lg mt-8 magnetic">Schedule Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 bg-white/5 dark:bg-black/5">
+        <div class="max-w-7xl mx-auto reveal">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 tracking-tight">Voices of Petropia</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="neu p-10 relative">
+                    <svg class="absolute top-6 left-6 w-12 h-12 text-rose-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
+                    <p class="text-lg italic mb-8 relative z-10 text-gray-600 dark:text-gray-300">"The seamless integration of adoption and veterinary care is unmatched. Finding Leo and managing his health in one platform saves me hours of stress."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="User" class="w-14 h-14 rounded-full neu-inset object-cover">
+                        <div>
+                            <h4 class="font-bold">Michael T.</h4>
+                            <p class="text-sm text-gray-500">Tech Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="neu p-10 relative">
+                    <svg class="absolute top-6 left-6 w-12 h-12 text-rose-500/20" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/></svg>
+                    <p class="text-lg italic mb-8 relative z-10 text-gray-600 dark:text-gray-300">"Petropia's grooming services are out of this world. Luna comes back looking like a supermodel every single time. It truly is a luxury experience."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="User" class="w-14 h-14 rounded-full neu-inset object-cover">
+                        <div>
+                            <h4 class="font-bold">Sarah Jenkins</h4>
+                            <p class="text-sm text-gray-500">Design Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8">
+        <div class="max-w-3xl mx-auto reveal">
+            <h2 class="text-4xl font-bold text-center mb-12 tracking-tight">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="neu overflow-hidden faq-item cursor-pointer">
+                    <div class="p-6 flex justify-between items-center faq-header">
+                        <h4 class="font-semibold text-lg">How strict is the adoption vetting process?</h4>
+                        <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="px-6 pb-6 text-gray-500 hidden faq-content">
+                        We maintain a rigorous standard to ensure our pets are placed in safe, loving, and capable environments. This involves a background check, home video tour, and a virtual consultation.
+                    </div>
+                </div>
+                <div class="neu overflow-hidden faq-item cursor-pointer">
+                    <div class="p-6 flex justify-between items-center faq-header">
+                        <h4 class="font-semibold text-lg">Are veterinary services included in adoption?</h4>
+                        <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="px-6 pb-6 text-gray-500 hidden faq-content">
+                        Your first comprehensive veterinary checkup and a 6-month premium health insurance plan are complementary with every adoption through Petropia.
+                    </div>
+                </div>
+                <div class="neu overflow-hidden faq-item cursor-pointer">
+                    <div class="p-6 flex justify-between items-center faq-header">
+                        <h4 class="font-semibold text-lg">Can I book services for non-Petropia adopted pets?</h4>
+                        <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="px-6 pb-6 text-gray-500 hidden faq-content">
+                        Absolutely. Our luxury ecosystem of vets, groomers, and boarders is open to all premium pet owners seeking the highest standard of care.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 mb-12">
+        <div class="max-w-4xl mx-auto neu p-12 text-center reveal">
+            <svg class="w-16 h-16 mx-auto mb-6 text-rose-500 svg-breathe" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Join the Inner Circle</h2>
+            <p class="text-gray-500 mb-8">Receive exclusive updates on rare breeds, premium service discounts, and expert pet care articles.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
+                <input type="email" placeholder="Enter your email" class="flex-1 neu-inset px-6 py-4 outline-none focus:ring-2 ring-rose-400 bg-transparent rounded-full">
+                <button class="neu-btn whitespace-nowrap magnetic">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <svg class="w-6 h-6 text-rose-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.686 2 6 4.686 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.314-2.686-6-6-6zm0 2c2.206 0 4 1.794 4 4 0 2.5-3.5 7.5-4 9.5-.5-2-4-7-4-9.5 0-2.206 1.794-4 4-4z"/>
+                </svg>
+                <span class="text-xl font-bold tracking-tighter">Petropia.</span>
+            </div>
+            <div class="flex gap-8 text-sm font-medium text-gray-500">
+                <a href="#" class="hover:text-rose-500 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-rose-500 transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-rose-500 transition-colors">Investors</a>
+            </div>
+            <p class="text-sm text-gray-400">&copy; 2026 Petropia Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Dark Mode Toggle ---
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check local storage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // --- Scroll Reveal Animation ---
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+
+        // --- Magnetic Buttons ---
+        const magnets = document.querySelectorAll('.magnetic');
+        
+        magnets.forEach(magnet => {
+            magnet.addEventListener('mousemove', function(e) {
+                const position = magnet.getBoundingClientRect();
+                const x = e.pageX - position.left - position.width / 2;
+                const y = e.pageY - position.top - position.height / 2;
+                
+                // Gentle transform for luxury feel
+                magnet.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+
+            magnet.addEventListener('mouseout', function(e) {
+                magnet.style.transform = 'translate(0px, 0px)';
+            });
+        });
+
+        // --- Parallax Movement for Hero Images ---
+        const parallaxContainer = document.getElementById('parallax-container');
+        const parallaxElements = document.querySelectorAll('#parallax-container img');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+
+            parallaxElements.forEach(el => {
+                const speed = el.getAttribute('data-speed');
+                el.style.transform = `translateX(${x * speed}px) translateY(${y * speed}px)`;
+            });
+        });
+
+        // --- FAQ Accordion ---
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-header');
+            const content = item.querySelector('.faq-content');
+            const icon = item.querySelector('svg');
+
+            header.addEventListener('click', () => {
+                const isOpen = !content.classList.contains('hidden');
+                
+                // Close all
+                faqItems.forEach(i => {
+                    i.querySelector('.faq-content').classList.add('hidden');
+                    i.querySelector('svg').classList.remove('rotate-180');
+                });
+
+                // Open clicked if it was closed
+                if (!isOpen) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+
+        // --- Horizontal Drag to Scroll (Featured Pets) ---
+        const slider = document.getElementById('slider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('cursor-grabbing');
+            slider.classList.remove('cursor-grab');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('cursor-grabbing');
+            slider.classList.add('cursor-grab');
+        });
+        
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('cursor-grabbing');
+            slider.classList.add('cursor-grab');
+        });
+        
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // Scroll-fast
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
